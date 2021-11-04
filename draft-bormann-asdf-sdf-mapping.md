@@ -29,7 +29,7 @@ author:
     email: cabo@tzi.org
     role: editor
   - name: Jan Romann
-    org: Universität Bremen TZI
+    org: Universität Bremen
     email: jan.romann@uni-bremen.de
 
 venue:
@@ -93,13 +93,13 @@ The term "byte" is used in its now-customary sense as a synonym for
 
 An SDF mapping file provides augmentation information for one or more
 SDF definitions.
-Its main contents is a map from SDF name references {{Section 4.3 of
--sdf}} to a set of qualities.
+Its main contents is a map from SDF name references ({{Section 4.3 of
+-sdf}}) to a set of qualities.
 
 When processing the mapping file together with one or more SDF
 definitions, these qualities are added to the SDF definition at the
-referenced name, as in a merge-path operation {{-merge-patch}}.
-Note that this is somewhat similar to the way sdfRef works, but in a
+referenced name, as in a merge-patch operation {{-merge-patch}}.
+Note that this is somewhat similar to the way sdfRef ({{Section 4.4 of -sdf}}) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).
 
@@ -155,9 +155,11 @@ IANA is requested to add the following Media-Type to the "Media Types" registry.
 
 | Name     | Template             | Reference                 |
 | sdf+json | application/sdf-mapping+json | RFC XXXX, {{media-type}}  |
-{: align="left"}
+{: #new-media-types title="A media type for SDF mapping files" align="left"}
 
-// RFC Ed.: please replace RFC XXXX with this RFC number and remove this note.
+[^to-be-removed]
+
+[^to-be-removed]: RFC Editor: please replace RFC XXXX with this RFC number and remove this note.
 
 {:compact}
 Type name:
