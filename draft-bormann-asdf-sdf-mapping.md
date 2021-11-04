@@ -41,9 +41,9 @@ normative:
   RFC6901: pointer
   RFC8610: cddl
   RFC7396: merge-patch
-  RFC3986: uri
-  W3C.NOTE-curie-20101216: curie
-  RFC0020: ascii
+#  RFC3986: uri
+#  W3C.NOTE-curie-20101216: curie
+#  RFC0020: ascii
   I-D.ietf-asdf-sdf: sdf
 informative:
   RFC8576: seccons
@@ -106,12 +106,29 @@ augmenter to the augmented).
 ## Example Definition
 
 An example for an SDF mapping file is given in {{example1}}.
+This mapping file is meant to attach to an SDF specification published
+by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
+[^namespace-note]
+
+[^namespace-note]:
+    Note that this example uses namespaces to identify elements of the
+    referenced specification(s), but has un-namespaced quality names.
+    These namespaces are probably unrelated, and we may need to add
+    quality namespacing to SDF (independent of a potential feature to
+    add namespace references to definitions that are not intended to
+    go into the default namespace — these are SDF definition
+    namespaces and not quality namespaces, which are one meta-level
+    higher).
 
 ~~~ json
 {
   "info": {
     "title": "IPSO ID mapping"
   },
+  "namespace": {
+    "onedm": "https://onedm.org/models"
+  },
+  defaultNamespace: "onedm",
   "map": {
     "#/sdfObject/Digital_Input": {
       "id": 3200
@@ -121,7 +138,8 @@ An example for an SDF mapping file is given in {{example1}}.
     },
     "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
       "id": 5501
-    },
+    }
+  }
 }
 
 ~~~
@@ -130,8 +148,9 @@ An example for an SDF mapping file is given in {{example1}}.
 
 # Formal Syntax of SDF mapping files {#syntax}
 
-An SDF mapping file has two optional components that are taken
-unchanged from SDF: The info block, and the namespace declaration.
+An SDF mapping file has three optional components that are taken
+unchanged from SDF: The info block, the namespace declaration, and the
+default namespace.
 The third component, the "map", contains the mappings from a SDF name
 reference (usually a namespace and a JSON pointer) to a nested map
 providing a set of qualities to be merged in at the site identified in
@@ -154,7 +173,7 @@ Media Type
 IANA is requested to add the following Media-Type to the "Media Types" registry.
 
 | Name     | Template             | Reference                 |
-| sdf+json | application/sdf-mapping+json | RFC XXXX, {{media-type}}  |
+| sdf-mapping+json | application/sdf-mapping+json | RFC XXXX, {{media-type}}  |
 {: #new-media-types title="A media type for SDF mapping files" align="left"}
 
 [^to-be-removed]

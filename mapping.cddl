@@ -3,6 +3,7 @@ start = sdf-mapping
 sdf-mapping = {
  ? info: sdfinfo                  ; This will be required in most process policies, but not a syntax error
  ? namespace: named<text>
+ ? defaultNamespace: text
  ? map: { * sdf-pointer => additionalqualities}
 }
 
