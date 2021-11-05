@@ -103,22 +103,24 @@ Note that this is somewhat similar to the way sdfRef ({{Section 4.4 of -sdf}}) w
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).
 
-## Example Definition
+## Example Definition 1 (ecosystem: IPSO/OMA) {#example1}
 
-An example for an SDF mapping file is given in {{example1}}.
+An example for an SDF mapping file is given in {{code-example1}}.
 This mapping file is meant to attach to an SDF specification published
 by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 [^namespace-note]
 
-[^namespace-note]:
+[^namespace-note]: \\
     Note that this example uses namespaces to identify elements of the
     referenced specification(s), but has un-namespaced quality names.
-    These namespaces are probably unrelated, and we may need to add
-    quality namespacing to SDF (independent of a potential feature to
-    add namespace references to definitions that are not intended to
-    go into the default namespace — these are SDF definition
-    namespaces and not quality namespaces, which are one meta-level
-    higher).
+    These two kinds of namespaces are probably unrelated, and we may
+    need to add quality namespacing to SDF (independent of a potential
+    feature to add namespace references to definitions that are not
+    intended to go into the default namespace — these are SDF
+    definition namespaces and not quality namespaces, which are one
+    meta-level higher).
+
+* Start of mapping file for certain OneDM playground models:
 
 ~~~ json
 {
@@ -128,7 +130,7 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
   "namespace": {
     "onedm": "https://onedm.org/models"
   },
-  defaultNamespace: "onedm",
+  "defaultNamespace": "onedm",
   "map": {
     "#/sdfObject/Digital_Input": {
       "id": 3200
@@ -141,9 +143,111 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
     }
   }
 }
-
 ~~~
-{: #example1 title="A simple example of an SDF mapping file"}
+{: #code-example1 title="A simple example of an SDF mapping file"}
+
+## Example Definition 2 (ecosystem: W3C WoT) {#example2}
+
+This example shows a the translation of a hypothetical W3C WoT Thing Model
+into an SDF model plus a mapping file to catch Thing Model attributes
+that don't currently have SDF qualities defined.
+[^td-note]
+
+[^td-note]: \\
+    The example probably would be more useful with, say, protocol
+    bindings.
+    This is left for a future version of this example, and/or a
+    future specification that specifically addresses how to map Thing
+    Models into SDF.
+    \\
+    (There is also the separate requirement to transform a Thing Description
+    into the kind of information that can be represented in SDF plus
+    instance information, such as IP addresses or specific node
+    names.)
+    \\
+    Finally, namespaces are all wrong in this example.
+
+* The input: WoT Thing Model
+
+~~~json
+{
+    "@context": ["http://www.w3.org/ns/td"],
+    "@type" : "tm:ThingModel",
+    "title": "Lamp Thing Model",
+    "titles": {
+      "en": "Lamp Thing Model",
+      "de": "Thing Model für eine Lampe"
+    },
+    "properties": {
+        "status": {
+            "description": "Current status of the lamp",
+            "descriptions": {
+              "en": "Current status of the lamp",
+              "de": "Aktueller Status der Lampe"
+            },
+            "type": "string",
+            "readOnly": true
+        }
+    }
+}
+~~~
+{: #code-wot-input title="Input: WoT Thing Model"}
+
+* The output: SDF model
+
+~~~json
+{
+  "info": {
+    "title": "Lamp Thing Model"
+  },
+  "namespaces": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "sdfObject": {
+    "LampThingModel": {
+      "label": "Lamp Thing Model",
+      "sdfProperty": {
+        "status": {
+          "description": "Current status of the lamp",
+          "writable": false,
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+~~~
+{: #code-wot-output1 title="Output 1: SDF Model"}
+
+* The other output: SDF mapping file
+
+~~~json
+{
+  "info": {
+    "title": "Lamp Thing Model: WoT TM mapping"
+  },
+  "namespace": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "map": {
+    "#/sdfObject/LampThingModel": {
+      "titles": {
+        "en": "Lamp Thing Model",
+        "de": "Thing Model für eine Lampe"
+      }
+    },
+    "#/sdfObject/LampThingModel/sdfProperty/status": {
+      "descriptions": {
+        "en": "Current status of the lamp",
+        "de": "Aktueller Status der Lampe"
+      }
+    }
+  }
+}
+~~~
+{: #code-wot-output2 title="Output 2: SDF Mapping File"}
 
 
 # Formal Syntax of SDF mapping files {#syntax}
@@ -151,17 +255,17 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 An SDF mapping file has three optional components that are taken
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
-The third component, the "map", contains the mappings from a SDF name
-reference (usually a namespace and a JSON pointer) to a nested map
-providing a set of qualities to be merged in at the site identified in
-the name reference.
+The mandatory fourth component, the "map", contains the mappings from
+a SDF name reference (usually a namespace and a JSON pointer) to a
+nested map providing a set of qualities to be merged in at the site
+identified in the name reference.
 
 {{mapping-cddl}} describes the syntax of SDF mapping files using CDDL {{-cddl}}.
 
 ~~~ cddl
 {::include mapping.cddl}
 ~~~
-{: #mapping-cddl}
+{: #mapping-cddl title="CDDL definition of SDF mapping file"}
 
 
 IANA Considerations {#iana}
@@ -251,7 +355,7 @@ Some wider issues are discussed in {{-seccons}}.
 
 
 This draft is based on discussions in the Thing-to-Thing Research
-Group (T2TRG) and the SDF working group.  The example was provided by {{{Ari Keränen}}}.
+Group (T2TRG) and the SDF working group.  Input for {{example1}} was provided by {{{Ari Keränen}}}.
 
 <!--  LocalWords:  SDF namespace defaultNamespace instantiation OMA
  -->
