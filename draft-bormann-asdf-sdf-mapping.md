@@ -1,4 +1,5 @@
 ---
+v: 3
 coding: utf-8
 
 title: >
@@ -7,15 +8,12 @@ abbrev: SDF Mapping
 docname: draft-bormann-asdf-sdf-mapping-latest
 
 category: std
+submissiontype: IETF
 consensus: true
 
-ipr: trust200902
 area: Applications
 workgroup: ASDF
 keyword: Internet-Draft
-
-stand_alone: yes
-pi: [toc, sortrefs, symrefs, comments]
 
 author:
   - name: Carsten Bormann
@@ -33,7 +31,7 @@ author:
     email: jan.romann@uni-bremen.de
 
 venue:
-  group: 
+  group: A Semantic Definition Format for Data and Interactions of Things (asdf)
   mail: asdf@ietf.org
   github: cabo/sdf-mapping
 
