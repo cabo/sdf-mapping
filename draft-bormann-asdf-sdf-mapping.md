@@ -150,7 +150,8 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 This example shows a the translation of a hypothetical W3C WoT Thing Model
 (as defined in Section 10 of {{-wot-td}})
 into an SDF model plus a mapping file to catch Thing Model attributes
-that don't currently have SDF qualities defined.
+that don't currently have SDF qualities defined (namely, `titles` and
+`descriptions` members used for internationalization).
 [^td-note]
 
 [^td-note]: \\
@@ -220,7 +221,7 @@ that don't currently have SDF qualities defined.
 ~~~
 {: #code-wot-output1 title="Output 1: SDF Model"}
 
-* The other output: SDF mapping file
+* The other output: SDF mapping file for class information
 
 ~~~json
 {
