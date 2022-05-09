@@ -152,6 +152,9 @@ This example shows a the translation of a hypothetical W3C WoT Thing Model
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined (namely, `titles` and
 `descriptions` members used for internationalization).
+A second mapping file captures information that is instance-specific,
+in this case a `forms` member that binds the `status` property to a
+concrete CoAP resource.
 [^td-note]
 
 [^td-note]: \\
@@ -187,7 +190,12 @@ that don't currently have SDF qualities defined (namely, `titles` and
               "de": "Aktueller Status der Lampe"
             },
             "type": "string",
-            "readOnly": true
+            "readOnly": true,
+            "forms": [
+              {
+                "href": "coap://example.org/status"
+              }
+            ]
         }
     }
 }
@@ -249,6 +257,30 @@ that don't currently have SDF qualities defined (namely, `titles` and
 }
 ~~~
 {: #code-wot-output2 title="Output 2: SDF Mapping File"}
+
+* A third output: SDF mapping file for Protocol Bindings
+
+~~~json
+{
+  "info": {
+    "title": "Lamp Thing Model: WoT TM Protocol Binding"
+  },
+  "namespace": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "map": {
+    "#/sdfObject/LampThingModel/sdfProperty/status": {
+      "forms": [
+        {
+          "href": "coap://example.org/status"
+        }
+      ]
+    }
+  }
+}
+~~~
+{: #code-wot-output3 title="Output 3: SDF Mapping File for Protocol Bindings"}
 
 
 # Formal Syntax of SDF mapping files {#syntax}
