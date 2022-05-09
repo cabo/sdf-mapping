@@ -171,7 +171,7 @@ that don't currently have SDF qualities defined.
 
 ~~~json
 {
-    "@context": ["http://www.w3.org/ns/td"],
+    "@context": "https://www.w3.org/2022/wot/td/v1.1",
     "@type" : "tm:ThingModel",
     "title": "Lamp Thing Model",
     "titles": {
