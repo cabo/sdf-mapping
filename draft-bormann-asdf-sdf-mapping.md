@@ -158,18 +158,7 @@ concrete CoAP resource.
 [^td-note]
 
 [^td-note]: \\
-    The example probably would be more useful with, say, protocol
-    bindings.
-    This is left for a future version of this example, and/or a
-    future specification that specifically addresses how to map Thing
-    Models into SDF.
-    \\
-    (There is also the separate requirement to transform a Thing Description
-    into the kind of information that can be represented in SDF plus
-    instance information, such as IP addresses or specific node
-    names.)
-    \\
-    Finally, namespaces are all wrong in this example.
+    Namespaces are all wrong in this example.
 
 * The input: WoT Thing Model
 
