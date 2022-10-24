@@ -1,7 +1,9 @@
 start = sdf-mapping
 
 sdf-mapping = {
- ? info: sdfinfo                  ; This will be required in most process policies, but not a syntax error
+ ; info will be required in most process policies, but omission is
+ ; not a syntax error:
+ ? info: sdfinfo                  
  ? namespace: named<text>
  ? defaultNamespace: text
  ? map: { * sdf-pointer => additionalqualities}
@@ -20,9 +22,11 @@ sdfinfo = {
  EXTENSION-POINT<"info-ext">
 }
 
-; Shortcut for a map that gives names to instances of X (has text keys and values of type X)
+; Shortcut for a map that gives names to instances of X (has
+; text keys and values of type X)
 named<X> = { * text => X }
 
-EXTENSION-POINT<f> = ( * (text .feature f) => any ) ; only used in framework syntax
+; only used in framework syntax:
+EXTENSION-POINT<f> = ( * (text .feature f) => any ) 
 
 sdf-pointer = text ; .regexp curie-regexp -- TO DO!
