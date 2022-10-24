@@ -146,7 +146,7 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 
 ## Example Definition 2 (ecosystem: W3C WoT) {#example2}
 
-This example shows a the translation of a hypothetical W3C WoT Thing Model
+This example shows a translation of a hypothetical W3C WoT Thing Model
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined.
 [^td-note]
@@ -254,7 +254,7 @@ An SDF mapping file has three optional components that are taken
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
 The mandatory fourth component, the "map", contains the mappings from
-a SDF name reference (usually a namespace and a JSON pointer) to a
+an SDF name reference (usually a namespace and a JSON pointer) to a
 nested map providing a set of qualities to be merged in at the site
 identified in the name reference.
 
