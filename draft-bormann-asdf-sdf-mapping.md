@@ -29,6 +29,7 @@ author:
   - name: Jan Romann
     org: Universität Bremen
     email: jan.romann@uni-bremen.de
+    country: Germany
 
 venue:
   group: A Semantic Definition Format for Data and Interactions of Things (asdf)
