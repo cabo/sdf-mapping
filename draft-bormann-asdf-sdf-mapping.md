@@ -100,7 +100,7 @@ Its main contents is a map from SDF name references ({{Section 4.3 of
 When processing the mapping file together with one or more SDF
 definitions, these qualities are added to the SDF definition at the
 referenced name, as in a merge-patch operation {{-merge-patch}}.
-Note that this is somewhat similar to the way sdfRef ({{Section 4.4 of -sdf}}) works, but in a
+Note that this is somewhat similar to the way `sdfRef` ({{Section 4.4 of -sdf}}) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).
 
