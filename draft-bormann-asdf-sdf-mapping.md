@@ -277,8 +277,9 @@ Media Type
 
 IANA is requested to add the following Media-Type to the "Media Types" registry.
 
-| Name     | Template             | Reference                 |
-| sdf-mapping+json | application/sdf-mapping+json | RFC XXXX, {{media-type}}  |
+| Name             | Template                     | Reference             |
+|------------------|------------------------------|-----------------------|
+| sdf-mapping+json | application/sdf-mapping+json | RFC XXXX, {{media-type}} |
 {: #new-media-types title="A media type for SDF mapping files" align="left"}
 
 [^to-be-removed]
