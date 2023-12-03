@@ -15,9 +15,15 @@ additionalqualities = named<any>
 
 sdfinfo = {
  ? title: text
+ ? description: text
  ? version: text
  ? copyright: text
  ? license: text
+ ? modified: modified-date-time
+ ? features: [
+               * (any .feature "feature-name") ; EXTENSION-POINT
+             ]
+ optional-comment
  EXTENSION-POINT<"info-ext">
 }
 
@@ -29,3 +35,7 @@ named<X> = { * text => X }
 EXTENSION-POINT<f> = ( * (text .feature f) => any )
 
 sdf-pointer = text ; .regexp curie-regexp -- TO DO!
+optional-comment = (
+ ? $comment: text       ; source code comments only, no semantics
+)
+
