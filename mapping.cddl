@@ -3,7 +3,7 @@ start = sdf-mapping
 sdf-mapping = {
  ; info will be required in most process policies, but omission is
  ; not a syntax error:
- ? info: sdfinfo                  
+ ? info: sdfinfo
  ? namespace: named<text>
  ? defaultNamespace: text
  ? map: { * sdf-pointer => additionalqualities}
@@ -27,6 +27,6 @@ sdfinfo = {
 named<X> = { * text => X }
 
 ; only used in framework syntax:
-EXTENSION-POINT<f> = ( * (text .feature f) => any ) 
+EXTENSION-POINT<f> = ( * (text .feature f) => any )
 
 sdf-pointer = text ; .regexp curie-regexp -- TO DO!
