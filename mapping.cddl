@@ -1,8 +1,7 @@
 start = sdf-mapping
 
 sdf-mapping = {
- ; info will be required in most process policies, but omission is
- ; not a syntax error:
+ ; info will be required in most process policies
  ? info: sdfinfo
  ? namespace: named<text>
  ? defaultNamespace: text
@@ -22,8 +21,8 @@ sdfinfo = {
  EXTENSION-POINT<"info-ext">
 }
 
-; Shortcut for a map that gives names to instances of X (has
-; text keys and values of type X)
+; Shortcut for a map that gives names to instances of X
+; (has keys of type text and values of type X)
 named<X> = { * text => X }
 
 ; only used in framework syntax:
