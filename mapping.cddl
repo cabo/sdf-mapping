@@ -11,7 +11,7 @@ sdf-mapping = {
 ; we can't really be much more specific here:
 additionalqualities = named<any>
 
-; --------------------------------- import from SDF:
+; --------------------------------- import from SDF-base:
 
 sdfinfo = {
  ? title: text
@@ -35,7 +35,8 @@ named<X> = { * text => X }
 EXTENSION-POINT<f> = ( * (quality-name .feature f) => any )
 quality-name = text .regexp "([a-z][a-z0-9]*:)?[a-z$][A-Za-z$0-9]*"
 
-global-sdf-pointer = text .regexp ".*[:#].*" ; rough CURIE or JSON Pointer syntax
+; rough CURIE or JSON Pointer syntax:
+global-sdf-pointer = text .regexp ".*[:#].*"
 
 optional-comment = (
  ? $comment: text       ; source code comments only, no semantics
