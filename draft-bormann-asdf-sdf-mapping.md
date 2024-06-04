@@ -60,7 +60,7 @@ entity:
     for interaction over a network.
     It was created as a common language for use
     in the development of the One Data Model liaison organization (OneDM)
-    definitions.  Tools convert this format to database formats and other
+    models.  Tools convert this format to database formats and other
     serializations as needed.
 
     An SDF specification often needs to be augmented by additional
@@ -92,18 +92,18 @@ The term "byte" is used in its now-customary sense as a synonym for
 # Overview
 
 An SDF mapping file provides augmentation information for one or more
-SDF definitions.
+SDF models.
 Its main contents is a map from SDF name references ({{Section 4.3 of
 -sdf}}) to a set of qualities.
 
 When processing the mapping file together with one or more SDF
-definitions, these qualities are added to the SDF definition at the
+models, these qualities are added to the SDF model at the
 referenced name, as in a merge-patch operation {{-merge-patch}}.
 Note that this is somewhat similar to the way `sdfRef` ({{Section 4.4 of -sdf}}) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).
 
-## Example Definition 1 (ecosystem: IPSO/OMA) {#example1}
+## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
 
 An example for an SDF mapping file is given in {{code-example1}}.
 This mapping file is meant to attach to an SDF specification published
@@ -146,7 +146,7 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 ~~~
 {: #code-example1 title="A simple example of an SDF mapping file"}
 
-## Example Definition 2 (ecosystem: W3C WoT) {#example2}
+## Example Model 2 (ecosystem: W3C WoT) {#example2}
 
 This example shows a translation of a hypothetical W3C WoT Thing Model
 into an SDF model plus a mapping file to catch Thing Model attributes
