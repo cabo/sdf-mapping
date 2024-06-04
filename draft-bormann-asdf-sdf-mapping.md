@@ -18,7 +18,6 @@ keyword: Internet-Draft
 author:
   - name: Carsten Bormann
     org: Universität Bremen TZI
-    orgascii: Universitaet Bremen TZI
     street: Postfach 330440
     city: Bremen
     code: D-28359
