@@ -339,7 +339,7 @@ Provisional registration:
 Registries
 ----------
 
-(TBD: After future additions, check if we need any.)
+(TBD: After any future additions, check if we need any.)
 
 
 Security Considerations {#seccons}
