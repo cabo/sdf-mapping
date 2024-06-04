@@ -14,7 +14,7 @@ that describe Things, i.e., physical objects that are available
 for interaction over a network.
 It was created as a common language for use
 in the development of the One Data Model liaison organization (OneDM)
-definitions.  Tools convert this format to database formats and other
+models.  Tools convert this format to database formats and other
 serializations as needed. 
        An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
@@ -1084,7 +1084,7 @@ that describe Things, i.e., physical objects that are available
 for interaction over a network.
 It was created as a common language for use
 in the development of the One Data Model liaison organization (OneDM)
-definitions.  Tools convert this format to database formats and other
+models.  Tools convert this format to database formats and other
 serializations as needed.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
@@ -1167,10 +1167,10 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-example-definition-1-ecosys" class="internal xref">Example Definition 1 (ecosystem: IPSO/OMA)</a></p>
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-example-model-1-ecosystem-i" class="internal xref">Example Model 1 (ecosystem: IPSO/OMA)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-example-definition-2-ecosys" class="internal xref">Example Definition 2 (ecosystem: W3C WoT)</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-example-model-2-ecosystem-w" class="internal xref">Example Model 2 (ecosystem: W3C WoT)</a></p>
 </li>
             </ul>
 </li>
@@ -1223,7 +1223,7 @@ that describe Things, i.e., physical objects that are available
 for interaction over a network.
 It was created as a common language for use
 in the development of the One Data Model liaison organization (OneDM)
-definitions.  Tools convert this format to database formats and other
+models.  Tools convert this format to database formats and other
 serializations as needed.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
@@ -1252,18 +1252,18 @@ appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">�
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
       </h2>
 <p id="section-2-1">An SDF mapping file provides augmentation information for one or more
-SDF definitions.
+SDF models.
 Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">When processing the mapping file together with one or more SDF
-definitions, these qualities are added to the SDF definition at the
+models, these qualities are added to the SDF model at the
 referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.
 Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
 <div id="example1">
 <section id="section-2.1">
-        <h3 id="name-example-definition-1-ecosys">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-definition-1-ecosys" class="section-name selfRef">Example Definition 1 (ecosystem: IPSO/OMA)</a>
+        <h3 id="name-example-model-1-ecosystem-i">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-model-1-ecosystem-i" class="section-name selfRef">Example Model 1 (ecosystem: IPSO/OMA)</a>
         </h3>
 <p id="section-2.1-1">An example for an SDF mapping file is given in <a href="#code-example1" class="auto internal xref">Figure 1</a>.
 This mapping file is meant to attach to an SDF specification published
@@ -1316,8 +1316,8 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </div>
 <div id="example2">
 <section id="section-2.2">
-        <h3 id="name-example-definition-2-ecosys">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-definition-2-ecosys" class="section-name selfRef">Example Definition 2 (ecosystem: W3C WoT)</a>
+        <h3 id="name-example-model-2-ecosystem-w">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-model-2-ecosystem-w" class="section-name selfRef">Example Model 2 (ecosystem: W3C WoT)</a>
         </h3>
 <p id="section-2.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
 into an SDF model plus a mapping file to catch Thing Model attributes
@@ -1661,7 +1661,7 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-4.1-4.22
         <h3 id="name-registries">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-registries" class="section-name selfRef">Registries</a>
         </h3>
-<p id="section-4.2-1">(TBD: After future additions, check if we need any.)<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">(TBD: After any future additions, check if we need any.)<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

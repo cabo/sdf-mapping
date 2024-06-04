@@ -19,8 +19,8 @@ Abstract
    that describe Things, i.e., physical objects that are available for
    interaction over a network.  It was created as a common language for
    use in the development of the One Data Model liaison organization
-   (OneDM) definitions.  Tools convert this format to database formats
-   and other serializations as needed.
+   (OneDM) models.  Tools convert this format to database formats and
+   other serializations as needed.
 
    An SDF specification often needs to be augmented by additional
    information that is specific to its use in a particular ecosystem or
@@ -79,8 +79,8 @@ Table of Contents
    1.  Introduction
      1.1.  Terminology and Conventions
    2.  Overview
-     2.1.  Example Definition 1 (ecosystem: IPSO/OMA)
-     2.2.  Example Definition 2 (ecosystem: W3C WoT)
+     2.1.  Example Model 1 (ecosystem: IPSO/OMA)
+     2.2.  Example Model 2 (ecosystem: W3C WoT)
    3.  Formal Syntax of SDF mapping files
    4.  IANA Considerations
      4.1.  Media Type
@@ -99,8 +99,8 @@ Table of Contents
    that describe Things, i.e., physical objects that are available for
    interaction over a network.  It was created as a common language for
    use in the development of the One Data Model liaison organization
-   (OneDM) definitions.  Tools convert this format to database formats
-   and other serializations as needed.
+   (OneDM) models.  Tools convert this format to database formats and
+   other serializations as needed.
 
    An SDF specification often needs to be augmented by additional
    information that is specific to its use in a particular ecosystem or
@@ -123,17 +123,17 @@ Table of Contents
 2.  Overview
 
    An SDF mapping file provides augmentation information for one or more
-   SDF definitions.  Its main contents is a map from SDF name references
+   SDF models.  Its main contents is a map from SDF name references
    (Section 4.3 of [I-D.ietf-asdf-sdf]) to a set of qualities.
 
    When processing the mapping file together with one or more SDF
-   definitions, these qualities are added to the SDF definition at the
-   referenced name, as in a merge-patch operation [RFC7396].  Note that
-   this is somewhat similar to the way sdfRef (Section 4.4 of
+   models, these qualities are added to the SDF model at the referenced
+   name, as in a merge-patch operation [RFC7396].  Note that this is
+   somewhat similar to the way sdfRef (Section 4.4 of
    [I-D.ietf-asdf-sdf]) works, but in a mapping file the arrows point in
    the inverse direction (from the augmenter to the augmented).
 
-2.1.  Example Definition 1 (ecosystem: IPSO/OMA)
+2.1.  Example Model 1 (ecosystem: IPSO/OMA)
 
    An example for an SDF mapping file is given in Figure 1.  This
    mapping file is meant to attach to an SDF specification published by
@@ -172,7 +172,7 @@ Table of Contents
 
              Figure 1: A simple example of an SDF mapping file
 
-2.2.  Example Definition 2 (ecosystem: W3C WoT)
+2.2.  Example Model 2 (ecosystem: W3C WoT)
 
    This example shows a translation of a hypothetical W3C WoT Thing
    Model into an SDF model plus a mapping file to catch Thing Model
@@ -389,7 +389,7 @@ Table of Contents
 
 4.2.  Registries
 
-   (TBD: After future additions, check if we need any.)
+   (TBD: After any future additions, check if we need any.)
 
 5.  Security Considerations
 
