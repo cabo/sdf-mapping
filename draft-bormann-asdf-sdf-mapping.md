@@ -26,8 +26,8 @@ author:
     email: cabo@tzi.org
     role: editor
   - name: Jan Romann
-    org: Universität Bremen
-    email: jan.romann@uni-bremen.de
+    org: Hochschule Emden/Leer
+    email: jan.romann@hs-emden-leer.de
     country: Germany
 
 venue:
