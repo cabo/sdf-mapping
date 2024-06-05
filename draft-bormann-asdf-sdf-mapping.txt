@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 6 December 2024                              Universität Bremen
-                                                             4 June 2024
+Expires: 7 December 2024                           Hochschule Emden/Leer
+                                                             5 June 2024
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 December 2024.
+   This Internet-Draft will expire on 7 December 2024.
 
 Copyright Notice
 
@@ -458,6 +458,6 @@ Authors' Addresses
 
 
    Jan Romann
-   Universität Bremen
+   Hochschule Emden/Leer
    Germany
-   Email: jan.romann@uni-bremen.de
+   Email: jan.romann@hs-emden-leer.de
