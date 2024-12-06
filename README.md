@@ -7,6 +7,7 @@ This is the working area for the individual Internet-Draft, "Semantic Definition
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-bormann-asdf-sdf-mapping)
 * [Compare Editor's Copy to Individual Draft](https://cabo.github.io/sdf-mapping/#go.draft-bormann-asdf-sdf-mapping.diff)
 
+[Access to all branches](https://cabo.github.io/sdf-mapping/)
 
 ## Contributing
 
