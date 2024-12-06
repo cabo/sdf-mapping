@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 7 December 2024                           Hochschule Emden/Leer
-                                                             5 June 2024
+Expires: 9 June 2025                               Hochschule Emden/Leer
+                                                         6 December 2024
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -48,6 +48,16 @@ Status of This Memo
    This Internet-Draft is submitted in full conformance with the
    provisions of BCP 78 and BCP 79.
 
+
+
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 1]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
@@ -58,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 December 2024.
+   This Internet-Draft will expire on 9 June 2025.
 
 Copyright Notice
 
@@ -76,21 +86,33 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction
-     1.1.  Terminology and Conventions
-   2.  Overview
-     2.1.  Example Model 1 (ecosystem: IPSO/OMA)
-     2.2.  Example Model 2 (ecosystem: W3C WoT)
-   3.  Formal Syntax of SDF mapping files
-   4.  IANA Considerations
-     4.1.  Media Type
-     4.2.  Registries
-   5.  Security Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
-   Acknowledgements
-   Authors' Addresses
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Terminology and Conventions . . . . . . . . . . . . . . .   3
+   2.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.1.  Example Model 1 (ecosystem: IPSO/OMA) . . . . . . . . . .   4
+     2.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .   4
+   3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   7
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+     4.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .   9
+     4.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  10
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  11
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  11
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
+
+
+
+
+
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 2]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
 
 1.  Introduction
 
@@ -117,7 +139,7 @@ Table of Contents
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   [BCP14] (RFC2119) (RFC8174) when, and only when, they appear in all
    capitals, as shown here.
 
 2.  Overview
@@ -133,6 +155,21 @@ Table of Contents
    [I-D.ietf-asdf-sdf]) works, but in a mapping file the arrows point in
    the inverse direction (from the augmenter to the augmented).
 
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 3]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
 2.1.  Example Model 1 (ecosystem: IPSO/OMA)
 
    An example for an SDF mapping file is given in Figure 1.  This
@@ -140,14 +177,15 @@ Table of Contents
    OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
    // Note that this example uses namespaces to identify elements of
    // the referenced specification(s), but has un-namespaced quality
-   // names.  These two kinds of namespaces are probably unrelated, and
-   // we may need to add quality namespacing to SDF (independent of a
-   // potential feature to add namespace references to definitions that
-   // are not intended to go into the default namespace — these are SDF
-   // definition namespaces and not quality namespaces, which are one
-   // meta-level higher).
+   // names.  These two kinds of namespaces are unrelated in SDF, and a
+   // more robust example may need to make use of Quality Name Prefixes
+   // as defined in Section 2.3.3-3 of [I-D.ietf-asdf-sdf] (independent
+   // of a potential feature to add namespace references to definitions
+   // that are not intended to go into the default namespace — these are
+   // SDF definition namespaces and not quality namespaces, which are
+   // one meta-level higher).
 
-   *  Start of mapping file for certain OneDM playground models:
+   *  Start of a mapping file for certain OneDM playground models:
 
    {
      "info": {
@@ -180,6 +218,14 @@ Table of Contents
    // The example probably would be more useful with, say, protocol
    // bindings.  This is left for a future version of this example, and/
    // or a future specification that specifically addresses how to map
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 4]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
    // Thing Models into SDF.  (There is also the separate requirement to
    // transform a Thing Description into the kind of information that
    // can be represented in SDF plus instance information, such as IP
@@ -213,6 +259,29 @@ Table of Contents
 
    *  The output: SDF model
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 5]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
    {
      "info": {
        "title": "Lamp Thing Model"
@@ -238,6 +307,36 @@ Table of Contents
                        Figure 3: Output 1: SDF Model
 
    *  The other output: SDF mapping file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 6]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
 
    {
      "info": {
@@ -287,6 +386,14 @@ Table of Contents
     map: { * global-sdf-pointer => additionalqualities}
    }
 
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 7]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
    ; we can't really be much more specific here:
    additionalqualities = named<any>
 
@@ -335,6 +442,14 @@ Table of Contents
       time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap sec
                                 ; rules
       time-secfrac    = "." 1*DIGIT
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 8]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
       DIGIT           =  %x30-39 ; 0-9
 
       partial-time    = time-hour ":" time-minute ":" time-second
@@ -383,6 +498,14 @@ Table of Contents
       mailing list (asdf@ietf.org), or IETF Applications and Real-Time
       Area (art@ietf.org)
    Intended usage:  COMMON
+
+
+
+Bormann & Romann           Expires 9 June 2025                  [Page 9]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
+
    Restrictions on usage:  none
    Author/Change controller:  IETF
    Provisional registration:  no
@@ -401,6 +524,19 @@ Table of Contents
 
 6.1.  Normative References
 
+   [BCP14]    Best Current Practice 14,
+              <https://www.rfc-editor.org/info/bcp14>.
+              At the time of writing, this BCP comprises the following:
+
+              Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+              Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
    [I-D.ietf-asdf-sdf]
               Koster, M., Bormann, C., and A. Keränen, "Semantic
               Definition Format (SDF) for Data and Interactions of
@@ -408,11 +544,6 @@ Table of Contents
               asdf-sdf-18, 28 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-asdf-
               sdf-18>.
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
 
    [RFC6901]  Bryan, P., Ed., Zyp, K., and M. Nottingham, Ed.,
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
@@ -423,9 +554,13 @@ Table of Contents
               DOI 10.17487/RFC7396, October 2014,
               <https://www.rfc-editor.org/rfc/rfc7396>.
 
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+
+
+Bormann & Romann           Expires 9 June 2025                 [Page 10]
+
+Internet-Draft                 SDF Mapping                 December 2024
+
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
@@ -461,3 +596,21 @@ Authors' Addresses
    Hochschule Emden/Leer
    Germany
    Email: jan.romann@hs-emden-leer.de
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann           Expires 9 June 2025                 [Page 11]
