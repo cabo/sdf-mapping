@@ -87,7 +87,7 @@ The definitions of {{-sdf}} apply.
 The term "byte" is used in its now-customary sense as a synonym for
 "octet".
 
-{::boilerplate bcp14-tagged}
+{::boilerplate bcp14-tagged-bcp14}
 
 # Overview
 
@@ -113,14 +113,15 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 [^namespace-note]: \\
     Note that this example uses namespaces to identify elements of the
     referenced specification(s), but has un-namespaced quality names.
-    These two kinds of namespaces are probably unrelated, and we may
-    need to add quality namespacing to SDF (independent of a potential
+    These two kinds of namespaces are unrelated in SDF, and a more
+    robust example may need to make use of Quality Name Prefixes
+    as defined in {{Section 2.3.3-3 of -sdf}} (independent of a potential
     feature to add namespace references to definitions that are not
     intended to go into the default namespace — these are SDF
     definition namespaces and not quality namespaces, which are one
     meta-level higher).
 
-* Start of mapping file for certain OneDM playground models:
+* Start of a mapping file for certain OneDM playground models:
 
 ~~~ json
 {
