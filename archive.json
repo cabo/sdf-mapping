@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-06T01:14:16.215608+00:00",
+  "timestamp": "2024-12-08T01:15:42.769512+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -24,14 +24,14 @@
       "color": "a2eeef"
     },
     {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
-    },
-    {
       "name": "good first issue",
       "description": "Good for newcomers",
       "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
     },
     {
       "name": "invalid",
@@ -49,6 +49,78 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
-  "pulls": []
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOGU6qd85LN8sJ",
+      "title": "Also provide JSO Schema?",
+      "url": "https://github.com/cabo/sdf-mapping/issues/2",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Similar to the main SDF specification, the mapping file specification could also provide a JSO version of the CDDL schema.",
+      "createdAt": "2022-06-06T14:45:07Z",
+      "updatedAt": "2022-06-06T14:45:07Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOGU6qd843gXlK",
+      "title": "Add WoT TD reference and example for protocol bindings",
+      "url": "https://github.com/cabo/sdf-mapping/pull/1",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR adds a reference to a WoT TD 1.1 Working Draft[^1] to the document and updates the WoT example with Protocol Bindings and some additional text.\r\n\r\n[^1]: That is, unfortunately, quite outdated, but there is no more recent version available at [xml2rfc](https://xml2rfc.tools.ietf.org/public/rfc/bibxml-w3c/).",
+      "createdAt": "2022-05-09T14:05:54Z",
+      "updatedAt": "2022-05-10T10:11:25Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "8b7f1db7f34243b3108b31378727aebe52c4c8cc",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "w3c-reference",
+      "headRefOid": "638b46e97f47c57595c0bf9d3a099f8901b1f6d8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOGU6qd85xmOQd",
+      "title": "Update Jan's `org` and `email`",
+      "url": "https://github.com/cabo/sdf-mapping/pull/3",
+      "state": "MERGED",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Since my main affiliation has changed in the meantime, this PR updates it in the draft alongside the email address.",
+      "createdAt": "2024-06-05T19:32:59Z",
+      "updatedAt": "2024-06-05T21:12:56Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "4f0a5bffdf0bf8dd469cc9ac354bf0c44ee97f74",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "update-affiliation-jan",
+      "headRefOid": "5c76ef3f629e0cb3a89b67a7277e85dceac361ad",
+      "closedAt": "2024-06-05T21:08:21Z",
+      "mergedAt": "2024-06-05T21:08:21Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "de13d30131b2d46a645c4916c2548e992a1ac56b"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
