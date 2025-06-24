@@ -268,6 +268,27 @@ identified in the name reference.
 ~~~
 {: #mapping-cddl title="CDDL definition of SDF mapping file"}
 
+# Augmentation Mechanism
+
+<!-- TODO: Discuss used terminology -->
+An SDF model and a compatible mapping file can be combined to create an _augmented_ SDF model.
+Augmented SDF models can either be abstract themselves, but enriched with ecosystem-specific information that can be used as a basis for further augmentation;
+or they can refer to single device _instances_ (either in the physical or virtual sense), making it possible to easily convert the enhanced model into an ecosystem-specific format, for example, a WoT Thing Description or an IPSO model.
+
+Figure TODO1 shows the formal algorithm for applying a mapping file to an SDF model.
+Note that there are several validation steps involved, some of which are ecosystem-specific (DISCUSS).
+
+The formal syntax of the augmented SDF model is shown in figure TODO2.
+This syntax serves as the basis for the respective validation steps in the algorithm.
+
+An example for an augmented SDF model can be seen in Figure TODO3.
+This is the result of applying the WoT mapping file from example TODO4 to the SDF model shown in example TODO5.
+This augmented SDF model is one step away from being converted to a WoT Thing Description, which requires some information that cannot be provided in an SDF model that only follows the space specification.
+
+Note, however, that parts of the ecosystem-specific vocaulary are in fact mappable to the SDF base vocabulary.
+Therefore, during the specification of the mapping between SDF and an ecosystem it has to be carefully decided what kind of information can be mapped to SDF directly and which one requires the help of a mapping file.
+
+<!-- TODO: Also needs to take NIPC into account somewhere -->
 
 IANA Considerations {#iana}
 ===================
