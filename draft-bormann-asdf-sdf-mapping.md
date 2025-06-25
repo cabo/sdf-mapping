@@ -305,7 +305,7 @@ This augmented SDF model is one step away from being converted to a WoT Thing De
       "titles": {
         "en": "Lamp Thing Model",
         "de": "Thing Model für eine Lampe"
-      }
+      },
       "sdfProperty": {
         "status": {
           "description": "Current status of the lamp",
