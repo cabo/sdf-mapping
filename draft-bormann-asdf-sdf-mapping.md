@@ -285,15 +285,56 @@ define ApplyMappingFile(SdfModel, SdfMappingFile):
 ~~~
 {: #code-augmentation-algorithm title="Pseudo-code illustrating the algotihm for applying a mapping file to an SDF model."}
 
-The formal syntax of the augmented SDF model is shown in figure TODO2.
-This syntax serves as the basis for the respective validation steps in the algorithm.
-
-An example for an augmented SDF model can be seen in Figure TODO3.
+An example for an augmented SDF model can be seen in Figure {{code-augmented-sdf-model}}.
 This is the result of applying the WoT mapping file from example TODO4 to the SDF model shown in example TODO5.
 This augmented SDF model is one step away from being converted to a WoT Thing Description, which requires some information that cannot be provided in an SDF model that only follows the space specification.
 
-Note, however, that parts of the ecosystem-specific vocaulary are in fact mappable to the SDF base vocabulary.
-Therefore, during the specification of the mapping between SDF and an ecosystem it has to be carefully decided what kind of information can be mapped to SDF directly and which one requires the help of a mapping file.
+<!-- TODO: Prefix WoT-specific qualities with wot:? -->
+~~~json
+{
+  "info": {
+    "title": "Lamp Thing Model"
+  },
+  "namespaces": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "sdfObject": {
+    "LampThingModel": {
+      "label": "Lamp Thing Model",
+      "titles": {
+        "en": "Lamp Thing Model",
+        "de": "Thing Model für eine Lampe"
+      }
+      "sdfProperty": {
+        "status": {
+          "description": "Current status of the lamp",
+          "descriptions": {
+            "en": "Current status of the lamp",
+            "de": "Aktueller Status der Lampe"
+          },
+          "writable": false,
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+~~~
+{: #code-augmented-sdf-model title="An SDF model that has been augmented with WoT-specific vocabulary."}
+
+The formal syntax of the augmented SDF model is shown in figure {{augmented-cddl}}.
+This syntax serves as the basis for the respective validation steps in the algorithm.
+
+<!-- TODO: Maybe move to appendix -->
+~~~ cddl
+TODO
+~~~
+{: #augmented-cddl title="CDDL definition of augmented SDF models"}
+
+Note, however, that parts of an ecosystem-specific vocaulary may in fact be mappable to the SDF base vocabulary.
+Therefore, during the specification of the mapping between SDF and an ecosystem it has to be carefully decided
+what kind of information can be mapped to SDF directly and which one requires the help of a mapping file.
 
 <!-- TODO: Also needs to take NIPC into account somewhere -->
 
