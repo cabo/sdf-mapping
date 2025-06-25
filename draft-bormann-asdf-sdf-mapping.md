@@ -275,7 +275,7 @@ An SDF model and a compatible mapping file can be combined to create an _augment
 Augmented SDF models can still be abstract in nature, but enriched with ecosystem-specific information that can be used as a basis for further augmentation;
 or they can refer to single device _instances_ (either in the physical or virtual sense), making it possible to easily convert the enhanced model into an ecosystem-specific format, for example, a WoT Thing Description or an IPSO model.
 
-Figure {{code-augmentation-algorithm}} shows the formal algorithm for applying a mapping file to an SDF model
+{{code-augmentation-algorithm}} shows the formal algorithm for applying a mapping file to an SDF model
 as pseudo-code.
 Note that there are several validation steps involved, with extension points for ecosystem-specific validation (DISCUSS).
 
@@ -285,7 +285,7 @@ define ApplyMappingFile(SdfModel, SdfMappingFile):
 ~~~
 {: #code-augmentation-algorithm title="Pseudo-code illustrating the algotihm for applying a mapping file to an SDF model."}
 
-An example for an augmented SDF model can be seen in Figure {{code-augmented-sdf-model}}.
+An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
 This is the result of applying the WoT mapping file from example TODO4 to the SDF model shown in example TODO5.
 This augmented SDF model is one step away from being converted to a WoT Thing Description, which requires some information that cannot be provided in an SDF model that only follows the space specification.
 
@@ -323,7 +323,7 @@ This augmented SDF model is one step away from being converted to a WoT Thing De
 ~~~
 {: #code-augmented-sdf-model title="An SDF model that has been augmented with WoT-specific vocabulary."}
 
-The formal syntax of the augmented SDF model is shown in figure {{augmented-cddl}}.
+The formal syntax of the augmented SDF model is shown in {{augmented-cddl}}.
 This syntax serves as the basis for the respective validation steps in the algorithm.
 
 <!-- TODO: Maybe move to appendix -->
