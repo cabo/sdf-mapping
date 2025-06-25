@@ -286,7 +286,7 @@ define ApplyMappingFile(SdfModel, SdfMappingFile):
 {: #code-augmentation-algorithm title="Pseudo-code illustrating the algotihm for applying a mapping file to an SDF model."}
 
 An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
-This is the result of applying the WoT mapping file from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
+This is the result of applying the WoT-specific mapping file from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
 This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
 which requires some information that cannot be provided in an SDF model that only follows the base specification.
 
