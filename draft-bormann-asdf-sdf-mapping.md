@@ -272,11 +272,18 @@ identified in the name reference.
 
 <!-- TODO: Discuss used terminology -->
 An SDF model and a compatible mapping file can be combined to create an _augmented_ SDF model.
-Augmented SDF models can either be abstract themselves, but enriched with ecosystem-specific information that can be used as a basis for further augmentation;
+Augmented SDF models can still be abstract in nature, but enriched with ecosystem-specific information that can be used as a basis for further augmentation;
 or they can refer to single device _instances_ (either in the physical or virtual sense), making it possible to easily convert the enhanced model into an ecosystem-specific format, for example, a WoT Thing Description or an IPSO model.
 
-Figure TODO1 shows the formal algorithm for applying a mapping file to an SDF model.
-Note that there are several validation steps involved, some of which are ecosystem-specific (DISCUSS).
+Figure {{code-augmentation-algorithm}} shows the formal algorithm for applying a mapping file to an SDF model
+as pseudo-code.
+Note that there are several validation steps involved, with extension points for ecosystem-specific validation (DISCUSS).
+
+~~~
+define ApplyMappingFile(SdfModel, SdfMappingFile):
+    TODO
+~~~
+{: #code-augmentation-algorithm title="Pseudo-code illustrating the algotihm for applying a mapping file to an SDF model."}
 
 The formal syntax of the augmented SDF model is shown in figure TODO2.
 This syntax serves as the basis for the respective validation steps in the algorithm.
