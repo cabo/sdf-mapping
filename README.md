@@ -1,3 +1,5 @@
+<!-- regenerate: on (set to off if you edit this file) -->
+
 # Semantic Definition Format (SDF): Mapping files
 
 This is the working area for the individual Internet-Draft, "Semantic Definition Format (SDF): Mapping files".
