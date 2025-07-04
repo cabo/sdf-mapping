@@ -18,7 +18,6 @@ keyword: Internet-Draft
 author:
   - name: Carsten Bormann
     org: Universität Bremen TZI
-    orgascii: Universitaet Bremen TZI
     street: Postfach 330440
     city: Bremen
     code: D-28359
@@ -29,6 +28,7 @@ author:
   - name: Jan Romann
     org: Universität Bremen
     email: jan.romann@uni-bremen.de
+    country: Germany
 
 venue:
   group: A Semantic Definition Format for Data and Interactions of Things (asdf)
@@ -56,10 +56,12 @@ entity:
 
 [^intro-]:
     The Semantic Definition Format (SDF) is a format for domain experts to
-    use in the creation and maintenance of data and interaction models in
-    the Internet of Things.  It was created as a common language for use
+    use in the creation and maintenance of data and interaction models
+    that describe Things, i.e., physical objects that are available
+    for interaction over a network.
+    It was created as a common language for use
     in the development of the One Data Model liaison organization (OneDM)
-    definitions.  Tools convert this format to database formats and other
+    models.  Tools convert this format to database formats and other
     serializations as needed.
 
     An SDF specification often needs to be augmented by additional
@@ -86,23 +88,23 @@ The definitions of {{-sdf}} apply.
 The term "byte" is used in its now-customary sense as a synonym for
 "octet".
 
-{::boilerplate bcp14-tagged}
+{::boilerplate bcp14-tagged-bcp14}
 
 # Overview
 
 An SDF mapping file provides augmentation information for one or more
-SDF definitions.
+SDF models.
 Its main contents is a map from SDF name references ({{Section 4.3 of
 -sdf}}) to a set of qualities.
 
 When processing the mapping file together with one or more SDF
-definitions, these qualities are added to the SDF definition at the
+models, these qualities are added to the SDF model at the
 referenced name, as in a merge-patch operation {{-merge-patch}}.
-Note that this is somewhat similar to the way sdfRef ({{Section 4.4 of -sdf}}) works, but in a
+Note that this is somewhat similar to the way `sdfRef` ({{Section 4.4 of -sdf}}) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).
 
-## Example Definition 1 (ecosystem: IPSO/OMA) {#example1}
+## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
 
 An example for an SDF mapping file is given in {{code-example1}}.
 This mapping file is meant to attach to an SDF specification published
@@ -112,14 +114,15 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 [^namespace-note]: \\
     Note that this example uses namespaces to identify elements of the
     referenced specification(s), but has un-namespaced quality names.
-    These two kinds of namespaces are probably unrelated, and we may
-    need to add quality namespacing to SDF (independent of a potential
+    These two kinds of namespaces are unrelated in SDF, and a more
+    robust example may need to make use of Quality Name Prefixes
+    as defined in {{Section 2.3.3-3 of -sdf}} (independent of a potential
     feature to add namespace references to definitions that are not
     intended to go into the default namespace — these are SDF
     definition namespaces and not quality namespaces, which are one
     meta-level higher).
 
-* Start of mapping file for certain OneDM playground models:
+* Start of a mapping file for certain OneDM playground models:
 
 ~~~ json
 {
@@ -145,9 +148,9 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 ~~~
 {: #code-example1 title="A simple example of an SDF mapping file"}
 
-## Example Definition 2 (ecosystem: W3C WoT) {#example2}
+## Example Model 2 (ecosystem: W3C WoT) {#example2}
 
-This example shows a the translation of a hypothetical W3C WoT Thing Model
+This example shows a translation of a hypothetical W3C WoT Thing Model
 (as defined in Section 10 of {{-wot-td}})
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined (namely, `titles` and
@@ -278,7 +281,7 @@ An SDF mapping file has three optional components that are taken
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
 The mandatory fourth component, the "map", contains the mappings from
-a SDF name reference (usually a namespace and a JSON pointer) to a
+an SDF name reference (usually a namespace and a JSON pointer) to a
 nested map providing a set of qualities to be merged in at the site
 identified in the name reference.
 
@@ -298,8 +301,9 @@ Media Type
 
 IANA is requested to add the following Media-Type to the "Media Types" registry.
 
-| Name     | Template             | Reference                 |
-| sdf-mapping+json | application/sdf-mapping+json | RFC XXXX, {{media-type}}  |
+| Name             | Template                     | Reference             |
+|------------------|------------------------------|-----------------------|
+| sdf-mapping+json | application/sdf-mapping+json | RFC XXXX, {{media-type}} |
 {: #new-media-types title="A media type for SDF mapping files" align="left"}
 
 [^to-be-removed]
@@ -332,7 +336,8 @@ Published specification:
 : {{media-type}} of RFC XXXX
 
 Applications that use this media type:
-: Tools for data and interaction modeling in the Internet of Things
+: Tools for data and interaction modeling that describes Things, i.e.,
+   physical objects that are available for interaction over a network
 
 Fragment identifier considerations:
 : A JSON Pointer fragment identifier may be used, as defined in
@@ -359,7 +364,7 @@ Provisional registration:
 Registries
 ----------
 
-(TBD: After future additions, check if we need any.)
+(TBD: After any future additions, check if we need any.)
 
 
 Security Considerations {#seccons}
