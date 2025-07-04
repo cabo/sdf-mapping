@@ -1342,31 +1342,28 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
 (as defined in Section 10 of <span>[<a href="#W3C.wot-thing-description11" class="cite xref">W3C.wot-thing-description11</a>]</span>)
 into an SDF model plus a mapping file to catch Thing Model attributes
-that don't currently have SDF qualities defined.
+that don't currently have SDF qualities defined (namely, <code>titles</code> and
+<code>descriptions</code> members used for internationalization).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">A second mapping file is more experimental in that it captures
+information that is actually instance-specific,
+in this case a <code>forms</code> member that binds the <code>status</code> property to an
+instance-specific CoAP resource.
 <span class="cref" id="td-note"><br>
-The example probably would be more useful with, say, protocol
-bindings.
-This is left for a future version of this example, and/or a
-future specification that specifically addresses how to map Thing
-Models into SDF.
-<br>
-(There is also the separate requirement to transform a Thing Description
-into the kind of information that can be represented in SDF plus
-instance information, such as IP addresses or specific node
-names.)
-<br>
-Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="pilcrow">¶</a></p>
+Namespaces are all wrong in this example.</span><a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">The form really should be part of the class level; defining the entire
+form instead of just the link in the instance information is a
+symptom of not yet getting the class/instance boundary right.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-2.1">
-            <p id="section-2.2-2.1.1">The input: WoT Thing Model<a href="#section-2.2-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-4.1">
+            <p id="section-2.2-4.1.1">The input: WoT Thing Model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-input-wot-thing-model"></span><div id="code-wot-input">
 <figure id="figure-2">
-          <div class="lang-json sourcecode" id="section-2.2-3.1">
+          <div class="lang-json sourcecode" id="section-2.2-5.1">
 <pre>
 {
-    "@context": ["http://www.w3.org/ns/td"],
+    "@context": "https://www.w3.org/2022/wot/td/v1.1",
     "@type" : "tm:ThingModel",
     "title": "Lamp Thing Model",
     "titles": {
@@ -1381,7 +1378,12 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
               "de": "Aktueller Status der Lampe"
             },
             "type": "string",
-            "readOnly": true
+            "readOnly": true,
+            "forms": [
+              {
+                "href": "coap://example.org/status"
+              }
+            ]
         }
     }
 }
@@ -1392,13 +1394,13 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-4.1">
-            <p id="section-2.2-4.1.1">The output: SDF model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-6.1">
+            <p id="section-2.2-6.1.1">The output: SDF model<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-1-sdf-model"></span><div id="code-wot-output1">
 <figure id="figure-3">
-          <div class="lang-json sourcecode" id="section-2.2-5.1">
+          <div class="lang-json sourcecode" id="section-2.2-7.1">
 <pre>
 {
   "info": {
@@ -1428,13 +1430,13 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-6.1">
-            <p id="section-2.2-6.1.1">The other output: SDF mapping file<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-8.1">
+            <p id="section-2.2-8.1.1">The other output: SDF mapping file for class information<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-2-sdf-mapping-file"></span><div id="code-wot-output2">
 <figure id="figure-4">
-          <div class="lang-json sourcecode" id="section-2.2-7.1">
+          <div class="lang-json sourcecode" id="section-2.2-9.1">
 <pre>
 {
   "info": {
@@ -1465,6 +1467,39 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
 <a href="#name-output-2-sdf-mapping-file" class="selfRef">Output 2: SDF Mapping File</a>
           </figcaption></figure>
 </div>
+<ul class="normal">
+<li class="normal" id="section-2.2-10.1">
+            <p id="section-2.2-10.1.1">A third output: SDF mapping file for Protocol Bindings<a href="#section-2.2-10.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<span id="name-output-3-sdf-mapping-file-f"></span><div id="code-wot-output3">
+<figure id="figure-5">
+          <div class="lang-json sourcecode" id="section-2.2-11.1">
+<pre>
+{
+  "info": {
+    "title": "Lamp Thing Model: WoT TM Protocol Binding"
+  },
+  "namespace": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "map": {
+    "#/sdfObject/LampThingModel/sdfProperty/status": {
+      "forms": [
+        {
+          "href": "coap://example.org/status"
+        }
+      ]
+    }
+  }
+}
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-output-3-sdf-mapping-file-f" class="selfRef">Output 3: SDF Mapping File for Protocol Bindings</a>
+          </figcaption></figure>
+</div>
 </section>
 </div>
 </section>
@@ -1481,9 +1516,9 @@ The mandatory fourth component, the "map", contains the mappings from
 an SDF name reference (usually a namespace and a JSON pointer) to a
 nested map providing a set of qualities to be merged in at the site
 identified in the name reference.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 5</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 6</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-of-sdf-mapp"></span><div id="mapping-cddl">
-<figure id="figure-5">
+<figure id="figure-6">
         <div class="breakable lang-cddl sourcecode" id="section-3-3.1">
 <pre>
 start = sdf-mapping
@@ -1554,7 +1589,7 @@ rfc3339z = '
 '
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-cddl-definition-of-sdf-mapp" class="selfRef">CDDL definition of SDF mapping file</a>
         </figcaption></figure>
 </div>

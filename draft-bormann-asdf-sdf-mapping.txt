@@ -91,7 +91,7 @@ Table of Contents
    2.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Example Model 1 (ecosystem: IPSO/OMA) . . . . . . . . . .   4
      2.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .   4
-   3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   7
+   3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   8
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
      4.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .   9
      4.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  10
@@ -215,9 +215,9 @@ Internet-Draft                 SDF Mapping                     July 2025
    This example shows a translation of a hypothetical W3C WoT Thing
    Model (as defined in Section 10 of [W3C.wot-thing-description11])
    into an SDF model plus a mapping file to catch Thing Model attributes
-   that don't currently have SDF qualities defined.
-   // The example probably would be more useful with, say, protocol
-   // bindings.  This is left for a future version of this example, and/
+   that don't currently have SDF qualities defined (namely, titles and
+   descriptions members used for internationalization).
+
 
 
 
@@ -226,17 +226,20 @@ Bormann & Romann         Expires 5 January 2026                 [Page 4]
 Internet-Draft                 SDF Mapping                     July 2025
 
 
-   // or a future specification that specifically addresses how to map
-   // Thing Models into SDF.  (There is also the separate requirement to
-   // transform a Thing Description into the kind of information that
-   // can be represented in SDF plus instance information, such as IP
-   // addresses or specific node names.)  Finally, namespaces are all
-   // wrong in this example.
+   A second mapping file is more experimental in that it captures
+   information that is actually instance-specific, in this case a forms
+   member that binds the status property to an instance-specific CoAP
+   resource.
+   // Namespaces are all wrong in this example.
+
+   The form really should be part of the class level; defining the
+   entire form instead of just the link in the instance information is a
+   symptom of not yet getting the class/instance boundary right.
 
    *  The input: WoT Thing Model
 
    {
-       "@context": ["http://www.w3.org/ns/td"],
+       "@context": "https://www.w3.org/2022/wot/td/v1.1",
        "@type" : "tm:ThingModel",
        "title": "Lamp Thing Model",
        "titles": {
@@ -251,7 +254,12 @@ Internet-Draft                 SDF Mapping                     July 2025
                  "de": "Aktueller Status der Lampe"
                },
                "type": "string",
-               "readOnly": true
+               "readOnly": true,
+               "forms": [
+                 {
+                   "href": "coap://example.org/status"
+                 }
+               ]
            }
        }
    }
@@ -259,14 +267,6 @@ Internet-Draft                 SDF Mapping                     July 2025
                       Figure 2: Input: WoT Thing Model
 
    *  The output: SDF model
-
-
-
-
-
-
-
-
 
 
 
@@ -306,7 +306,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
                        Figure 3: Output 1: SDF Model
 
-   *  The other output: SDF mapping file
+   *  The other output: SDF mapping file for class information
 
 
 
@@ -364,6 +364,36 @@ Internet-Draft                 SDF Mapping                     July 2025
 
                     Figure 4: Output 2: SDF Mapping File
 
+   *  A third output: SDF mapping file for Protocol Bindings
+
+   {
+     "info": {
+       "title": "Lamp Thing Model: WoT TM Protocol Binding"
+     },
+     "namespace": {
+       "wot": "http://www.w3.org/ns/td"
+     },
+     "defaultNamespace": "wot",
+     "map": {
+       "#/sdfObject/LampThingModel/sdfProperty/status": {
+         "forms": [
+           {
+             "href": "coap://example.org/status"
+           }
+         ]
+       }
+     }
+   }
+
+         Figure 5: Output 3: SDF Mapping File for Protocol Bindings
+
+
+
+Bormann & Romann         Expires 5 January 2026                 [Page 7]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
 3.  Formal Syntax of SDF mapping files
 
    An SDF mapping file has three optional components that are taken
@@ -373,7 +403,7 @@ Internet-Draft                 SDF Mapping                     July 2025
    and a JSON pointer) to a nested map providing a set of qualities to
    be merged in at the site identified in the name reference.
 
-   Figure 5 describes the syntax of SDF mapping files using CDDL
+   Figure 6 describes the syntax of SDF mapping files using CDDL
    [RFC8610].
 
    start = sdf-mapping
@@ -385,14 +415,6 @@ Internet-Draft                 SDF Mapping                     July 2025
     ? defaultNamespace: text
     map: { * global-sdf-pointer => additionalqualities}
    }
-
-
-
-
-Bormann & Romann         Expires 5 January 2026                 [Page 7]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
 
    ; we can't really be much more specific here:
    additionalqualities = named<any>
@@ -421,6 +443,13 @@ Internet-Draft                 SDF Mapping                     July 2025
    EXTENSION-POINT<f> = ( * (quality-name .feature f) => any )
    quality-name = text .regexp "([a-z][a-z0-9]*:)?[a-z$][A-Za-z$0-9]*"
 
+
+
+Bormann & Romann         Expires 5 January 2026                 [Page 8]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
    ; rough CURIE or JSON Pointer syntax:
    global-sdf-pointer = text .regexp ".*[:#].*"
 
@@ -442,14 +471,6 @@ Internet-Draft                 SDF Mapping                     July 2025
       time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap sec
                                 ; rules
       time-secfrac    = "." 1*DIGIT
-
-
-
-Bormann & Romann         Expires 5 January 2026                 [Page 8]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
       DIGIT           =  %x30-39 ; 0-9
 
       partial-time    = time-hour ":" time-minute ":" time-second
@@ -459,7 +480,7 @@ Internet-Draft                 SDF Mapping                     July 2025
       modified-dt     = full-date ["T" partial-time "Z"]
    '
 
-               Figure 5: CDDL definition of SDF mapping file
+               Figure 6: CDDL definition of SDF mapping file
 
 4.  IANA Considerations
 
@@ -476,6 +497,13 @@ Internet-Draft                 SDF Mapping                     July 2025
    +------------------+------------------------------+-------------+
 
               Table 1: A media type for SDF mapping files
+
+
+
+
+Bormann & Romann         Expires 5 January 2026                 [Page 9]
+
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    // RFC Editor: please replace RFC XXXX with this RFC number and
@@ -498,14 +526,6 @@ Internet-Draft                 SDF Mapping                     July 2025
       mailing list (asdf@ietf.org), or IETF Applications and Real-Time
       Area (art@ietf.org)
    Intended usage:  COMMON
-
-
-
-Bormann & Romann         Expires 5 January 2026                 [Page 9]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    Restrictions on usage:  none
    Author/Change controller:  IETF
    Provisional registration:  no
@@ -533,6 +553,15 @@ Internet-Draft                 SDF Mapping                     July 2025
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+Bormann & Romann         Expires 5 January 2026                [Page 10]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
               Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
@@ -553,14 +582,6 @@ Internet-Draft                 SDF Mapping                     July 2025
    [RFC7396]  Hoffman, P. and J. Snell, "JSON Merge Patch", RFC 7396,
               DOI 10.17487/RFC7396, October 2014,
               <https://www.rfc-editor.org/rfc/rfc7396>.
-
-
-
-
-Bormann & Romann         Expires 5 January 2026                [Page 10]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
@@ -588,6 +609,15 @@ Acknowledgements
 
 Authors' Addresses
 
+
+
+
+
+Bormann & Romann         Expires 5 January 2026                [Page 11]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
    Carsten Bormann (editor)
    Universität Bremen TZI
    Postfach 330440
@@ -613,4 +643,30 @@ Authors' Addresses
 
 
 
-Bormann & Romann         Expires 5 January 2026                [Page 11]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann         Expires 5 January 2026                [Page 12]
