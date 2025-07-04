@@ -298,6 +298,18 @@ identified in the name reference.
 ~~~
 {: #mapping-cddl title="CDDL definition of SDF mapping file"}
 
+The JSON pointer that is used on the left-hand side of the map can
+point to a JSON map in the SDF model to be augmented by adding or
+replacing map entries.
+If necessary, the JSON map is created at the position indicated with
+the contents of right-hand side of the map [^example].
+Alternatively, the JSON pointer can point to an array (also possibly
+created if not existing before) and add an element to that array by
+using the "`‑`" syntax introduced in the penultimate paragraph of
+{{Section 4 of -pointer}}.
+
+[^example]: (add examples)
+
 # Augmentation Mechanism
 
 <!-- TODO: Discuss used terminology -->
