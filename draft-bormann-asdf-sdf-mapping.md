@@ -313,16 +313,7 @@ sdfObject:
 ~~~
 {: #code-augmented-sdf-model title="An SDF model that has been augmented with WoT-specific vocabulary."}
 
-The formal syntax of the augmented SDF model is shown in {{augmented-cddl}}.
-This syntax serves as the basis for the respective validation steps in the algorithm.
-
-<!-- TODO: Maybe move to appendix -->
-~~~ cddl
-TODO
-~~~
-{: #augmented-cddl title="CDDL definition of augmented SDF models"}
-
-Note, however, that parts of an ecosystem-specific vocaulary may in fact be mappable to the SDF base vocabulary.
+Note that parts of an ecosystem-specific vocabulary may in fact be mappable to the SDF base vocabulary.
 Therefore, during the specification of the mapping between SDF and an ecosystem it has to be carefully decided
 what kind of information can be mapped to SDF directly and which one requires the help of a mapping file.
 
