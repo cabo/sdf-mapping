@@ -291,36 +291,26 @@ This augmented SDF model is one step away from being converted to a WoT Thing Mo
 which requires some information that cannot be provided in an SDF model that only follows the base specification.
 
 <!-- TODO: Prefix WoT-specific qualities with wot:? -->
-~~~json
-{
-  "info": {
-    "title": "Lamp Thing Model"
-  },
-  "namespaces": {
-    "wot": "http://www.w3.org/ns/td"
-  },
-  "defaultNamespace": "wot",
-  "sdfObject": {
-    "LampThingModel": {
-      "label": "Lamp Thing Model",
-      "titles": {
-        "en": "Lamp Thing Model",
-        "de": "Thing Model für eine Lampe"
-      },
-      "sdfProperty": {
-        "status": {
-          "description": "Current status of the lamp",
-          "descriptions": {
-            "en": "Current status of the lamp",
-            "de": "Aktueller Status der Lampe"
-          },
-          "writable": false,
-          "type": "string"
-        }
-      }
-    }
-  }
-}
+~~~json-from-yaml
+info:
+  title: Lamp Thing Model
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+sdfObject:
+  LampThingModel:
+    label: Lamp Thing Model
+    titles:
+      en: Lamp Thing Model
+      de: Thing Model für eine Lampe
+    sdfProperty:
+      status:
+        description: Current status of the lamp
+        descriptions:
+          en: Current status of the lamp
+          de: Aktueller Status der Lampe
+        writable: false
+        type: string
 ~~~
 {: #code-augmented-sdf-model title="An SDF model that has been augmented with WoT-specific vocabulary."}
 
