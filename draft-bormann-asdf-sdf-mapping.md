@@ -45,6 +45,7 @@ normative:
   I-D.ietf-asdf-sdf: sdf
 informative:
   RFC8576: seccons
+  W3C.wot-thing-description11: wot-td
 
 entity:
         SELF: "[RFC-XXXX]"
@@ -150,6 +151,7 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 ## Example Model 2 (ecosystem: W3C WoT) {#example2}
 
 This example shows a translation of a hypothetical W3C WoT Thing Model
+(as defined in Section 10 of {{-wot-td}})
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined.
 [^td-note]
