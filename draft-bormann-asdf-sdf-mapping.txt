@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 9 June 2025                               Hochschule Emden/Leer
-                                                         6 December 2024
+Expires: 5 January 2026                               Universität Bremen
+                                                             4 July 2025
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 1]
+Bormann & Romann         Expires 5 January 2026                 [Page 1]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -68,11 +68,11 @@ Internet-Draft                 SDF Mapping                 December 2024
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 June 2025.
+   This Internet-Draft will expire on 5 January 2026.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 2]
+Bormann & Romann         Expires 5 January 2026                 [Page 2]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 3]
+Bormann & Romann         Expires 5 January 2026                 [Page 3]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
 2.1.  Example Model 1 (ecosystem: IPSO/OMA)
@@ -221,9 +221,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 4]
+Bormann & Romann         Expires 5 January 2026                 [Page 4]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    // Thing Models into SDF.  (There is also the separate requirement to
@@ -277,9 +277,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 5]
+Bormann & Romann         Expires 5 January 2026                 [Page 5]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    {
@@ -333,9 +333,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 6]
+Bormann & Romann         Expires 5 January 2026                 [Page 6]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    {
@@ -389,9 +389,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 7]
+Bormann & Romann         Expires 5 January 2026                 [Page 7]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    ; we can't really be much more specific here:
@@ -445,9 +445,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 8]
+Bormann & Romann         Expires 5 January 2026                 [Page 8]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
       DIGIT           =  %x30-39 ; 0-9
@@ -501,9 +501,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                  [Page 9]
+Bormann & Romann         Expires 5 January 2026                 [Page 9]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    Restrictions on usage:  none
@@ -541,9 +541,9 @@ Internet-Draft                 SDF Mapping                 December 2024
               Koster, M., Bormann, C., and A. Keränen, "Semantic
               Definition Format (SDF) for Data and Interactions of
               Things", Work in Progress, Internet-Draft, draft-ietf-
-              asdf-sdf-18, 28 February 2024,
+              asdf-sdf-23, 17 March 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-asdf-
-              sdf-18>.
+              sdf-23>.
 
    [RFC6901]  Bryan, P., Ed., Zyp, K., and M. Nottingham, Ed.,
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
@@ -557,9 +557,9 @@ Internet-Draft                 SDF Mapping                 December 2024
 
 
 
-Bormann & Romann           Expires 9 June 2025                 [Page 10]
+Bormann & Romann         Expires 5 January 2026                [Page 10]
 
-Internet-Draft                 SDF Mapping                 December 2024
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
@@ -593,9 +593,9 @@ Authors' Addresses
 
 
    Jan Romann
-   Hochschule Emden/Leer
+   Universität Bremen
    Germany
-   Email: jan.romann@hs-emden-leer.de
+   Email: jan.romann@uni-bremen.de
 
 
 
@@ -613,4 +613,4 @@ Authors' Addresses
 
 
 
-Bormann & Romann           Expires 9 June 2025                 [Page 11]
+Bormann & Romann         Expires 5 January 2026                [Page 11]

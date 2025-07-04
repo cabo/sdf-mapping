@@ -22,22 +22,22 @@ application.
 SDF mapping files provide a mechanism to represent this
 augmentation. 
     " name="description">
-<meta content="xml2rfc 3.25.0" name="generator">
+<meta content="xml2rfc 3.29.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-bormann-asdf-sdf-mapping-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.25.0
-    Python 3.12.7
+  xml2rfc 3.29.0
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.4
-    lxml 5.3.0
-    platformdirs 4.3.6
-    pycountry 22.3.5
-    PyYAML 6.0.1
-    requests 2.32.3
-    setuptools 70.3.0
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.3.8
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.4
+    setuptools 80.9.0
     wcwidth 0.2.13
 -->
 <link href="draft-bormann-asdf-sdf-mapping.xml" rel="alternate" type="application/rfc+xml">
@@ -448,7 +448,7 @@ dl {
     margin-bottom: 0;
   }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
@@ -547,7 +547,11 @@ figcaption, caption {
   }
   pre, svg {
     display: inline-block;
-    overflow-x: auto;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
   }
   pre {
     max-width: 100%;
@@ -1053,11 +1057,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SDF Mapping</td>
-<td class="right">December 2024</td>
+<td class="right">July 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann &amp; Romann</td>
-<td class="center">Expires 9 June 2025</td>
+<td class="center">Expires 5 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1074,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-bormann-asdf-sdf-mapping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-12-06" class="published">6 December 2024</time>
+<time datetime="2025-07-04" class="published">4 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-06-09">9 June 2025</time></dd>
+<dd class="expires"><time datetime="2026-01-05">5 January 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1085,7 +1089,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </div>
 <div class="author">
       <div class="author-name">J. Romann</div>
-<div class="org">Hochschule Emden/Leer</div>
+<div class="org">Universität Bremen</div>
 </div>
 </dd>
 </dl>
@@ -1141,7 +1145,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1150,7 +1154,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2024 IETF Trust and the persons identified as the
+            Copyright (c) 2025 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1268,11 +1272,11 @@ appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">�
       </h2>
 <p id="section-2-1">An SDF mapping file provides augmentation information for one or more
 SDF models.
-Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
+Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">When processing the mapping file together with one or more SDF
 models, these qualities are added to the SDF model at the
 referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.
-Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
+Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
 <div id="example1">
@@ -1288,7 +1292,7 @@ Note that this example uses namespaces to identify elements of the
 referenced specification(s), but has un-namespaced quality names.
 These two kinds of namespaces are unrelated in SDF, and a more
 robust example may need to make use of Quality Name Prefixes
-as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> (independent of a potential
+as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> (independent of a potential
 feature to add namespace references to definitions that are not
 intended to go into the default namespace — these are SDF
 definition namespaces and not quality namespaces, which are one
@@ -1714,7 +1718,7 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-4.1-4.22
 <dd class="break"></dd>
 <dt id="I-D.ietf-asdf-sdf">[I-D.ietf-asdf-sdf]</dt>
         <dd>
-<span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-18</span>, <time datetime="2024-02-28" class="refDate">28 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-18</a>&gt;</span>. </dd>
+<span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-23</span>, <time datetime="2025-03-17" class="refDate">17 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6901">[RFC6901]</dt>
         <dd>
@@ -1779,11 +1783,11 @@ Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="a
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Jan Romann</span></div>
-<div dir="auto" class="left"><span class="org">Hochschule Emden/Leer</span></div>
+<div dir="auto" class="left"><span class="org">Universität Bremen</span></div>
 <div dir="auto" class="left"><span class="country-name">Germany</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:jan.romann@hs-emden-leer.de" class="email">jan.romann@hs-emden-leer.de</a>
+<a href="mailto:jan.romann@uni-bremen.de" class="email">jan.romann@uni-bremen.de</a>
 </div>
 </address>
 </section>
