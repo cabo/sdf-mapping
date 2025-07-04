@@ -272,18 +272,13 @@ identified in the name reference.
 
 <!-- TODO: Discuss used terminology -->
 An SDF model and a compatible mapping file can be combined to create an _augmented_ SDF model.
-Augmented SDF models can still be abstract in nature, but enriched with ecosystem-specific information that can be used as a basis for further augmentation;
-or they can refer to single device _instances_ (either in the physical or virtual sense), making it possible to easily convert the enhanced model into an ecosystem-specific format, for example, a WoT Thing Description or an IPSO model.
+As augmentation is not equal to instantiation, augmented SDF models are still abstract in nature, but are enriched with ecosystem-specific information.
+Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.
 
-{{code-augmentation-algorithm}} shows the formal algorithm for applying a mapping file to an SDF model
-as pseudo-code.
-Note that there are several validation steps involved, with extension points for ecosystem-specific validation (DISCUSS).
+An augmented SDF model is produced from two inputs: An SDF model and a mapping file that is compatible with the SDF model in question, i.e. every JSON pointer within the keys of the mapping file's `map` object needs to point to a location that already exists within the model.
+To perform the augmentation, a processor needs to iterate over all entries within the `map` object and apply the JSON merge-patch algorithm {{-merge-patch}} by using an entry's key as the `Target` argument and the value as the `Value` that is applied.
 
-~~~
-define ApplyMappingFile(SdfModel, SdfMappingFile):
-    TODO
-~~~
-{: #code-augmentation-algorithm title="Pseudo-code illustrating the algotihm for applying a mapping file to an SDF model."}
+(TODO: May need additional information)
 
 An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
 This is the result of applying the WoT-specific mapping file from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
