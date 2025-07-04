@@ -213,11 +213,11 @@ Internet-Draft                 SDF Mapping                     July 2025
 2.2.  Example Model 2 (ecosystem: W3C WoT)
 
    This example shows a translation of a hypothetical W3C WoT Thing
-   Model into an SDF model plus a mapping file to catch Thing Model
-   attributes that don't currently have SDF qualities defined.
+   Model (as defined in Section 10 of [W3C.wot-thing-description11])
+   into an SDF model plus a mapping file to catch Thing Model attributes
+   that don't currently have SDF qualities defined.
    // The example probably would be more useful with, say, protocol
    // bindings.  This is left for a future version of this example, and/
-   // or a future specification that specifically addresses how to map
 
 
 
@@ -226,6 +226,7 @@ Bormann & Romann         Expires 5 January 2026                 [Page 4]
 Internet-Draft                 SDF Mapping                     July 2025
 
 
+   // or a future specification that specifically addresses how to map
    // Thing Models into SDF.  (There is also the separate requirement to
    // transform a Thing Description into the kind of information that
    // can be represented in SDF plus instance information, such as IP
@@ -258,7 +259,6 @@ Internet-Draft                 SDF Mapping                     July 2025
                       Figure 2: Input: WoT Thing Model
 
    *  The output: SDF model
-
 
 
 
@@ -575,6 +575,11 @@ Internet-Draft                 SDF Mapping                     July 2025
               RFC 8576, DOI 10.17487/RFC8576, April 2019,
               <https://www.rfc-editor.org/rfc/rfc8576>.
 
+   [W3C.wot-thing-description11]
+              "Web of Things (WoT) Thing Description 1.1", W3C REC wot-
+              thing-description11, W3C wot-thing-description11,
+              <https://www.w3.org/TR/wot-thing-description11/>.
+
 Acknowledgements
 
    This draft is based on discussions in the Thing-to-Thing Research
@@ -596,11 +601,6 @@ Authors' Addresses
    Universität Bremen
    Germany
    Email: jan.romann@uni-bremen.de
-
-
-
-
-
 
 
 
