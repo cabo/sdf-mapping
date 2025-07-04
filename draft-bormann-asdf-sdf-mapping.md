@@ -45,7 +45,7 @@ normative:
   I-D.ietf-asdf-sdf: sdf
 informative:
   RFC8576: seccons
-  W3C.WD-wot-thing-description11-20201124: wot-td
+  W3C.wot-thing-description11: wot-td
 
 entity:
         SELF: "[RFC-XXXX]"
