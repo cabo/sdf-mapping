@@ -14,3 +14,9 @@ else
 	    https://github.com/martinthomson/i-d-template $(LIBDIR)
 endif
 endif
+
+sourcecode: draft-bormann-asdf-sdf-mapping.xml
+	kramdown-rfc-extract-sourcecode -tfiles $^
+
+sdfcheck: sourcecode
+	for file in sourcecode/json/*.json; do echo $$file; cddl sdf-feature.cddl vp $$file; done
