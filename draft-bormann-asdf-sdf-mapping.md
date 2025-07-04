@@ -275,10 +275,14 @@ An SDF model and a compatible mapping file can be combined to create an _augment
 As augmentation is not equal to instantiation, augmented SDF models are still abstract in nature, but are enriched with ecosystem-specific information.
 Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.
 
-An augmented SDF model is produced from two inputs: An SDF model and a mapping file that is compatible with the SDF model in question, i.e. every JSON pointer within the keys of the mapping file's `map` object needs to point to a location that already exists within the model.
-To perform the augmentation, a processor needs to iterate over all entries within the `map` object and apply the JSON merge-patch algorithm {{-merge-patch}} by using an entry's key as the `Target` argument and the value as the `Value` that is applied.
+An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's `map` object points to a location that already exists within the SDF model.
+To perform the augmentation, a processor needs to iterate over all entries within the `map` object and apply the JSON merge-patch algorithm {{-merge-patch}} by using an entry's key as the `Target` argument and the value as the `Value` argument.
 
-(TODO: May need additional information)
+Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the `map` entries are applied is implementation-dependent.
+For this reason, the author of a mapping file needs to make sure that its contents can be applied independently of each other.
+Future versions of this document, however, may choose a different approach:
+One option would be changing the data structure used by the `map` quality to an array of objects to ensure a determnistic application order.
+A final decision in this regard will require more discussion and implementation experience, though.
 
 An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
 This is the result of applying the WoT-specific mapping file from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
