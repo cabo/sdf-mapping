@@ -361,6 +361,19 @@ what kind of information can be mapped to SDF directly and which one requires th
 
 <!-- TODO: Also needs to take NIPC into account somewhere -->
 
+## Logging Augmentation
+
+Since an augmented model is not fundamentally different from any other
+SDF model, it may be necessary to trace the provenance of the
+information that flowed into it, e.g., in the info block.
+[^logging]
+
+[^logging]: A convention for "logging" the augmentation steps that
+    went into an augmented model needs to be developed.
+    (An array in the info block that receives additions from a mapping
+    file using the "`‑`" pointer syntax may be a good receptacle for
+    receiving information about multiple augmentations.)
+
 IANA Considerations {#iana}
 ===================
 
