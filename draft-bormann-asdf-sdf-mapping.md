@@ -153,28 +153,27 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 This example shows a translation of a hypothetical W3C WoT Thing Model
 (as defined in Section 10 of {{-wot-td}})
 into an SDF model plus a mapping file to catch Thing Model attributes
-that don't currently have SDF qualities defined.
+that don't currently have SDF qualities defined (namely, `titles` and
+`descriptions` members used for internationalization).
+
+A second mapping file is more experimental in that it captures
+information that is actually instance-specific,
+in this case a `forms` member that binds the `status` property to an
+instance-specific CoAP resource.
 [^td-note]
 
+The form really should be part of the class level; defining the entire
+form instead of just the link in the instance information is a
+symptom of not yet getting the class/instance boundary right.
+
 [^td-note]: \\
-    The example probably would be more useful with, say, protocol
-    bindings.
-    This is left for a future version of this example, and/or a
-    future specification that specifically addresses how to map Thing
-    Models into SDF.
-    \\
-    (There is also the separate requirement to transform a Thing Description
-    into the kind of information that can be represented in SDF plus
-    instance information, such as IP addresses or specific node
-    names.)
-    \\
-    Finally, namespaces are all wrong in this example.
+    Namespaces are all wrong in this example.
 
 * The input: WoT Thing Model
 
 ~~~json
 {
-    "@context": ["http://www.w3.org/ns/td"],
+    "@context": "https://www.w3.org/2022/wot/td/v1.1",
     "@type" : "tm:ThingModel",
     "title": "Lamp Thing Model",
     "titles": {
@@ -189,7 +188,12 @@ that don't currently have SDF qualities defined.
               "de": "Aktueller Status der Lampe"
             },
             "type": "string",
-            "readOnly": true
+            "readOnly": true,
+            "forms": [
+              {
+                "href": "coap://example.org/status"
+              }
+            ]
         }
     }
 }
@@ -223,7 +227,7 @@ that don't currently have SDF qualities defined.
 ~~~
 {: #code-wot-output1 title="Output 1: SDF Model"}
 
-* The other output: SDF mapping file
+* The other output: SDF mapping file for class information
 
 ~~~json
 {
@@ -251,6 +255,30 @@ that don't currently have SDF qualities defined.
 }
 ~~~
 {: #code-wot-output2 title="Output 2: SDF Mapping File"}
+
+* A third output: SDF mapping file for Protocol Bindings
+
+~~~json
+{
+  "info": {
+    "title": "Lamp Thing Model: WoT TM Protocol Binding"
+  },
+  "namespace": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "map": {
+    "#/sdfObject/LampThingModel/sdfProperty/status": {
+      "forms": [
+        {
+          "href": "coap://example.org/status"
+        }
+      ]
+    }
+  }
+}
+~~~
+{: #code-wot-output3 title="Output 3: SDF Mapping File for Protocol Bindings"}
 
 
 # Formal Syntax of SDF mapping files {#syntax}
