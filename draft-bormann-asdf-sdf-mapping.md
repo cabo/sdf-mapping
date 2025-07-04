@@ -155,10 +155,16 @@ This example shows a translation of a hypothetical W3C WoT Thing Model
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined (namely, `titles` and
 `descriptions` members used for internationalization).
-A second mapping file captures information that is instance-specific,
-in this case a `forms` member that binds the `status` property to a
-concrete CoAP resource.
+
+A second mapping file is more experimental in that it captures
+information that is actually instance-specific,
+in this case a `forms` member that binds the `status` property to an
+instance-specific CoAP resource.
 [^td-note]
+
+The form really should be part of the class level; defining the entire
+form instead of just the link in the instance information is a
+symptom of not yet getting the class/instance boundary right.
 
 [^td-note]: \\
     Namespaces are all wrong in this example.
