@@ -20,3 +20,7 @@ sourcecode: draft-bormann-asdf-sdf-mapping.xml
 
 sdfcheck: sourcecode
 	for file in sourcecode/json/*.json; do echo $$file; cddl sdf-feature.cddl vp $$file; done
+
+lists.md: draft-bormann-asdf-sdf-mapping.xml
+	kramdown-rfc-extract-figures-tables -trfc $< >$@.new
+	if cmp $@.new $@; then rm -v $@.new; else mv -v $@.new $@; fi
