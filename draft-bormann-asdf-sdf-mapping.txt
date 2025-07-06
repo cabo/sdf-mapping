@@ -286,7 +286,7 @@ Internet-Draft                 SDF Mapping                     July 2025
      "info": {
        "title": "Lamp Thing Model"
      },
-     "namespaces": {
+     "namespace": {
        "wot": "http://www.w3.org/ns/td"
      },
      "defaultNamespace": "wot",
