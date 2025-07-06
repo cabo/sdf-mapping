@@ -124,29 +124,21 @@ by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 
 * Start of a mapping file for certain OneDM playground models:
 
-~~~ json
-{
-  "info": {
-    "title": "IPSO ID mapping"
-  },
-  "namespace": {
-    "onedm": "https://onedm.org/models"
-  },
-  "defaultNamespace": "onedm",
-  "map": {
-    "#/sdfObject/Digital_Input": {
-      "id": 3200
-    },
-    "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State": {
-      "id": 5500
-    },
-    "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
-      "id": 5501
-    }
-  }
-}
+~~~ sdf
+info:
+  title: IPSO ID mapping
+namespace:
+  onedm: https://onedm.org/models
+defaultNamespace: onedm
+map:
+  "#/sdfObject/Digital_Input":
+    id: 3200
+  "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
+    id: 5500
+  "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
+    id: 5501
 ~~~
-{: #code-example1 title="A simple example of an SDF mapping file"}
+{: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF mapping file"}
 
 ## Example Model 2 (ecosystem: W3C WoT) {#example2}
 
@@ -171,7 +163,7 @@ symptom of not yet getting the class/instance boundary right.
 
 * The input: WoT Thing Model
 
-~~~json
+~~~ json
 {
     "@context": "https://www.w3.org/2022/wot/td/v1.1",
     "@type" : "tm:ThingModel",
@@ -202,83 +194,57 @@ symptom of not yet getting the class/instance boundary right.
 
 * The output: SDF model
 
-~~~json
-{
-  "info": {
-    "title": "Lamp Thing Model"
-  },
-  "namespaces": {
-    "wot": "http://www.w3.org/ns/td"
-  },
-  "defaultNamespace": "wot",
-  "sdfObject": {
-    "LampThingModel": {
-      "label": "Lamp Thing Model",
-      "sdfProperty": {
-        "status": {
-          "description": "Current status of the lamp",
-          "writable": false,
-          "type": "string"
-        }
-      }
-    }
-  }
-}
+~~~ sdf
+info:
+  title: Lamp Thing Model
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+sdfObject:
+  LampThingModel:
+    label: Lamp Thing Model
+    sdfProperty:
+      status:
+        description: Current status of the lamp
+        writable: false
+        type: string
 ~~~
-{: #code-wot-output1 title="Output 1: SDF Model"}
+{: #code-wot-output1 check="json" pre="yaml2json" title="Output 1: SDF Model"}
 
 * The other output: SDF mapping file for class information
 
-~~~json
-{
-  "info": {
-    "title": "Lamp Thing Model: WoT TM mapping"
-  },
-  "namespace": {
-    "wot": "http://www.w3.org/ns/td"
-  },
-  "defaultNamespace": "wot",
-  "map": {
-    "#/sdfObject/LampThingModel": {
-      "titles": {
-        "en": "Lamp Thing Model",
-        "de": "Thing Model für eine Lampe"
-      }
-    },
-    "#/sdfObject/LampThingModel/sdfProperty/status": {
-      "descriptions": {
-        "en": "Current status of the lamp",
-        "de": "Aktueller Status der Lampe"
-      }
-    }
-  }
-}
+~~~ sdf
+info:
+  title: 'Lamp Thing Model: WoT TM mapping'
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+map:
+  "#/sdfObject/LampThingModel":
+    titles:
+      en: Lamp Thing Model
+      de: Thing Model für eine Lampe
+  "#/sdfObject/LampThingModel/sdfProperty/status":
+    descriptions:
+      en: Current status of the lamp
+      de: Aktueller Status der Lampe
 ~~~
-{: #code-wot-output2 title="Output 2: SDF Mapping File"}
+{: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Mapping File"}
 
 * A third output: SDF mapping file for Protocol Bindings
 
-~~~json
-{
-  "info": {
-    "title": "Lamp Thing Model: WoT TM Protocol Binding"
-  },
-  "namespace": {
-    "wot": "http://www.w3.org/ns/td"
-  },
-  "defaultNamespace": "wot",
-  "map": {
-    "#/sdfObject/LampThingModel/sdfProperty/status": {
-      "forms": [
-        {
-          "href": "coap://example.org/status"
-        }
-      ]
-    }
-  }
-}
+~~~ sdf
+info:
+  title: 'Lamp Thing Model: WoT TM Protocol Binding'
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+map:
+  "#/sdfObject/LampThingModel/sdfProperty/status":
+    forms:
+    - href: coap://example.org/status
 ~~~
-{: #code-wot-output3 title="Output 3: SDF Mapping File for Protocol Bindings"}
+{: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Mapping File for Protocol Bindings"}
 
 
 # Formal Syntax of SDF mapping files {#syntax}
@@ -361,7 +327,7 @@ which requires some information that cannot be provided in an SDF
 model that is limited to the vocabulary defined in the SDF base specification.
 
 <!-- TODO: Prefix WoT-specific qualities with wot:? -->
-~~~json-from-yaml
+~~~ sdf
 info:
   title: Lamp Thing Model
 namespace:
@@ -382,7 +348,7 @@ sdfObject:
         writable: false
         type: string
 ~~~
-{: #code-augmented-sdf-model title="An SDF model that has been augmented with WoT-specific vocabulary."}
+{: #code-augmented-sdf-model check="json" pre="yaml2json" title="An SDF model that has been augmented with WoT-specific vocabulary."}
 
 {:aside}
 >

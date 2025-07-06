@@ -19,7 +19,7 @@ sourcecode: draft-bormann-asdf-sdf-mapping.xml
 	kramdown-rfc-extract-sourcecode -tfiles $^
 
 sdfcheck: sourcecode
-	for file in sourcecode/json/*.json; do echo $$file; cddl sdf-feature.cddl vp $$file; done
+	for file in sourcecode/sdf/*.sdf; do echo $$file; cddl sdf-feature.cddl vp $$file; done
 
 lists.md: draft-bormann-asdf-sdf-mapping.xml
 	kramdown-rfc-extract-figures-tables -trfc $< >$@.new
