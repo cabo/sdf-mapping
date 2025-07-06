@@ -298,6 +298,120 @@ identified in the name reference.
 ~~~
 {: #mapping-cddl title="CDDL definition of SDF mapping file"}
 
+The JSON pointer that is used on the left-hand side of the map can
+point to a JSON map in the SDF model to be augmented by adding or
+replacing map entries.
+If necessary, the JSON map is created at the position indicated with
+the contents of right-hand side of the map [^example].
+Alternatively, the JSON pointer can point to an array (also possibly
+created if not existing before) and add an element to that array by
+using the "`‑`" syntax introduced in the penultimate paragraph of
+{{Section 4 of -pointer}}.
+
+[^example]: (add examples)
+
+# Augmentation Mechanism
+
+<!-- TODO: Discuss used terminology -->
+An SDF model and a compatible mapping file can be combined to create
+an _augmented_ SDF model.
+(This process can be repeated with multiple mapping files by using the
+outcome of one augmentation as the input of the next one.)
+As augmentation is not equal to instantiation, augmented SDF models
+are still abstract in nature, but are enriched with ecosystem-specific
+information.
+
+{:aside}
+>
+Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.
+
+The augmentation mechanism is related to the resolution mechanism
+defined in {{Section 4.4 of -sdf}}, but fundamentally different:
+
+Instead of a model file reaching out to other model files and
+integrating aspects into itself via `sdfRef` (*pull* approach), the
+mapping file *pushes* information into a new copy of a specific given
+SDF model.
+The original SDF model does not need to know which mapping files it
+will be used with and can be used with several such mapping files
+independently of each other.
+
+An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's `map` object points to a location that already exists within the SDF model.
+To perform the augmentation, a processor needs to iterate over all entries within the `map` object and apply the JSON merge-patch algorithm {{-merge-patch}} by using an entry's key as the `Target` argument and the value as the `Value` argument.
+
+{:aside}
+>
+Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the `map` entries are applied is implementation-dependent.
+For this reason, we need to make sure that the contents of mapping
+files can be applied independently of each other.
+(We need to understand the onus in
+ensuring this that is put on author of a mapping file.)
+>
+The problem can be "avoided" by changing the data structure used by the `map` quality to an array of objects to ensure a deterministic application order.
+This would essentially put most of the onus on the author of a mapping
+file to get any order dependencies right.
+More preferable would be to ensure the entries in the mapping file can
+be applied independently and in any order.
+More discussion and implementation experience is required.
+
+An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
+This is the result of applying the WoT-specific mapping file from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
+This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
+which requires some information that cannot be provided in an SDF
+model that is limited to the vocabulary defined in the SDF base specification.
+
+<!-- TODO: Prefix WoT-specific qualities with wot:? -->
+~~~json-from-yaml
+info:
+  title: Lamp Thing Model
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+sdfObject:
+  LampThingModel:
+    label: Lamp Thing Model
+    titles:
+      en: Lamp Thing Model
+      de: Thing Model für eine Lampe
+    sdfProperty:
+      status:
+        description: Current status of the lamp
+        descriptions:
+          en: Current status of the lamp
+          de: Aktueller Status der Lampe
+        writable: false
+        type: string
+~~~
+{: #code-augmented-sdf-model title="An SDF model that has been augmented with WoT-specific vocabulary."}
+
+{:aside}
+>
+Since the pair of an SDF model and a mapping file is equivalent in
+semantics to the augmented model created from the two, there is no
+fundamental difference between specifying aspects in the SDF model or
+leaving them in a mapping file.
+Also, parts of an ecosystem-specific vocabulary may in fact be
+mappable to the SDF base vocabulary.
+Therefore, developing the mapping between SDF and an ecosystem
+requires careful consideration which of the features should be available
+to other ecosystems and therefore should best be part of the common
+SDF model, and which are best handled in a mapping file specific to the
+ecosystem.
+
+<!-- TODO: Also needs to take NIPC into account somewhere -->
+
+## Logging Augmentation
+
+Since an augmented model is not fundamentally different from any other
+SDF model, it may be necessary to trace the provenance of the
+information that flowed into it, e.g., in the info block.
+[^logging]
+
+[^logging]: A convention for "logging" the augmentation steps that
+    went into an augmented model needs to be developed.
+    (An array in the info block that receives additions from a mapping
+    file using the "`‑`" pointer syntax may be a good receptacle for
+    receiving information about multiple augmentations.)
 
 IANA Considerations {#iana}
 ===================
