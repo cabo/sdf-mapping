@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-01T01:17:57.909704+00:00",
+  "timestamp": "2025-07-06T01:15:12.422270+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -65,6 +65,38 @@
       "updatedAt": "2022-06-06T14:45:07Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOGU6qd86_BItm",
+      "title": "Further specify and implement augmentation logging mechanism",
+      "url": "https://github.com/cabo/sdf-mapping/issues/8",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "For upcoming versions, the augmentation logging mechanism needs to be further fleshed out. We also need to collect implementation experience.\r\n\r\nNotes from the [PR discussion](https://github.com/cabo/sdf-mapping/pull/4#discussion_r2185261688_):\r\n\r\n- Provenance in info block via the mapping file?\r\n- JSON Pointer feature: append to an array, could be used for logging\r\n    - Challenge: find a place where to put this information\r\n    - Need to specify that the log entry is either appended to an existing array or that a new array is created with the log entry\r\n- Need to specify what happens if a JSON pointer points into \"thin air\" and not to a quality using an already registered quality name\r\n            ",
+      "createdAt": "2025-07-05T10:43:52Z",
+      "updatedAt": "2025-07-05T10:43:52Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOGU6qd86_BKPZ",
+      "title": "Evaluate whether JSON merge-patch already fulfills our requirements for references from Mapping Files",
+      "url": "https://github.com/cabo/sdf-mapping/issues/9",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Notes from the [PR Discussion](https://github.com/cabo/sdf-mapping/pull/4#discussion_r2185261688_):\r\n\r\n- Hypothesis: Merge-patch _might_ be good enough, but maybe we have additional requirements\r\n- Update text to make the distinction between augmented and resolved models clearer\r\n            ",
+      "createdAt": "2025-07-05T10:48:25Z",
+      "updatedAt": "2025-07-05T10:48:25Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -73,24 +105,26 @@
       "id": "PR_kwDOGU6qd843gXlK",
       "title": "Add WoT TD reference and example for protocol bindings",
       "url": "https://github.com/cabo/sdf-mapping/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "JKRhb",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This PR adds a reference to a WoT TD 1.1 Working Draft[^1] to the document and updates the WoT example with Protocol Bindings and some additional text.\r\n\r\n[^1]: That is, unfortunately, quite outdated, but there is no more recent version available at [xml2rfc](https://xml2rfc.tools.ietf.org/public/rfc/bibxml-w3c/).",
       "createdAt": "2022-05-09T14:05:54Z",
-      "updatedAt": "2022-05-10T10:11:25Z",
+      "updatedAt": "2025-07-04T18:29:22Z",
       "baseRepository": "cabo/sdf-mapping",
       "baseRefName": "main",
-      "baseRefOid": "8b7f1db7f34243b3108b31378727aebe52c4c8cc",
+      "baseRefOid": "c0106d51d3c8a4fef39a2079ef5d095ba5fc968a",
       "headRepository": "JKRhb/sdf-mapping",
       "headRefName": "w3c-reference",
-      "headRefOid": "638b46e97f47c57595c0bf9d3a099f8901b1f6d8",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a848f548167e8c09a1d443089fa6526b58d2137c",
+      "closedAt": "2025-07-04T18:29:22Z",
+      "mergedAt": "2025-07-04T18:29:22Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "642ae80b977f87bc45dd20da0314d60989ed4209"
+      },
       "comments": [],
       "reviews": []
     },
@@ -121,6 +155,365 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOGU6qd86b8Nwy",
+      "title": "Start specifying augmentation mechanism",
+      "url": "https://github.com/cabo/sdf-mapping/pull/4",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR tries to lay the groundwork for a formal specification of the augmentation mechanism for SDF mapping files. Currently, this PR only contains some text that sketches out the structure of this section and the requirements the augmentation mechanism needs to fulfill. However, there is probably a bit more discussion needed in the overall context of the document.\r\n\r\nA rendered version of this PR can be found here: https://jkrhb.github.io/sdf-mapping/mechanism/draft-bormann-asdf-sdf-mapping.html#name-augmentation-mechanism",
+      "createdAt": "2025-06-24T21:41:01Z",
+      "updatedAt": "2025-07-04T20:36:53Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "9fa8dd8982ea91ee35b9c2f171830e557346cab5",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "mechanism",
+      "headRefOid": "3bb7061a8d814edce6a3a672bdd4522bfa0e18a4",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGU6qd86yBYNx",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "cabo",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T11:09:56Z",
+          "updatedAt": "2025-07-04T11:09:56Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "We probably need to contrast (or compare) this to \"resolved\" SDF models which is a similar mechanism, but \"pull\" (via sdfRef).  Exploiting the similarities (e.g., using merge-patch) would be good, but we shouldn't unify what is different (e.g., maybe we want to have a more semantic approach than merge-patch?).",
+              "createdAt": "2025-07-04T11:09:56Z",
+              "updatedAt": "2025-07-04T11:09:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yBaBJ",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "cabo",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T11:12:02Z",
+          "updatedAt": "2025-07-04T11:12:03Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Representing instances as models has its problems; among others, there is no meta-model then (you cannot check that the instance has everything it needs and this is of the right type etc.).\r\nWe should clearly have an idea how instantiation is different from (model) derivation before we tackle the specifics.",
+              "createdAt": "2025-07-04T11:12:02Z",
+              "updatedAt": "2025-07-04T11:12:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yBapZ",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "cabo",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T11:12:54Z",
+          "updatedAt": "2025-07-04T11:12:55Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "Pseudocode may be a little earlynow; we probably want to describe the properties of the augmentation process first.",
+              "createdAt": "2025-07-04T11:12:55Z",
+              "updatedAt": "2025-07-04T11:12:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yBcHy",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "cabo",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T11:14:44Z",
+          "updatedAt": "2025-07-04T11:14:44Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "Shouldn't that be exactly like SDF?\r\nOf course, we may want to have some way to \"see\" the augmentations even when they are in place, but maybe that is more of a namespace/qnp requirement?\r\n",
+              "createdAt": "2025-07-04T11:14:44Z",
+              "updatedAt": "2025-07-04T11:14:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yCh0e",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T12:26:21Z",
+          "updatedAt": "2025-07-04T12:26:21Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "> Shouldn't that be exactly like SDF?\r\n> Of course, we may want to have some way to \"see\" the augmentations even when they are in place, but maybe that is more of a namespace/qnp requirement?\r\n\r\nThese are very good points, could we cover this by adding an assertion demanding that every additional quality needs to start with a prefix that corresponds with an entry from the `namespace` block? Or could/should this be included in the CDDL?",
+              "createdAt": "2025-07-04T12:26:21Z",
+              "updatedAt": "2025-07-04T12:26:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yCtIU",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T12:37:26Z",
+          "updatedAt": "2025-07-04T12:37:26Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "Notes:\r\n\r\n- Provenance in info block via the mapping file?\r\n- JSON Pointer feature: append to an array, could be used for logging\r\n    - Challenge: find a place where to put this information\r\n    - Need to specify that the log entry is either appended to an existing array or that a new array is created with the log entry\r\n- Need to specify what happens if a JSON pointer points into \"thin air\" and not to a quality using an already registered quality name",
+              "createdAt": "2025-07-04T12:37:26Z",
+              "updatedAt": "2025-07-04T12:39:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yCxnB",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T12:41:24Z",
+          "updatedAt": "2025-07-04T12:41:24Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Notes:\r\n- Hypothesis: Merge-patch _might_ be good enough, but maybe we have additional requirements\r\n- Update text to make the distinction between augmented and resolved models clearer",
+              "createdAt": "2025-07-04T12:41:24Z",
+              "updatedAt": "2025-07-04T12:41:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yC5ri",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T12:48:32Z",
+          "updatedAt": "2025-07-04T12:48:32Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Notes:\r\n- Clarify how the different types of documents fit together\r\n- Do we need a third type of document besides SDF models and proofshots?\r\n- Formulate a litmus test for determining when a document belongs to one of the two types above\r\n- Review requirements based on NIPC draft, but it would be desirable to stick to one document for abstract models and one for instances\r\n- \"Third type\" could only be existent \"in memory\"/after resolving the mappings, but we still need to specify the format that is the result of the resolution process\r\n- Do we also need augmentation for instances?",
+              "createdAt": "2025-07-04T12:48:32Z",
+              "updatedAt": "2025-07-04T12:50:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yC8L4",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T12:51:01Z",
+          "updatedAt": "2025-07-04T12:51:01Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\nAugmented SDF models can still be abstract in nature, but enriched with ecosystem-specific information that can be used as a basis for further augmentation.\r\n```\r\n\r\nIt might also be necessary to specify an augmentation process for _instance_ descriptions, but this aspect is still open for debate.",
+              "createdAt": "2025-07-04T12:51:01Z",
+              "updatedAt": "2025-07-04T12:53:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yDDXz",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T12:58:42Z",
+          "updatedAt": "2025-07-04T12:58:43Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "Properties of the augmentation process:\r\n- Iterate over all entries of the mapping file's `map` object and apply the merge-patch algorithm\r\n  - Do we need to specify a way to define an order for the resolution of the JSON pointers?\r\n    - Should we rather use an array to have an ordered list of entries?\r\n    - Should we demand that the mappings are defined in such a way that the resolution order does not matter?",
+              "createdAt": "2025-07-04T12:58:42Z",
+              "updatedAt": "2025-07-04T12:59:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGU6qd86yDEns",
+          "commit": {
+            "abbreviatedOid": "ea0fab0"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-04T13:00:05Z",
+          "updatedAt": "2025-07-04T13:00:06Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "TODO: Replace with prose describing the properties of the algorithm\r\n\r\n```suggestion\r\n```",
+              "createdAt": "2025-07-04T13:00:05Z",
+              "updatedAt": "2025-07-04T13:00:06Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOGU6qd86desBd",
+      "title": "Change Jan's affiliation back to Uni Bremen",
+      "url": "https://github.com/cabo/sdf-mapping/pull/5",
+      "state": "MERGED",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As I am not working at the HS Emden/Leer anymore, this PR applies a small update to my affiliation.",
+      "createdAt": "2025-07-04T17:56:00Z",
+      "updatedAt": "2025-07-04T17:58:42Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "8ffd92d76c36ec5e4885f527d49920ffce086ca2",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "affiliation-jan",
+      "headRefOid": "98b35c343b68aaece14e95da1b0aef4cbcf5b728",
+      "closedAt": "2025-07-04T17:58:19Z",
+      "mergedAt": "2025-07-04T17:58:19Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "d7713d4f0d5967269f7abacfbe3306914c725e93"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGU6qd86yGTGd",
+          "commit": {
+            "abbreviatedOid": "98b35c3"
+          },
+          "author": "cabo",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-04T17:58:05Z",
+          "updatedAt": "2025-07-04T17:58:05Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOGU6qd86dewZl",
+      "title": "Add reference to W3C WoT TD 1.1. Recommendation",
+      "url": "https://github.com/cabo/sdf-mapping/pull/6",
+      "state": "MERGED",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR adds a reference to the WoT TD 1.1 Recommendation in the section on WoT Thing Models.",
+      "createdAt": "2025-07-04T18:10:10Z",
+      "updatedAt": "2025-07-04T18:16:30Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "d7713d4f0d5967269f7abacfbe3306914c725e93",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "wot-td-reference",
+      "headRefOid": "1c1cabae753ad730df6d8c5663acebe994d0cbe9",
+      "closedAt": "2025-07-04T18:15:55Z",
+      "mergedAt": "2025-07-04T18:15:55Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "c0106d51d3c8a4fef39a2079ef5d095ba5fc968a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOGU6qd86dfAdp",
+      "title": "Sdf checking",
+      "url": "https://github.com/cabo/sdf-mapping/pull/7",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "use `make sdfcheck` to get some feedback on the json files\r\n(not really CI yet; need to fix sourcecode identifiers for that)",
+      "createdAt": "2025-07-04T18:56:46Z",
+      "updatedAt": "2025-07-04T19:00:21Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "642ae80b977f87bc45dd20da0314d60989ed4209",
+      "headRepository": "cabo/sdf-mapping",
+      "headRefName": "sdf-checking",
+      "headRefOid": "091cb1de3a88bcd48c73ffdc9baa2bde6bd255d3",
+      "closedAt": "2025-07-04T19:00:21Z",
+      "mergedAt": "2025-07-04T19:00:21Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "9fa8dd8982ea91ee35b9c2f171830e557346cab5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGU6qd86yGt3B",
+          "commit": {
+            "abbreviatedOid": "091cb1d"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks! :)",
+          "createdAt": "2025-07-04T18:59:23Z",
+          "updatedAt": "2025-07-04T18:59:23Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
