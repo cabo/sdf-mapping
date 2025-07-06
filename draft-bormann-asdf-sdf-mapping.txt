@@ -101,10 +101,10 @@ Table of Contents
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  13
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  14
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
-
-
+   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  14
+   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 
 
@@ -765,6 +765,31 @@ Internet-Draft                 SDF Mapping                     July 2025
               thing-description11, W3C wot-thing-description11,
               <https://www.w3.org/TR/wot-thing-description11/>.
 
+List of Figures
+
+   Figure 1:  A simple example of an SDF mapping file
+   Figure 2:  Input: WoT Thing Model
+   Figure 3:  Output 1: SDF Model
+   Figure 4:  Output 2: SDF Mapping File
+   Figure 5:  Output 3: SDF Mapping File for Protocol Bindings
+   Figure 6:  CDDL definition of SDF mapping file
+   Figure 7:  An SDF model that has been augmented with WoT-specific
+              vocabulary.
+
+
+
+
+
+
+Bormann & Romann         Expires 7 January 2026                [Page 14]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
+List of Tables
+
+   Table 1:   A media type for SDF mapping files
+
 Acknowledgements
 
    This draft is based on discussions in the Thing-to-Thing Research
@@ -778,14 +803,6 @@ Authors' Addresses
    Postfach 330440
    D-28359 Bremen
    Germany
-
-
-
-Bormann & Romann         Expires 7 January 2026                [Page 14]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
 
@@ -794,23 +811,6 @@ Internet-Draft                 SDF Mapping                     July 2025
    Universität Bremen
    Germany
    Email: jan.romann@uni-bremen.de
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
