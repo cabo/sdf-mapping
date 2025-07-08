@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-06T01:15:12.422270+00:00",
+  "timestamp": "2025-07-08T01:09:33.834460+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -161,24 +161,26 @@
       "id": "PR_kwDOGU6qd86b8Nwy",
       "title": "Start specifying augmentation mechanism",
       "url": "https://github.com/cabo/sdf-mapping/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "JKRhb",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This PR tries to lay the groundwork for a formal specification of the augmentation mechanism for SDF mapping files. Currently, this PR only contains some text that sketches out the structure of this section and the requirements the augmentation mechanism needs to fulfill. However, there is probably a bit more discussion needed in the overall context of the document.\r\n\r\nA rendered version of this PR can be found here: https://jkrhb.github.io/sdf-mapping/mechanism/draft-bormann-asdf-sdf-mapping.html#name-augmentation-mechanism",
       "createdAt": "2025-06-24T21:41:01Z",
-      "updatedAt": "2025-07-04T20:36:53Z",
+      "updatedAt": "2025-07-06T13:07:08Z",
       "baseRepository": "cabo/sdf-mapping",
       "baseRefName": "main",
       "baseRefOid": "9fa8dd8982ea91ee35b9c2f171830e557346cab5",
       "headRepository": "JKRhb/sdf-mapping",
       "headRefName": "mechanism",
       "headRefOid": "3bb7061a8d814edce6a3a672bdd4522bfa0e18a4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-06T13:07:08Z",
+      "mergedAt": "2025-07-06T13:07:08Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "26a2b4afe0f6d5d3fdecbacf358dec3a1beba8fb"
+      },
       "comments": [],
       "reviews": [
         {
