@@ -303,7 +303,13 @@ will be used with and can be used with several such mapping files
 independently of each other.
 
 An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's `map` object points to a location that already exists within the SDF model.
-To perform the augmentation, a processor needs to iterate over all entries within the `map` object and apply the JSON merge-patch algorithm {{-merge-patch}} by using an entry's key as the `Target` argument and the value as the `Value` argument.
+To perform the augmentation, a processor needs to create a copy of the original SDF model.
+It then iterates over all entries within the mapping file's `map` object.
+During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer contained an entry's key.
+This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's value as the `Patch` argument.
+
+Once the iteration has finished, the processor returns the resulting augmented SDF model.
+Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.
 
 {:aside}
 >
