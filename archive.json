@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-08T01:09:33.834460+00:00",
+  "timestamp": "2025-07-13T01:17:34.037043+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -112,7 +112,7 @@
       "labels": [],
       "body": "This PR adds a reference to a WoT TD 1.1 Working Draft[^1] to the document and updates the WoT example with Protocol Bindings and some additional text.\r\n\r\n[^1]: That is, unfortunately, quite outdated, but there is no more recent version available at [xml2rfc](https://xml2rfc.tools.ietf.org/public/rfc/bibxml-w3c/).",
       "createdAt": "2022-05-09T14:05:54Z",
-      "updatedAt": "2025-07-04T18:29:22Z",
+      "updatedAt": "2025-07-11T17:52:40Z",
       "baseRepository": "cabo/sdf-mapping",
       "baseRefName": "main",
       "baseRefOid": "c0106d51d3c8a4fef39a2079ef5d095ba5fc968a",
@@ -168,7 +168,7 @@
       "labels": [],
       "body": "This PR tries to lay the groundwork for a formal specification of the augmentation mechanism for SDF mapping files. Currently, this PR only contains some text that sketches out the structure of this section and the requirements the augmentation mechanism needs to fulfill. However, there is probably a bit more discussion needed in the overall context of the document.\r\n\r\nA rendered version of this PR can be found here: https://jkrhb.github.io/sdf-mapping/mechanism/draft-bormann-asdf-sdf-mapping.html#name-augmentation-mechanism",
       "createdAt": "2025-06-24T21:41:01Z",
-      "updatedAt": "2025-07-06T13:07:08Z",
+      "updatedAt": "2025-07-11T17:53:08Z",
       "baseRepository": "cabo/sdf-mapping",
       "baseRefName": "main",
       "baseRefOid": "9fa8dd8982ea91ee35b9c2f171830e557346cab5",
@@ -516,6 +516,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOGU6qd86ei0Oj",
+      "title": "Improve augmentation algorithm prose",
+      "url": "https://github.com/cabo/sdf-mapping/pull/10",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "While trying to implement our current approach for the augmentation algorithm, I noticed that the description within the document is currently slightly incorrect (or rather: it doesn't work as it is described at the moment).\r\n\r\nThis PR tries to improve the prose by providing additional details and a first attempt describing error handling.",
+      "createdAt": "2025-07-11T18:07:53Z",
+      "updatedAt": "2025-07-11T18:12:47Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "93d73af38bfdf2ab56dc1a6ac961aba2fd537071",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "improve-resolution-algorithm",
+      "headRefOid": "a6287775bbc4db447304870e9a9b83d19b99814a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
