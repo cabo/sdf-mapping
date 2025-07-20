@@ -385,11 +385,11 @@ the following steps:
   the processor creates one.
 2. If the `info` does not contain an `augmentationLog` quality, the processor
   performs the following steps:
-  1. If the `originalSdfModel` quality is not present in the `info` block,
-     the processor MAY create it with the URI as of the SDF model that is
-     currently being augmented as its value.
-  2. The processor creates the `augmentationLog` quality with an array
-     containing the URI of the current mapping file as its sole item.
+    1. If the `originalSdfModel` quality is not present in the `info` block,
+       the processor MAY create it with the URI as of the SDF model that is
+       currently being augmented as its value.
+    2. The processor creates the `augmentationLog` quality with an array
+       containing the URI of the current mapping file as its sole item.
 2. Otherwise, if `augmentationLog` does not contain an array, stop and throw an error.
 3. Otherwise, the processor adds the URI of the current mapping file to the
    array of the `augmentationLog` quality.
