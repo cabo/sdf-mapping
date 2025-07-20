@@ -388,7 +388,7 @@ the following steps:
 
 <!-- TODO: This algorithm probably needs to be reworked or at least reformatted. -->
 1. If the `info` block is not present in the model that is being augmented,
-  the processor creates one.
+  the processor creates it.
 2. If the `info` does not contain an `augmentationLog` quality, the processor
   performs the following steps:
     1. If the `originalSdfModel` quality is not present in the `info` block,
