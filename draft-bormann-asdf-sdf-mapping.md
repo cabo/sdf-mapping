@@ -371,10 +371,27 @@ ecosystem.
 Since an augmented model is not fundamentally different from any other
 SDF model, it may be necessary to trace the provenance of the
 information that flowed into it, e.g., in the info block.
+For this purpose, a new quality called `augmentationLog` is introduced
+that contains an array of URIs pointing to the mapping files that been
+used to augment the original SDF file (which can also be indicated via
+the `originalSdfModel` quality).
+These additional qualities allow for reproducing the augmentation process.
+
 [^logging]
 
+~~~ sdf
+info:
+  title: Augmented SDF model with augmentation log.
+  augmentationLog:
+    - https://example.org/sdf-mapping-file-1
+    - https://example.org/sdf-mapping-file-2
+  originalSdfModel: https://example.org/original-sdf-model
+# TODO: Do we need more information here?
+~~~
+{: #augmentation-log check="json" pre="yaml2json" title="An augmented SDF model with an augmentation log and information regarding the original SDF model."}
+
 [^logging]: A convention for "logging" the augmentation steps that
-    went into an augmented model needs to be developed.
+    went into an augmented model needs to be further fleshed out.
     (An array in the info block that receives additions from a mapping
     file using the "`‑`" pointer syntax may be a good receptacle for
     receiving information about multiple augmentations.)
