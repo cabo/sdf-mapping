@@ -94,17 +94,17 @@ Table of Contents
    3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   8
    4.  Augmentation Mechanism  . . . . . . . . . . . . . . . . . . .  10
      4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  13
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
-     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  13
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
+     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  14
      5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  14
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  15
-   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  15
-   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
+   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
@@ -678,12 +678,60 @@ Internet-Draft                 SDF Mapping                     July 2025
 
    Since an augmented model is not fundamentally different from any
    other SDF model, it may be necessary to trace the provenance of the
-   information that flowed into it, e.g., in the info block.
-   // A convention for "logging" the augmentation steps that went into
-   // an augmented model needs to be developed.  (An array in the info
-   // block that receives additions from a mapping file using the "-"
-   // pointer syntax may be a good receptacle for receiving information
-   // about multiple augmentations.)
+   information that flowed into it, e.g., in the info block.  For this
+   purpose, a new quality called augmentationLog is introduced that
+   contains an array of URIs pointing to the mapping files that have
+   been used to augment the original SDF file (which can also be
+   indicated via the originalSdfModel quality).  These additional
+   qualities allow for reproducing the augmentation process.
+
+   For logging while performing an augmentation, the processor has to
+   perform the following steps:
+
+   1.  If the info block is not present in the model that is being
+       augmented, the processor creates it.
+
+   2.  If the info block does not contain an augmentationLog quality,
+       the processor performs the following steps:
+
+       1.  If the originalSdfModel quality is not present in the info
+           block, the processor adds it with a URI that can be used to
+           access the SDF model that is currently being augmented as its
+           value.
+
+       2.  The processor creates the augmentationLog quality with an
+           array containing URIs that can be used to access the current
+           mapping file as its sole item.
+
+   3.  Otherwise, if augmentationLog does not contain an array, stop and
+       throw an error.
+
+   4.  Otherwise, the processor adds a URI that can be used to access
+       the current mapping file to the array of the augmentationLog
+       quality.
+
+   {
+     "info": {
+       "title": "Augmented SDF model with augmentation log.",
+       "augmentationLog": [
+         "https://example.org/sdf-mapping-file-1",
+         "https://example.org/sdf-mapping-file-2"
+       ],
+       "originalSdfModel": "https://example.org/original-sdf-model"
+     }
+   }
+
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 13]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
+       Figure 8: An augmented SDF model with an augmentation log and
+               information regarding the original SDF model.
 
 5.  IANA Considerations
 
@@ -722,14 +770,6 @@ Internet-Draft                 SDF Mapping                     July 2025
       mailing list (asdf@ietf.org), or IETF Applications and Real-Time
       Area (art@ietf.org)
    Intended usage:  COMMON
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 13]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    Restrictions on usage:  none
    Author/Change controller:  IETF
    Provisional registration:  no
@@ -737,6 +777,14 @@ Internet-Draft                 SDF Mapping                     July 2025
 5.2.  Registries
 
    (TBD: After any future additions, check if we need any.)
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 14]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
 6.  Security Considerations
 
@@ -778,14 +826,6 @@ Internet-Draft                 SDF Mapping                     July 2025
               DOI 10.17487/RFC7396, October 2014,
               <https://www.rfc-editor.org/rfc/rfc7396>.
 
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 14]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
               Express Concise Binary Object Representation (CBOR) and
@@ -793,6 +833,14 @@ Internet-Draft                 SDF Mapping                     July 2025
               June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
 
 7.2.  Informative References
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 15]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
    [RFC8576]  Garcia-Morchon, O., Kumar, S., and M. Sethi, "Internet of
               Things (IoT) Security: State of the Art and Challenges",
@@ -836,58 +884,10 @@ Authors' Addresses
    Email: cabo@tzi.org
 
 
-
-Bormann & Romann         Expires 21 January 2026               [Page 15]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    Jan Romann
    Universität Bremen
    Germany
    Email: jan.romann@uni-bremen.de
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
