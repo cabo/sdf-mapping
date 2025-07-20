@@ -378,7 +378,7 @@ Since an augmented model is not fundamentally different from any other
 SDF model, it may be necessary to trace the provenance of the
 information that flowed into it, e.g., in the info block.
 For this purpose, a new quality called `augmentationLog` is introduced
-that contains an array of URIs pointing to the mapping files that been
+that contains an array of URIs pointing to the mapping files that have been
 used to augment the original SDF file (which can also be indicated via
 the `originalSdfModel` quality).
 These additional qualities allow for reproducing the augmentation process.
@@ -391,16 +391,19 @@ the following steps:
   the processor creates it.
 2. If the `info` block does not contain an `augmentationLog` quality, the processor
   performs the following steps:
-    1. If the `originalSdfModel` quality is not present in the `info` block,
-       the processor adds it with the URI as of the SDF model that is
-       currently being augmented as its value.
-    2. The processor creates the `augmentationLog` quality with an array
-       containing the URI of the current mapping file as its sole item.
-2. Otherwise, if `augmentationLog` does not contain an array, stop and throw an error.
-3. Otherwise, the processor adds the URI of the current mapping file to the
-   array of the `augmentationLog` quality.
+    1. If the `originalSdfModel` quality is not present in the `info`
+       block, the processor adds it with a URI that can be used to
+       access the SDF model that is currently being augmented as its
+       value.
+    2. The processor creates the `augmentationLog` quality with an
+       array containing URIs that can be used to access the current
+       mapping file as its sole item.
+2. Otherwise, if `augmentationLog` does not contain an array, stop and
+   throw an error.
+3. Otherwise, the processor adds a URI that can be used to access the
+   current mapping file to the array of the `augmentationLog` quality.
 
-[^logging]
+<!-- [^logging] -->
 
 ~~~ sdf
 info:
