@@ -22,11 +22,11 @@ application.
 SDF mapping files provide a mechanism to represent this
 augmentation. 
     " name="description">
-<meta content="xml2rfc 3.29.0" name="generator">
+<meta content="xml2rfc 3.30.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-bormann-asdf-sdf-mapping-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.29.0
+  xml2rfc 3.30.0
     Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
@@ -1061,7 +1061,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann &amp; Romann</td>
-<td class="center">Expires 7 January 2026</td>
+<td class="center">Expires 21 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,12 +1074,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-bormann-asdf-sdf-mapping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-06" class="published">6 July 2025</time>
+<time datetime="2025-07-20" class="published">20 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-07">7 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-01-21">21 January 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1145,7 +1145,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1639,28 +1639,33 @@ The original SDF model does not need to know which mapping files it
 will be used with and can be used with several such mapping files
 independently of each other.<a href="#section-4-4" class="pilcrow">¶</a></p>
 <p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's <code>map</code> object points to a location that already exists within the SDF model.
-To perform the augmentation, a processor needs to iterate over all entries within the <code>map</code> object and apply the JSON merge-patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> by using an entry's key as the <code>Target</code> argument and the value as the <code>Value</code> argument.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<aside id="section-4-6">
-        <p id="section-4-6.1">Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the <code>map</code> entries are applied is implementation-dependent.
+To perform the augmentation, a processor needs to create a copy of the original SDF model.
+It then iterates over all entries within the mapping file's <code>map</code> object [in an order to be specified; probably lexicographical].
+During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer contained an entry's key.
+This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
+<p id="section-4-6">Once the iteration has finished, the processor returns the resulting augmented SDF model.
+Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<aside id="section-4-7">
+        <p id="section-4-7.1">Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the <code>map</code> entries are applied is implementation-dependent.
 For this reason, we need to make sure that the contents of mapping
 files can be applied independently of each other.
 (We need to understand the onus in
-ensuring this that is put on author of a mapping file.)<a href="#section-4-6.1" class="pilcrow">¶</a></p>
-<p id="section-4-6.2">The problem can be "avoided" by changing the data structure used by the <code>map</code> quality to an array of objects to ensure a deterministic application order.
+ensuring this that is put on author of a mapping file.)<a href="#section-4-7.1" class="pilcrow">¶</a></p>
+<p id="section-4-7.2">The problem can be "avoided" by changing the data structure used by the <code>map</code> quality to an array of objects to ensure a deterministic application order.
 This would essentially put most of the onus on the author of a mapping
 file to get any order dependencies right.
 More preferable would be to ensure the entries in the mapping file can
 be applied independently and in any order.
-More discussion and implementation experience is required.<a href="#section-4-6.2" class="pilcrow">¶</a></p>
+More discussion and implementation experience is required.<a href="#section-4-7.2" class="pilcrow">¶</a></p>
 </aside>
-<p id="section-4-7">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
+<p id="section-4-8">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
 This is the result of applying the WoT-specific mapping file from <a href="#code-wot-output2" class="auto internal xref">Figure 4</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 3</a>.
 This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
 which requires some information that cannot be provided in an SDF
-model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-7" class="pilcrow">¶</a></p>
+model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-8" class="pilcrow">¶</a></p>
 <span id="name-an-sdf-model-that-has-been-"></span><div id="code-augmented-sdf-model">
 <figure id="figure-7">
-        <div class="lang-sdf sourcecode" id="section-4-8.1">
+        <div class="lang-sdf sourcecode" id="section-4-9.1">
 <pre>{
   "info": {
     "title": "Lamp Thing Model"
@@ -1696,8 +1701,8 @@ model that is limited to the vocabulary defined in the SDF base specification.<a
 <a href="#name-an-sdf-model-that-has-been-" class="selfRef">An SDF model that has been augmented with WoT-specific vocabulary.</a>
         </figcaption></figure>
 </div>
-<aside id="section-4-9">
-        <p id="section-4-9.1">Since the pair of an SDF model and a mapping file is equivalent in
+<aside id="section-4-10">
+        <p id="section-4-10.1">Since the pair of an SDF model and a mapping file is equivalent in
 semantics to the augmented model created from the two, there is no
 fundamental difference between specifying aspects in the SDF model or
 leaving them in a mapping file.
@@ -1707,7 +1712,7 @@ Therefore, developing the mapping between SDF and an ecosystem
 requires careful consideration which of the features should be available
 to other ecosystems and therefore should best be part of the common
 SDF model, and which are best handled in a mapping file specific to the
-ecosystem.<a href="#section-4-9.1" class="pilcrow">¶</a></p>
+ecosystem.<a href="#section-4-10.1" class="pilcrow">¶</a></p>
 </aside>
 <div id="logging-augmentation">
 <section id="section-4.1">

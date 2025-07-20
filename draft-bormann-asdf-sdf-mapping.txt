@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 7 January 2026                               Universität Bremen
-                                                             6 July 2025
+Expires: 21 January 2026                              Universität Bremen
+                                                            20 July 2025
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 1]
+Bormann & Romann         Expires 21 January 2026                [Page 1]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -68,7 +68,7 @@ Internet-Draft                 SDF Mapping                     July 2025
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 January 2026.
+   This Internet-Draft will expire on 21 January 2026.
 
 Copyright Notice
 
@@ -93,15 +93,15 @@ Table of Contents
      2.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .   4
    3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   8
    4.  Augmentation Mechanism  . . . . . . . . . . . . . . . . . . .  10
-     4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  12
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
-     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  12
-     5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  13
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  13
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  14
-   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  14
+     4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  13
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
+     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  13
+     5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  14
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  15
+   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  15
    List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  15
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 2]
+Bormann & Romann         Expires 21 January 2026                [Page 2]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -165,7 +165,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 3]
+Bormann & Romann         Expires 21 January 2026                [Page 3]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -221,7 +221,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 4]
+Bormann & Romann         Expires 21 January 2026                [Page 4]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -277,7 +277,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 5]
+Bormann & Romann         Expires 21 January 2026                [Page 5]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -333,7 +333,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 6]
+Bormann & Romann         Expires 21 January 2026                [Page 6]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -389,7 +389,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 7]
+Bormann & Romann         Expires 21 January 2026                [Page 7]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -445,7 +445,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 8]
+Bormann & Romann         Expires 21 January 2026                [Page 8]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -501,7 +501,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 7 January 2026                 [Page 9]
+Bormann & Romann         Expires 21 January 2026                [Page 9]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -535,9 +535,32 @@ Internet-Draft                 SDF Mapping                     July 2025
    a compatible mapping file, i.e. every JSON pointer within the keys of
    the mapping file's map object points to a location that already
    exists within the SDF model.  To perform the augmentation, a
-   processor needs to iterate over all entries within the map object and
-   apply the JSON merge-patch algorithm [RFC7396] by using an entry's
-   key as the Target argument and the value as the Value argument.
+   processor needs to create a copy of the original SDF model.  It then
+   iterates over all entries within the mapping file's map object [in an
+   order to be specified; probably lexicographical].  During each
+   iteration, the processor first obtains a reference to the target
+   referred to by the JSON pointer contained an entry's key.  This
+   reference is then used as the Target argument of the JSON Merge Patch
+   algorithm [RFC7396] and the entry's value as the Patch argument; the
+   target is replaced with the result of the merge-patch.
+
+   Once the iteration has finished, the processor returns the resulting
+   augmented SDF model.  Should the resolution of a JSON pointer or an
+   application of the JSON Merge Patch algorithm fail, an error is
+   thrown instead.
+
+
+
+
+
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 10]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
       |  Note that, in contrast to an array, the entries of a JSON
       |  object are considered unordered, which means that the sequence
@@ -547,21 +570,6 @@ Internet-Draft                 SDF Mapping                     July 2025
       |  other.  (We need to understand the onus in ensuring this that
       |  is put on author of a mapping file.)
       |  
-
-
-
-
-
-
-
-
-
-
-Bormann & Romann         Expires 7 January 2026                [Page 10]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
       |  The problem can be "avoided" by changing the data structure
       |  used by the map quality to an array of objects to ensure a
       |  deterministic application order.  This would essentially put
@@ -578,6 +586,37 @@ Internet-Draft                 SDF Mapping                     July 2025
    Description, which requires some information that cannot be provided
    in an SDF model that is limited to the vocabulary defined in the SDF
    base specification.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 11]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
    {
      "info": {
@@ -609,15 +648,6 @@ Internet-Draft                 SDF Mapping                     July 2025
      }
    }
 
-
-
-
-
-Bormann & Romann         Expires 7 January 2026                [Page 11]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
       Figure 7: An SDF model that has been augmented with WoT-specific
                                 vocabulary.
 
@@ -632,6 +662,17 @@ Internet-Draft                 SDF Mapping                     July 2025
       |  therefore should best be part of the common SDF model, and
       |  which are best handled in a mapping file specific to the
       |  ecosystem.
+
+
+
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 12]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
 4.1.  Logging Augmentation
 
@@ -666,14 +707,6 @@ Internet-Draft                 SDF Mapping                     July 2025
 
    Type name:  application
    Subtype name:  sdf-mapping+json
-
-
-
-Bormann & Romann         Expires 7 January 2026                [Page 12]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    Required parameters:  none
    Optional parameters:  none
    Encoding considerations:  binary (JSON is UTF-8-encoded text)
@@ -689,6 +722,14 @@ Internet-Draft                 SDF Mapping                     July 2025
       mailing list (asdf@ietf.org), or IETF Applications and Real-Time
       Area (art@ietf.org)
    Intended usage:  COMMON
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 13]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
+
    Restrictions on usage:  none
    Author/Change controller:  IETF
    Provisional registration:  no
@@ -720,16 +761,6 @@ Internet-Draft                 SDF Mapping                     July 2025
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-
-
-
-
-
-Bormann & Romann         Expires 7 January 2026                [Page 13]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    [I-D.ietf-asdf-sdf]
               Koster, M., Bormann, C., and A. Keränen, "Semantic
               Definition Format (SDF) for Data and Interactions of
@@ -746,6 +777,14 @@ Internet-Draft                 SDF Mapping                     July 2025
    [RFC7396]  Hoffman, P. and J. Snell, "JSON Merge Patch", RFC 7396,
               DOI 10.17487/RFC7396, October 2014,
               <https://www.rfc-editor.org/rfc/rfc7396>.
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 14]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
@@ -776,16 +815,6 @@ List of Figures
    Figure 7:  An SDF model that has been augmented with WoT-specific
               vocabulary.
 
-
-
-
-
-
-Bormann & Romann         Expires 7 January 2026                [Page 14]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
 List of Tables
 
    Table 1:   A media type for SDF mapping files
@@ -805,6 +834,12 @@ Authors' Addresses
    Germany
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 15]
+
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    Jan Romann
@@ -837,4 +872,25 @@ Authors' Addresses
 
 
 
-Bormann & Romann         Expires 7 January 2026                [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 16]
