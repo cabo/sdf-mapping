@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-13T01:17:34.037043+00:00",
+  "timestamp": "2025-07-22T01:12:47.234189+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -78,9 +78,17 @@
       "labels": [],
       "body": "For upcoming versions, the augmentation logging mechanism needs to be further fleshed out. We also need to collect implementation experience.\r\n\r\nNotes from the [PR discussion](https://github.com/cabo/sdf-mapping/pull/4#discussion_r2185261688_):\r\n\r\n- Provenance in info block via the mapping file?\r\n- JSON Pointer feature: append to an array, could be used for logging\r\n    - Challenge: find a place where to put this information\r\n    - Need to specify that the log entry is either appended to an existing array or that a new array is created with the log entry\r\n- Need to specify what happens if a JSON pointer points into \"thin air\" and not to a quality using an already registered quality name\r\n            ",
       "createdAt": "2025-07-05T10:43:52Z",
-      "updatedAt": "2025-07-05T10:43:52Z",
+      "updatedAt": "2025-07-20T14:05:52Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Via https://github.com/cabo/sdf-mapping/pull/11, we have addressed a number of the points listed above, but I suppose we can still leave this issue open until we have finalized the section and discussed the additions with the working group.",
+          "createdAt": "2025-07-20T14:05:52Z",
+          "updatedAt": "2025-07-20T14:05:52Z"
+        }
+      ]
     },
     {
       "number": 9,
@@ -522,26 +530,89 @@
       "id": "PR_kwDOGU6qd86ei0Oj",
       "title": "Improve augmentation algorithm prose",
       "url": "https://github.com/cabo/sdf-mapping/pull/10",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "JKRhb",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "While trying to implement our current approach for the augmentation algorithm, I noticed that the description within the document is currently slightly incorrect (or rather: it doesn't work as it is described at the moment).\r\n\r\nThis PR tries to improve the prose by providing additional details and a first attempt describing error handling.",
       "createdAt": "2025-07-11T18:07:53Z",
-      "updatedAt": "2025-07-11T18:12:47Z",
+      "updatedAt": "2025-07-20T13:31:18Z",
       "baseRepository": "cabo/sdf-mapping",
       "baseRefName": "main",
       "baseRefOid": "93d73af38bfdf2ab56dc1a6ac961aba2fd537071",
       "headRepository": "JKRhb/sdf-mapping",
       "headRefName": "improve-resolution-algorithm",
-      "headRefOid": "a6287775bbc4db447304870e9a9b83d19b99814a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "2493043fe50259f81b7571b61e5d99927b723b9c",
+      "closedAt": "2025-07-20T13:31:18Z",
+      "mergedAt": "2025-07-20T13:31:18Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "7bd5411fccde01635ec6376efdf3c54c0a336cb6"
+      },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOGU6qd86fudOc",
+      "title": "Expand Logging Augmentation section",
+      "url": "https://github.com/cabo/sdf-mapping/pull/11",
+      "state": "MERGED",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR contains an attempt at expanding the \"Logging Augmentation\" section with an example and additional text. I also made a first attempt at specifying a formal algorithm for the logging the augmentation chain, but that one still requires more discussion and probably some refinement.",
+      "createdAt": "2025-07-20T09:00:54Z",
+      "updatedAt": "2025-07-20T13:46:33Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "7bd5411fccde01635ec6376efdf3c54c0a336cb6",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "improve-logging",
+      "headRefOid": "9d2ee9bb0d6a378cf378a50e20b811e5001d51e9",
+      "closedAt": "2025-07-20T13:46:33Z",
+      "mergedAt": "2025-07-20T13:46:33Z",
+      "mergedBy": "cabo",
+      "mergeCommit": {
+        "oid": "99bab12e4c1b0df204591da6a55c3b925360d985"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGU6qd8609auk",
+          "commit": {
+            "abbreviatedOid": "4e0d8a2"
+          },
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "Noticed a few mistakes that the comments below address.",
+          "createdAt": "2025-07-20T12:20:16Z",
+          "updatedAt": "2025-07-20T12:21:50Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "```suggestion\r\n  the processor creates it.\r\n```",
+              "createdAt": "2025-07-20T12:20:16Z",
+              "updatedAt": "2025-07-20T12:21:50Z"
+            },
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\n2. If the `info` block does not contain an `augmentationLog` quality, the processor\r\n```",
+              "createdAt": "2025-07-20T12:20:35Z",
+              "updatedAt": "2025-07-20T12:21:50Z"
+            },
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\n       the processor adds it with the URI as of the SDF model that is\r\n```",
+              "createdAt": "2025-07-20T12:20:58Z",
+              "updatedAt": "2025-07-20T12:21:50Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
