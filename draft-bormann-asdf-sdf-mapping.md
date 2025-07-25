@@ -131,12 +131,15 @@ namespace:
   onedm: https://onedm.org/models
 defaultNamespace: onedm
 map:
-  "#/sdfObject/Digital_Input":
-    id: 3200
-  "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
-    id: 5500
-  "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
-    id: 5501
+  - target: "#/sdfObject/Digital_Input"
+    patch:
+      id: 3200
+  - target: "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State"
+    patch:
+      id: 5500
+  - target: "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter"
+    patch:
+      id: 5501
 ~~~
 {: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF mapping file"}
 
@@ -220,14 +223,16 @@ namespace:
   wot: http://www.w3.org/ns/td
 defaultNamespace: wot
 map:
-  "#/sdfObject/LampThingModel":
-    titles:
-      en: Lamp Thing Model
-      de: Thing Model für eine Lampe
-  "#/sdfObject/LampThingModel/sdfProperty/status":
-    descriptions:
-      en: Current status of the lamp
-      de: Aktueller Status der Lampe
+  - target: "#/sdfObject/LampThingModel"
+    patch:
+      titles:
+        en: Lamp Thing Model
+        de: Thing Model für eine Lampe
+  - target: "#/sdfObject/LampThingModel/sdfProperty/status"
+    patch:
+      descriptions:
+        en: Current status of the lamp
+        de: Aktueller Status der Lampe
 ~~~
 {: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Mapping File"}
 
@@ -240,9 +245,10 @@ namespace:
   wot: http://www.w3.org/ns/td
 defaultNamespace: wot
 map:
-  "#/sdfObject/LampThingModel/sdfProperty/status":
-    forms:
-    - href: coap://example.org/status
+  - target: "#/sdfObject/LampThingModel/sdfProperty/status"
+    patch:
+      forms:
+      - href: coap://example.org/status
 ~~~
 {: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Mapping File for Protocol Bindings"}
 
