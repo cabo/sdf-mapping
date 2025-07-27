@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-22T01:12:47.234189+00:00",
+  "timestamp": "2025-07-27T01:19:32.227790+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -102,9 +102,17 @@
       "labels": [],
       "body": "Notes from the [PR Discussion](https://github.com/cabo/sdf-mapping/pull/4#discussion_r2185261688_):\r\n\r\n- Hypothesis: Merge-patch _might_ be good enough, but maybe we have additional requirements\r\n- Update text to make the distinction between augmented and resolved models clearer\r\n            ",
       "createdAt": "2025-07-05T10:48:25Z",
-      "updatedAt": "2025-07-05T10:48:25Z",
+      "updatedAt": "2025-07-26T22:21:45Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think if we use #12 as a basis for going forward, we _could_ offer the possibility of defining other resolution algorithms via a new quality in addition to `target` and `patch` that could just default to using merge-patch if it isn't set. This might offer the greatest amount of flexibility if we should identify more use cases for which merge-patch is not enough.\n\nHowever, the approach proposed in #12 has the downside of being a lot more verbose than the previous one.",
+          "createdAt": "2025-07-26T22:21:45Z",
+          "updatedAt": "2025-07-26T22:21:45Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -613,6 +621,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 12,
+      "id": "PR_kwDOGU6qd86goQX7",
+      "title": "Evaluate array-based `map` approach",
+      "url": "https://github.com/cabo/sdf-mapping/pull/12",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In this PR, I wanted to try specifying the `map` as an array of objects that each contain a `target` and a `patch` quality. This would resolve the problem of having a non-deterministic order of the entries in the `map` entry, although it makes things a lot more verbose. I still wanted to try out some examples here to get a feeling for how it would look like it practice.\r\n\r\nThe rendered version can be accessed here: https://jkrhb.github.io/sdf-mapping/alternative-map/\r\n\r\nThe diff is available here: https://author-tools.ietf.org/api/iddiff?url_1=https://JKRhb.github.io/sdf-mapping/draft-bormann-asdf-sdf-mapping.txt&url_2=https://JKRhb.github.io/sdf-mapping/alternative-map/draft-bormann-asdf-sdf-mapping.txt",
+      "createdAt": "2025-07-25T13:04:14Z",
+      "updatedAt": "2025-07-25T13:08:36Z",
+      "baseRepository": "cabo/sdf-mapping",
+      "baseRefName": "main",
+      "baseRefOid": "99bab12e4c1b0df204591da6a55c3b925360d985",
+      "headRepository": "JKRhb/sdf-mapping",
+      "headRefName": "alternative-map",
+      "headRefOid": "c78424415be7180fd9673439f80bed57c00c8daa",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
