@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-27T01:19:32.227790+00:00",
+  "timestamp": "2025-08-03T01:20:35.825570+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -113,6 +113,22 @@
           "updatedAt": "2025-07-26T22:21:45Z"
         }
       ]
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOGU6qd87D25oq",
+      "title": "Additional document type that combines SDF model and Mapping files?",
+      "url": "https://github.com/cabo/sdf-mapping/issues/13",
+      "state": "OPEN",
+      "author": "JKRhb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I was wondering whether it would make sense to define an additional type of document that serves as a container of an SDF model and an arbitrary number of mapping files (all identified via a namespace or a URI). Processors could treat this type of document as an SDF model that has been augmented using all the mapping files referenced.\n\nAn example could look like this:\n\n```yaml\ninfo:\n  title: Example for a container for an SDF model and mapping files\nnamespace:\n  sdf-models: https://example.org/sdf-models\n  mapping-file: https://example.org/mapping-file\nmodel: sdf-model:#/example-model\nmapping-files:\n  - mapping-file:#/mapping-file1\n  - mapping-file:#/mapping-file2\n```",
+      "createdAt": "2025-08-02T13:55:51Z",
+      "updatedAt": "2025-08-02T13:55:51Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
