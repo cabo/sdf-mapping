@@ -79,6 +79,15 @@ entity:
 
 [^intro-]
 
+[^naming-note]
+
+[^naming-note]:
+    In this revision, we have renamed the `map` quality to `patches` since
+    the underlying data structure changed from an object to an array.
+    For this reason, we are also considering changing the name "Mapping File"
+    to something like "Augmentation File" to reflect the fact that the file
+    does not actually contain a _map_ for describing the augmentation anymore.
+
 ## Terminology and Conventions
 
 The definitions of {{-sdf}} apply.
@@ -94,15 +103,17 @@ The term "byte" is used in its now-customary sense as a synonym for
 
 An SDF mapping file provides augmentation information for one or more
 SDF models.
-Its main contents is a map from SDF name references ({{Section 4.3 of
--sdf}}) to a set of qualities.
+Its main contents are an array of `patches` that are applied using SDF name references ({{Section 4.3 of
+-sdf}}) as the respective target.
 
 When processing the mapping file together with one or more SDF
-models, these qualities are added to the SDF model at the
+models, the qualities from the array entries are added to the SDF model at the
 referenced name, as in a merge-patch operation {{-merge-patch}}.
 Note that this is somewhat similar to the way `sdfRef` ({{Section 4.4 of -sdf}}) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).
+
+Note that the order of the patch application is that of the elements within the array (which is deterministic in contrast to the entries of an object).
 
 ## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
 
@@ -131,12 +142,15 @@ namespace:
   onedm: https://onedm.org/models
 defaultNamespace: onedm
 map:
-  "#/sdfObject/Digital_Input":
-    id: 3200
-  "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
-    id: 5500
-  "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
-    id: 5501
+  - target: "#/sdfObject/Digital_Input"
+    patch:
+      id: 3200
+  - target: "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State"
+    patch:
+      id: 5500
+  - target: "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter"
+    patch:
+      id: 5501
 ~~~
 {: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF mapping file"}
 
@@ -220,14 +234,16 @@ namespace:
   wot: http://www.w3.org/ns/td
 defaultNamespace: wot
 map:
-  "#/sdfObject/LampThingModel":
-    titles:
-      en: Lamp Thing Model
-      de: Thing Model für eine Lampe
-  "#/sdfObject/LampThingModel/sdfProperty/status":
-    descriptions:
-      en: Current status of the lamp
-      de: Aktueller Status der Lampe
+  - target: "#/sdfObject/LampThingModel"
+    patch:
+      titles:
+        en: Lamp Thing Model
+        de: Thing Model für eine Lampe
+  - target: "#/sdfObject/LampThingModel/sdfProperty/status"
+    patch:
+      descriptions:
+        en: Current status of the lamp
+        de: Aktueller Status der Lampe
 ~~~
 {: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Mapping File"}
 
@@ -240,9 +256,10 @@ namespace:
   wot: http://www.w3.org/ns/td
 defaultNamespace: wot
 map:
-  "#/sdfObject/LampThingModel/sdfProperty/status":
-    forms:
-    - href: coap://example.org/status
+  - target: "#/sdfObject/LampThingModel/sdfProperty/status"
+    patch:
+      forms:
+      - href: coap://example.org/status
 ~~~
 {: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Mapping File for Protocol Bindings"}
 
@@ -252,10 +269,8 @@ map:
 An SDF mapping file has three optional components that are taken
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
-The mandatory fourth component, the "map", contains the mappings from
-an SDF name reference (usually a namespace and a JSON pointer) to a
-nested map providing a set of qualities to be merged in at the site
-identified in the name reference.
+The mandatory fourth component, the `patches`, contains the list of augmentations that are supposed to be applied to the target model,
+using an SDF name reference (usually a namespace and a JSON pointer) as the augmentation `target` to which a specified quality is to be applied as the `patch`.
 
 {{mapping-cddl}} describes the syntax of SDF mapping files using CDDL {{-cddl}}.
 
@@ -264,11 +279,11 @@ identified in the name reference.
 ~~~
 {: #mapping-cddl title="CDDL definition of SDF mapping file"}
 
-The JSON pointer that is used on the left-hand side of the map can
+The JSON pointer that is used a the `target` can
 point to a JSON map in the SDF model to be augmented by adding or
 replacing map entries.
 If necessary, the JSON map is created at the position indicated with
-the contents of right-hand side of the map [^example].
+the contents of the `patch` [^example].
 Alternatively, the JSON pointer can point to an array (also possibly
 created if not existing before) and add an element to that array by
 using the "`‑`" syntax introduced in the penultimate paragraph of
@@ -302,29 +317,14 @@ The original SDF model does not need to know which mapping files it
 will be used with and can be used with several such mapping files
 independently of each other.
 
-An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's `map` object points to a location that already exists within the SDF model.
+An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every `target` JSON pointer within elements of the  `patches` array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
 To perform the augmentation, a processor needs to create a copy of the original SDF model.
-It then iterates over all entries within the mapping file's `map` object \[in an order to be specified; probably lexicographical].
-During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer contained an entry's key.
-This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's value as the `Patch` argument; the target is replaced with the result of the merge-patch.
+It then iterates over all entries within the mapping file's `patches` array.
+During each iteration, the processor first obtains a reference to the target referred to by the `target` JSON pointer.
+This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's `patch` quality as the `Patch` argument; the target is replaced with the result of the merge-patch.
 
 Once the iteration has finished, the processor returns the resulting augmented SDF model.
 Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.
-
-{:aside}
->
-Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the `map` entries are applied is implementation-dependent.
-For this reason, we need to make sure that the contents of mapping
-files can be applied independently of each other.
-(We need to understand the onus in
-ensuring this that is put on author of a mapping file.)
->
-The problem can be "avoided" by changing the data structure used by the `map` quality to an array of objects to ensure a deterministic application order.
-This would essentially put most of the onus on the author of a mapping
-file to get any order dependencies right.
-More preferable would be to ensure the entries in the mapping file can
-be applied independently and in any order.
-More discussion and implementation experience is required.
 
 An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
 This is the result of applying the WoT-specific mapping file from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.

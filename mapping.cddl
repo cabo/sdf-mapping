@@ -5,7 +5,12 @@ sdf-mapping = {
  ? info: sdfinfo
  ? namespace: named<text>
  ? defaultNamespace: text
- map: { * global-sdf-pointer => additionalqualities}
+ patches: [ * patches ]
+}
+
+patch = {
+  target: global-sdf-pointer,
+  value: additionalqualities,
 }
 
 ; we can't really be much more specific here:
