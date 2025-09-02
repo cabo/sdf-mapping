@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-31T01:06:57.790927+00:00",
+  "timestamp": "2025-09-02T01:03:49.421408+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -658,13 +658,13 @@
       "labels": [],
       "body": "In this PR, I wanted to try specifying the `map` as an array of objects that each contain a `target` and a `patch` quality. This would resolve the problem of having a non-deterministic order of the entries in the `map` entry, although it makes things a lot more verbose. I still wanted to try out some examples here to get a feeling for how it would look like it practice.\r\n\r\nThe rendered version can be accessed here: https://jkrhb.github.io/sdf-mapping/alternative-map/\r\n\r\nThe diff is available here: https://author-tools.ietf.org/api/iddiff?url_1=https://JKRhb.github.io/sdf-mapping/draft-bormann-asdf-sdf-mapping.txt&url_2=https://JKRhb.github.io/sdf-mapping/alternative-map/draft-bormann-asdf-sdf-mapping.txt",
       "createdAt": "2025-07-25T13:04:14Z",
-      "updatedAt": "2025-08-29T14:33:47Z",
+      "updatedAt": "2025-08-31T21:14:59Z",
       "baseRepository": "cabo/sdf-mapping",
       "baseRefName": "main",
       "baseRefOid": "99bab12e4c1b0df204591da6a55c3b925360d985",
       "headRepository": "JKRhb/sdf-mapping",
       "headRefName": "alternative-map",
-      "headRefOid": "c78424415be7180fd9673439f80bed57c00c8daa",
+      "headRefOid": "5d7ecd58d6062dd48a815fe94f3cf0a06b870a35",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -676,6 +676,13 @@
           "body": "Notes from our meeting on August 29: We need to find a better term than `map` (e.g., `patches`) if we change the structure from an object to an array. We also need to explicitly specify the order of applying the patches (although the sequence is already implied by the array).\r\n\r\nWe could consider changing the name \"Mapping File\" to something like \"Augmentation File\", this should already be mentioned in the introduction.",
           "createdAt": "2025-08-29T14:32:25Z",
           "updatedAt": "2025-08-29T14:33:47Z"
+        },
+        {
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Notes from our meeting on August 29: We need to find a better term than `map` (e.g., `patches`) if we change the structure from an object to an array. We also need to explicitly specify the order of applying the patches (although the sequence is already implied by the array).\r\n> \r\n> We could consider changing the name \"Mapping File\" to something like \"Augmentation File\", this should already be mentioned in the introduction.\r\n\r\nI think this should be covered by the latest commit.",
+          "createdAt": "2025-08-31T21:14:59Z",
+          "updatedAt": "2025-08-31T21:14:59Z"
         }
       ],
       "reviews": []
