@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-02T01:03:49.421408+00:00",
+  "timestamp": "2025-09-04T00:59:31.528083+00:00",
   "repo": "cabo/sdf-mapping",
   "labels": [
     {
@@ -126,7 +126,7 @@
       "labels": [],
       "body": "I was wondering whether it would make sense to define an additional type of document that serves as a container of an SDF model and an arbitrary number of mapping files (all identified via a namespace or a URI). Processors could treat this type of document as an SDF model that has been augmented using all the mapping files referenced.\n\nAn example could look like this:\n\n```yaml\ninfo:\n  title: Example for a container for an SDF model and mapping files\nnamespace:\n  sdf-models: https://example.org/sdf-models\n  mapping-file: https://example.org/mapping-file\nmodel: sdf-model:#/example-model\nmapping-files:\n  - mapping-file:#/mapping-file1\n  - mapping-file:#/mapping-file2\n```",
       "createdAt": "2025-08-02T13:55:51Z",
-      "updatedAt": "2025-08-29T14:37:52Z",
+      "updatedAt": "2025-09-02T20:57:04Z",
       "closedAt": null,
       "comments": [
         {
@@ -135,6 +135,20 @@
           "body": "Notes from our meeting on August 29:\n\nWe could just use a JSON array of the model(s) and mapping files to cover this feature.",
           "createdAt": "2025-08-29T14:37:52Z",
           "updatedAt": "2025-08-29T14:37:52Z"
+        },
+        {
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> We could just use a JSON array of the model(s) and mapping files to cover this feature.\n\nIncorporating the new array-based approach from #12 for modelling the `map` (now `patches`) quality, this could look like the following:\n\n```yaml\n- info:\n    title: I am an SDF model!\n  sdfObject:\n    lamp:\n      sdfProperty:\n        brightness:\n          type: number\n- info:\n    title: I am an SDF mapping file!\n  patches:\n    - target: \"#/sdfObject/lamp/sdfProperty/brightness\"\n      patch:\n        minimum: 0\n        maximum: 100\n```\n\n<details>\n\n<summary>JSON Version</summary>\n\n```json\n[\n  {\n    \"info\": {\n      \"title\": \"I am an SDF model!\"\n    },\n    \"sdfObject\": {\n      \"lamp\": {\n        \"sdfProperty\": {\n          \"brightness\": {\n            \"type\": \"number\"\n          }\n        }\n      }\n    }\n  },\n  {\n    \"info\": {\n      \"title\": \"I am an SDF mapping file!\"\n    },\n    \"patches\": [\n      {\n        \"target\": \"#/sdfObject/lamp/sdfProperty/brightness\",\n        \"patch\": {\n          \"minimum\": 0,\n          \"maximum\": 100\n        }\n      }\n    ]\n  }\n]\n```\n</details>\n\nAn SDF processor could simply treat this type of document as an augmented model, i.e. like this:\n\n\n```yaml\ninfo:\n  title: I am an SDF model!\nsdfObject:\n  lamp:\n    sdfProperty:\n      brightness:\n        type: number\n        minimum: 0\n        maximum: 100\n```\n\n<details>\n\n<summary>JSON Version</summary>\n\n```json\n{\n  \"info\": {\n    \"title\": \"I am an SDF model!\"\n  },\n  \"sdfObject\": {\n    \"lamp\": {\n      \"sdfProperty\": {\n        \"brightness\": {\n          \"type\": \"number\",\n          \"minimum\": 0,\n          \"maximum\": 100\n        }\n      }\n    }\n  }\n}\n```\n</details>\n\n",
+          "createdAt": "2025-09-02T20:55:26Z",
+          "updatedAt": "2025-09-02T20:55:26Z"
+        },
+        {
+          "author": "JKRhb",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "As a name for this type of (pretty simple) document, we could use something like \"SDF Container\" or \"SDF Patch Set\".",
+          "createdAt": "2025-09-02T20:57:03Z",
+          "updatedAt": "2025-09-02T20:57:03Z"
         }
       ]
     }
