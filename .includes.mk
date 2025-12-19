@@ -1,1 +1,1 @@
-draft-bormann-asdf-sdf-mapping.xml: mapping.cddl
+draft-ietf-asdf-sdf-mapping.xml: mapping.cddl
