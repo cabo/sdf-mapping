@@ -19,6 +19,8 @@
 Gemfile.lock
 archive.json
 draft-ietf-asdf-sdf-mapping.xml
+draft-ietf-asdf-sdf-mapping.v2v3.xml
 package-lock.json
 report.xml
 !requirements.txt
+/sourcecode*
