@@ -18,8 +18,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-bormann-asdf-sdf-mapping.xml
+draft-ietf-asdf-sdf-mapping.xml
 package-lock.json
 report.xml
 !requirements.txt
-/sourcecode*
