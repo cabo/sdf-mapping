@@ -107,7 +107,7 @@ Its main contents are an array of `patches` that are applied using SDF name refe
 -sdf}}) as the respective target.
 
 When processing the mapping file together with one or more SDF
-models, the qualities from the array entries are added to the SDF model at the
+models, the qualities from the array elements are added to the SDF model at the
 referenced name, as in a merge-patch operation {{-merge-patch}}.
 Note that this is somewhat similar to the way `sdfRef` ({{Section 4.4 of -sdf}}) works, but in a
 mapping file the arrows point in the inverse direction (from the
