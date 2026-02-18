@@ -170,9 +170,9 @@ Bormann & Romann         Expires 22 August 2026                 [Page 3]
 Internet-Draft               SDF Supplements               February 2026
 
 
-   Note that the order of the patch application is that of the elements
-   within the array (which is deterministic in contrast to the entries
-   of an object).
+   The order of the application of patches is that of the elements
+   within the array (which is deterministic in contrast to the order of
+   entries of an object).
 
 2.1.  Example Model 1 (ecosystem: IPSO/OMA)
 
