@@ -49,6 +49,7 @@ informative:
 
 entity:
         SELF: "[RFC-XXXX]"
+...
 
 --- abstract
 
