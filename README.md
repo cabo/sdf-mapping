@@ -2,12 +2,12 @@
 
 # Semantic Definition Format (SDF): Mapping files
 
-This is the working area for the individual Internet-Draft, "Semantic Definition Format (SDF): Mapping files".
+This is the working area for the IETF [ASDF Working Group](https://datatracker.ietf.org/group/asdf/documents/) Internet-Draft, "Semantic Definition Format (SDF): Mapping files".
 
-* [Editor's Copy](https://cabo.github.io/sdf-mapping/#go.draft-bormann-asdf-sdf-mapping.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-bormann-asdf-sdf-mapping)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-bormann-asdf-sdf-mapping)
-* [Compare Editor's Copy to Individual Draft](https://cabo.github.io/sdf-mapping/#go.draft-bormann-asdf-sdf-mapping.diff)
+* [Editor's Copy](https://cabo.github.io/sdf-mapping/#go.draft-ietf-asdf-sdf-mapping.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-asdf-sdf-mapping)
+* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-mapping)
+* [Compare Editor's Copy to Working Group Draft](https://cabo.github.io/sdf-mapping/#go.draft-ietf-asdf-sdf-mapping.diff)
 
 [Access to all branches](https://cabo.github.io/sdf-mapping/)
 
@@ -16,9 +16,8 @@ This is the working area for the individual Internet-Draft, "Semantic Definition
 See the
 [guidelines for contributions](https://github.com/cabo/sdf-mapping/blob/main/CONTRIBUTING.md).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
-
+The contributing file also has tips on how to make contributions, if you
+don't already know how to do that.
 
 ## Command Line Usage
 

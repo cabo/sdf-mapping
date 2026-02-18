@@ -5,7 +5,7 @@ coding: utf-8
 title: >
   Semantic Definition Format (SDF): Mapping files
 abbrev: SDF Mapping
-docname: draft-bormann-asdf-sdf-mapping-latest
+docname: draft-ietf-asdf-sdf-mapping-latest
 
 category: std
 submissiontype: IETF
