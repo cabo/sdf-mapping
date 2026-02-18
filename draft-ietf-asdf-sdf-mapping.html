@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Semantic Definition Format (SDF): Mapping files</title>
+<title>Semantic Definition Format (SDF): Supplements</title>
 <meta content="Carsten Bormann" name="author">
 <meta content="Jan Romann" name="author">
 <meta content="
@@ -19,7 +19,7 @@ serializations as needed.
        An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
 application.
-SDF mapping files provide a mechanism to represent this
+SDF Supplements provide a mechanism to represent this
 augmentation. 
     " name="description">
 <meta content="xml2rfc 3.31.0" name="generator">
@@ -30,14 +30,14 @@ augmentation.
     Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
-    intervaltree 3.1.0
+    intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.0.2
     platformdirs 4.5.1
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.32.5
-    wcwidth 0.2.14
+    wcwidth 0.3.0
 -->
 <link href="draft-ietf-asdf-sdf-mapping.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -178,7 +178,7 @@ augmentation.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Oxygen Mono';
@@ -186,7 +186,8 @@ augmentation.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 }
 
 @font-face {
@@ -578,6 +579,7 @@ aside, blockquote {
 }
 blockquote {
   margin: 1em 0;
+  border-left: 2px var(--pilcrow-strong) solid;
 }
 cite {
   display: block;
@@ -648,7 +650,7 @@ a.pilcrow {
   }
 }
 @media not print {
-  :hover > a.pilcrow {
+  :hover > a.pilcrow, a.pilcrow:focus {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
@@ -1055,12 +1057,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">SDF Mapping</td>
-<td class="right">December 2025</td>
+<td class="center">SDF Supplements</td>
+<td class="right">February 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann &amp; Romann</td>
-<td class="center">Expires 22 June 2026</td>
+<td class="center">Expires 22 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1073,12 +1075,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-asdf-sdf-mapping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-12-19" class="published">19 December 2025</time>
+<time datetime="2026-02-18" class="published">18 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-06-22">22 June 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-22">22 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1093,7 +1095,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Semantic Definition Format (SDF): Mapping files</h1>
+<h1 id="title">Semantic Definition Format (SDF): Supplements</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">The Semantic Definition Format (SDF) is a format for domain experts to
@@ -1107,7 +1109,7 @@ serializations as needed.<a href="#section-abstract-1" class="pilcrow">¶</a></p
 <p id="section-abstract-2">An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
 application.
-SDF mapping files provide a mechanism to represent this
+SDF Supplements provide a mechanism to represent this
 augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1144,7 +1146,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 June 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1153,7 +1155,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2025 IETF Trust and the persons identified as the
+            Copyright (c) 2026 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1193,7 +1195,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-formal-syntax-of-sdf-mappin" class="internal xref">Formal Syntax of SDF mapping files</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-formal-syntax-of-sdf-supple" class="internal xref">Formal Syntax of SDF Supplements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-augmentation-mechanism" class="internal xref">Augmentation Mechanism</a></p>
@@ -1260,8 +1262,13 @@ serializations as needed.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
 application.
-SDF mapping files provide a mechanism to represent this
+SDF Supplements provide a mechanism to represent this
 augmentation.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3"><span class="cref" id="naming-note">In this revision, we have renamed the <code>map</code> quality to <code>amend</code> since
+the underlying data structure changed from an object to an array.
+For this reason, we also change the term "Mapping File"
+to "Supplement" to also reflect the fact that the file
+does not actually contain a <em>map</em> for describing the augmentation anymore.</span><a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="terminology-and-conventions">
 <section id="section-1.1">
         <h3 id="name-terminology-and-conventions">
@@ -1283,22 +1290,23 @@ appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">�
       <h2 id="name-overview">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
       </h2>
-<p id="section-2-1">An SDF mapping file provides augmentation information for one or more
+<p id="section-2-1">An SDF Supplement provides augmentation information for one or more
 SDF models.
-Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">When processing the mapping file together with one or more SDF
-models, these qualities are added to the SDF model at the
+Its main contents are an array of <code>patches</code> that are applied using SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) as the respective target.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">When processing the Supplement together with one or more SDF
+models, the qualities from the array elements are added to the SDF model at the
 referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.
 Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
-mapping file the arrows point in the inverse direction (from the
+Supplement the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).<a href="#section-2-3" class="pilcrow">¶</a></p>
 <div id="example1">
 <section id="section-2.1">
         <h3 id="name-example-model-1-ecosystem-i">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-model-1-ecosystem-i" class="section-name selfRef">Example Model 1 (ecosystem: IPSO/OMA)</a>
         </h3>
-<p id="section-2.1-1">An example for an SDF mapping file is given in <a href="#code-example1" class="auto internal xref">Figure 1</a>.
-This mapping file is meant to attach to an SDF specification published
+<p id="section-2.1-1">An example for an SDF Supplement is given in <a href="#code-example1" class="auto internal xref">Figure 1</a>.
+This Supplement is meant to attach to an SDF specification published
 by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 <span class="cref" id="namespace-note"><br>
 Note that this example uses namespaces to identify elements of the
@@ -1312,7 +1320,7 @@ definition namespaces and not quality namespaces, which are one
 meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.1-2.1">
-            <p id="section-2.1-2.1.1">Start of a mapping file for certain OneDM playground models:<a href="#section-2.1-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-2.1.1">Start of a Supplement for certain OneDM playground models:<a href="#section-2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-a-simple-example-of-an-sdf-"></span><div id="code-example1">
@@ -1326,22 +1334,28 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
     "onedm": "https://onedm.org/models"
   },
   "defaultNamespace": "onedm",
-  "map": {
-    "#/sdfObject/Digital_Input": {
-      "id": 3200
+  "amend": [
+    {
+      "#/sdfObject/Digital_Input": {
+        "id": 3200
+      }
     },
-    "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State": {
-      "id": 5500
+    {
+      "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State": {
+        "id": 5500
+      }
     },
-    "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
-      "id": 5501
+    {
+      "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
+        "id": 5501
+      }
     }
-  }
+  ]
 }
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-a-simple-example-of-an-sdf-" class="selfRef">A simple example of an SDF mapping file</a>
+<a href="#name-a-simple-example-of-an-sdf-" class="selfRef">A simple example of an SDF Supplement</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1353,10 +1367,10 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-2.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
 (as defined in Section 10 of <span>[<a href="#W3C.wot-thing-description11" class="cite xref">W3C.wot-thing-description11</a>]</span>)
-into an SDF model plus a mapping file to catch Thing Model attributes
+into an SDF model plus a Supplement to catch Thing Model attributes
 that don't currently have SDF qualities defined (namely, <code>titles</code> and
 <code>descriptions</code> members used for internationalization).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">A second mapping file is more experimental in that it captures
+<p id="section-2.2-2">A second Supplement is more experimental in that it captures
 information that is actually instance-specific,
 in this case a <code>forms</code> member that binds the <code>status</code> property to an
 instance-specific CoAP resource.
@@ -1442,10 +1456,10 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 </div>
 <ul class="normal">
 <li class="normal" id="section-2.2-8.1">
-            <p id="section-2.2-8.1.1">The other output: SDF mapping file for class information<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
+            <p id="section-2.2-8.1.1">The other output: SDF Supplement for class information<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<span id="name-output-2-sdf-mapping-file"></span><div id="code-wot-output2">
+<span id="name-output-2-sdf-supplement"></span><div id="code-wot-output2">
 <figure id="figure-4">
           <div class="lang-sdf sourcecode" id="section-2.2-9.1">
 <pre>{
@@ -1456,33 +1470,37 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
     "wot": "http://www.w3.org/ns/td"
   },
   "defaultNamespace": "wot",
-  "map": {
-    "#/sdfObject/LampThingModel": {
-      "titles": {
-        "en": "Lamp Thing Model",
-        "de": "Thing Model für eine Lampe"
+  "amend": [
+    {
+      "#/sdfObject/LampThingModel": {
+        "titles": {
+          "en": "Lamp Thing Model",
+          "de": "Thing Model für eine Lampe"
+        }
       }
     },
-    "#/sdfObject/LampThingModel/sdfProperty/status": {
-      "descriptions": {
-        "en": "Current status of the lamp",
-        "de": "Aktueller Status der Lampe"
+    {
+      "#/sdfObject/LampThingModel/sdfProperty/status": {
+        "descriptions": {
+          "en": "Current status of the lamp",
+          "de": "Aktueller Status der Lampe"
+        }
       }
     }
-  }
+  ]
 }
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-output-2-sdf-mapping-file" class="selfRef">Output 2: SDF Mapping File</a>
+<a href="#name-output-2-sdf-supplement" class="selfRef">Output 2: SDF Supplement</a>
           </figcaption></figure>
 </div>
 <ul class="normal">
 <li class="normal" id="section-2.2-10.1">
-            <p id="section-2.2-10.1.1">A third output: SDF mapping file for Protocol Bindings<a href="#section-2.2-10.1.1" class="pilcrow">¶</a></p>
+            <p id="section-2.2-10.1.1">A third output: SDF Supplement for Protocol Bindings<a href="#section-2.2-10.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<span id="name-output-3-sdf-mapping-file-f"></span><div id="code-wot-output3">
+<span id="name-output-3-sdf-supplement-for"></span><div id="code-wot-output3">
 <figure id="figure-5">
           <div class="lang-sdf sourcecode" id="section-2.2-11.1">
 <pre>{
@@ -1493,20 +1511,22 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
     "wot": "http://www.w3.org/ns/td"
   },
   "defaultNamespace": "wot",
-  "map": {
-    "#/sdfObject/LampThingModel/sdfProperty/status": {
-      "forms": [
-        {
-          "href": "coap://example.org/status"
-        }
-      ]
+  "amend": [
+    {
+      "#/sdfObject/LampThingModel/sdfProperty/status": {
+        "descriptions": [
+          {
+            "href": "coap://example.org/status"
+          }
+        ]
+      }
     }
-  }
+  ]
 }
 </pre>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-output-3-sdf-mapping-file-f" class="selfRef">Output 3: SDF Mapping File for Protocol Bindings</a>
+<a href="#name-output-3-sdf-supplement-for" class="selfRef">Output 3: SDF Supplement for Protocol Bindings</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1515,18 +1535,16 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 </div>
 <div id="syntax">
 <section id="section-3">
-      <h2 id="name-formal-syntax-of-sdf-mappin">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-formal-syntax-of-sdf-mappin" class="section-name selfRef">Formal Syntax of SDF mapping files</a>
+      <h2 id="name-formal-syntax-of-sdf-supple">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-formal-syntax-of-sdf-supple" class="section-name selfRef">Formal Syntax of SDF Supplements</a>
       </h2>
-<p id="section-3-1">An SDF mapping file has three optional components that are taken
+<p id="section-3-1">An SDF Supplement has three optional components that are taken
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
-The mandatory fourth component, the "map", contains the mappings from
-an SDF name reference (usually a namespace and a JSON pointer) to a
-nested map providing a set of qualities to be merged in at the site
-identified in the name reference.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 6</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<span id="name-cddl-definition-of-sdf-mapp"></span><div id="mapping-cddl">
+The mandatory fourth component, the <code>amend</code> block, contains the list of amendments that are supposed to be applied to the target model,
+using an SDF name reference (usually a namespace and a JSON pointer) as the target to which a specified quality is applied to.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 6</a> describes the syntax of SDF Supplements using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<span id="name-cddl-definition-of-sdf-supp"></span><div id="mapping-cddl">
 <figure id="figure-6">
         <div class="breakable lang-cddl sourcecode" id="section-3-3.1">
 <pre>
@@ -1537,7 +1555,11 @@ sdf-mapping = {
  ? info: sdfinfo
  ? namespace: named&lt;text&gt;
  ? defaultNamespace: text
- map: { * global-sdf-pointer =&gt; additionalqualities}
+ amend: [ * amendments ]
+}
+
+amendments = {
+  + global-sdf-pointer =&gt; additionalqualities,
 }
 
 ; we can't really be much more specific here:
@@ -1599,14 +1621,14 @@ rfc3339z = '
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-cddl-definition-of-sdf-mapp" class="selfRef">CDDL definition of SDF mapping file</a>
+<a href="#name-cddl-definition-of-sdf-supp" class="selfRef">CDDL definition of SDF Supplements</a>
         </figcaption></figure>
 </div>
-<p id="section-3-4">The JSON pointer that is used on the left-hand side of the map can
+<p id="section-3-4">The JSON pointer that is used a the <code>target</code> can
 point to a JSON map in the SDF model to be augmented by adding or
 replacing map entries.
 If necessary, the JSON map is created at the position indicated with
-the contents of right-hand side of the map <span class="cref" id="example">(add examples)</span>.
+the contents of the <code>patch</code> <span class="cref" id="example">(add examples)</span>.
 Alternatively, the JSON pointer can point to an array (also possibly
 created if not existing before) and add an element to that array by
 using the "<code>‑</code>" syntax introduced in the penultimate paragraph of
@@ -1618,9 +1640,9 @@ using the "<code>‑</code>" syntax introduced in the penultimate paragraph of
       <h2 id="name-augmentation-mechanism">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-augmentation-mechanism" class="section-name selfRef">Augmentation Mechanism</a>
       </h2>
-<p id="section-4-1">An SDF model and a compatible mapping file can be combined to create
+<p id="section-4-1">An SDF model and a compatible Supplement can be combined to create
 an <em>augmented</em> SDF model.
-(This process can be repeated with multiple mapping files by using the
+(This process can be repeated with multiple Supplements by using the
 outcome of one augmentation as the input of the next one.)
 As augmentation is not equal to instantiation, augmented SDF models
 are still abstract in nature, but are enriched with ecosystem-specific
@@ -1632,39 +1654,26 @@ information.<a href="#section-4-1" class="pilcrow">¶</a></p>
 defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <p id="section-4-4">Instead of a model file reaching out to other model files and
 integrating aspects into itself via <code>sdfRef</code> (<em>pull</em> approach), the
-mapping file <em>pushes</em> information into a new copy of a specific given
+Supplement <em>pushes</em> information into a new copy of a specific given
 SDF model.
-The original SDF model does not need to know which mapping files it
-will be used with and can be used with several such mapping files
+The original SDF model does not need to know which Supplements it
+will be used with and can be used with several such Supplements
 independently of each other.<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's <code>map</code> object points to a location that already exists within the SDF model.
+<p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible Supplement, i.e. every JSON pointer key within elements of the  <code>amend</code> array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
 To perform the augmentation, a processor needs to create a copy of the original SDF model.
-It then iterates over all entries within the mapping file's <code>map</code> object [in an order to be specified; probably lexicographical].
-During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer contained an entry's key.
+It then iterates over all entries within the Supplement's <code>amend</code> array elements.
+During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
 This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Once the iteration has finished, the processor returns the resulting augmented SDF model.
 Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<aside id="section-4-7">
-        <p id="section-4-7.1">Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the <code>map</code> entries are applied is implementation-dependent.
-For this reason, we need to make sure that the contents of mapping
-files can be applied independently of each other.
-(We need to understand the onus in
-ensuring this that is put on author of a mapping file.)<a href="#section-4-7.1" class="pilcrow">¶</a></p>
-<p id="section-4-7.2">The problem can be "avoided" by changing the data structure used by the <code>map</code> quality to an array of objects to ensure a deterministic application order.
-This would essentially put most of the onus on the author of a mapping
-file to get any order dependencies right.
-More preferable would be to ensure the entries in the mapping file can
-be applied independently and in any order.
-More discussion and implementation experience is required.<a href="#section-4-7.2" class="pilcrow">¶</a></p>
-</aside>
-<p id="section-4-8">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
-This is the result of applying the WoT-specific mapping file from <a href="#code-wot-output2" class="auto internal xref">Figure 4</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 3</a>.
+<p id="section-4-7">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
+This is the result of applying the WoT-specific Supplement from <a href="#code-wot-output2" class="auto internal xref">Figure 4</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 3</a>.
 This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
 which requires some information that cannot be provided in an SDF
-model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-8" class="pilcrow">¶</a></p>
+model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-7" class="pilcrow">¶</a></p>
 <span id="name-an-sdf-model-that-has-been-"></span><div id="code-augmented-sdf-model">
 <figure id="figure-7">
-        <div class="lang-sdf sourcecode" id="section-4-9.1">
+        <div class="lang-sdf sourcecode" id="section-4-8.1">
 <pre>{
   "info": {
     "title": "Lamp Thing Model"
@@ -1700,18 +1709,18 @@ model that is limited to the vocabulary defined in the SDF base specification.<a
 <a href="#name-an-sdf-model-that-has-been-" class="selfRef">An SDF model that has been augmented with WoT-specific vocabulary.</a>
         </figcaption></figure>
 </div>
-<aside id="section-4-10">
-        <p id="section-4-10.1">Since the pair of an SDF model and a mapping file is equivalent in
+<aside id="section-4-9">
+        <p id="section-4-9.1">Since the pair of an SDF model and a Supplement is equivalent in
 semantics to the augmented model created from the two, there is no
 fundamental difference between specifying aspects in the SDF model or
-leaving them in a mapping file.
+leaving them in a Supplement.
 Also, parts of an ecosystem-specific vocabulary may in fact be
 mappable to the SDF base vocabulary.
 Therefore, developing the mapping between SDF and an ecosystem
 requires careful consideration which of the features should be available
 to other ecosystems and therefore should best be part of the common
-SDF model, and which are best handled in a mapping file specific to the
-ecosystem.<a href="#section-4-10.1" class="pilcrow">¶</a></p>
+SDF model, and which are best handled in a Supplement specific to the
+ecosystem.<a href="#section-4-9.1" class="pilcrow">¶</a></p>
 </aside>
 <div id="logging-augmentation">
 <section id="section-4.1">
@@ -1722,7 +1731,7 @@ ecosystem.<a href="#section-4-10.1" class="pilcrow">¶</a></p>
 SDF model, it may be necessary to trace the provenance of the
 information that flowed into it, e.g., in the info block.
 For this purpose, a new quality called <code>augmentationLog</code> is introduced
-that contains an array of URIs pointing to the mapping files that have been
+that contains an array of URIs pointing to the Supplements that have been
 used to augment the original SDF file (which can also be indicated via
 the <code>originalSdfModel</code> quality).
 These additional qualities allow for reproducing the augmentation process.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
@@ -1746,7 +1755,7 @@ value.<a href="#section-4.1-3.2.2.1.1" class="pilcrow">¶</a></p>
               <li id="section-4.1-3.2.2.2">
                 <p id="section-4.1-3.2.2.2.1">The processor creates the <code>augmentationLog</code> quality with an
 array containing URIs that can be used to access the current
-mapping file as its sole item.<a href="#section-4.1-3.2.2.2.1" class="pilcrow">¶</a></p>
+Supplement as its sole item.<a href="#section-4.1-3.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </li>
@@ -1756,7 +1765,7 @@ throw an error.<a href="#section-4.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-4.1-3.4">
             <p id="section-4.1-3.4.1">Otherwise, the processor adds a URI that can be used to access the
-current mapping file to the array of the <code>augmentationLog</code> quality.<a href="#section-4.1-3.4.1" class="pilcrow">¶</a></p>
+current Supplement to the array of the <code>augmentationLog</code> quality.<a href="#section-4.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <span id="name-an-augmented-sdf-model-with"></span><div id="augmentation-log">
@@ -1793,11 +1802,11 @@ current mapping file to the array of the <code>augmentationLog</code> quality.<a
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
         </h3>
 <p id="section-5.1-1">IANA is requested to add the following Media-Type to the "Media Types" registry.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<span id="name-a-media-type-for-sdf-mappin"></span><div id="new-media-types">
+<span id="name-a-media-type-for-sdf-supple"></span><div id="new-media-types">
 <table class="left" id="table-1">
           <caption>
 <a href="#table-1" class="selfRef">Table 1</a>:
-<a href="#name-a-media-type-for-sdf-mappin" class="selfRef">A media type for SDF mapping files</a>
+<a href="#name-a-media-type-for-sdf-supple" class="selfRef">A media type for SDF Supplements</a>
           </caption>
 <thead>
             <tr>
@@ -1809,7 +1818,7 @@ current mapping file to the array of the <code>augmentationLog</code> quality.<a
           <tbody>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">sdf-mapping+json</td>
-              <td class="text-left" rowspan="1" colspan="1">application/sdf-mapping+json</td>
+              <td class="text-left" rowspan="1" colspan="1">application/sdf-supplement+json</td>
               <td class="text-left" rowspan="1" colspan="1">RFC XXXX, <a href="#media-type" class="auto internal xref">Section 5.1</a>
 </td>
             </tr>
@@ -1986,7 +1995,7 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.1-4.22
         <dt id="appendix-A-1.1">
 <a href="#code-example1" class="auto internal xref">Figure 1</a>:</dt>
         <dd style="margin-left: 5.5em" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1"><a href="#code-example1" class="internal xref">A simple example of an SDF mapping file</a><a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.2.1"><a href="#code-example1" class="internal xref">A simple example of an SDF Supplement</a><a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="appendix-A-1.3">
@@ -2004,19 +2013,19 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.1-4.22
 <dt id="appendix-A-1.7">
 <a href="#code-wot-output2" class="auto internal xref">Figure 4</a>:</dt>
         <dd style="margin-left: 5.5em" id="appendix-A-1.8">
-          <p id="appendix-A-1.8.1"><a href="#code-wot-output2" class="internal xref">Output 2: SDF Mapping File</a><a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.8.1"><a href="#code-wot-output2" class="internal xref">Output 2: SDF Supplement</a><a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="appendix-A-1.9">
 <a href="#code-wot-output3" class="auto internal xref">Figure 5</a>:</dt>
         <dd style="margin-left: 5.5em" id="appendix-A-1.10">
-          <p id="appendix-A-1.10.1"><a href="#code-wot-output3" class="internal xref">Output 3: SDF Mapping File for Protocol Bindings</a><a href="#appendix-A-1.10.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.10.1"><a href="#code-wot-output3" class="internal xref">Output 3: SDF Supplement for Protocol Bindings</a><a href="#appendix-A-1.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="appendix-A-1.11">
 <a href="#mapping-cddl" class="auto internal xref">Figure 6</a>:</dt>
         <dd style="margin-left: 5.5em" id="appendix-A-1.12">
-          <p id="appendix-A-1.12.1"><a href="#mapping-cddl" class="internal xref">CDDL definition of SDF mapping file</a><a href="#appendix-A-1.12.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.12.1"><a href="#mapping-cddl" class="internal xref">CDDL definition of SDF Supplements</a><a href="#appendix-A-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="appendix-A-1.13">
@@ -2037,7 +2046,7 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.1-4.22
         <dt id="appendix-B-1.1">
 <a href="#new-media-types" class="auto internal xref">Table 1</a>:</dt>
         <dd style="margin-left: 5.5em" id="appendix-B-1.2">
-          <p id="appendix-B-1.2.1"><a href="#new-media-types" class="internal xref">A media type for SDF mapping files</a><a href="#appendix-B-1.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.2.1"><a href="#new-media-types" class="internal xref">A media type for SDF Supplements</a><a href="#appendix-B-1.2.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
