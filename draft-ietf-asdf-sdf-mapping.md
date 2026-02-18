@@ -114,7 +114,7 @@ Note that this is somewhat similar to the way `sdfRef` ({{Section 4.4 of -sdf}})
 Supplement the arrows point in the inverse direction (from the
 augmenter to the augmented).
 
-Note that the order of the patch application is that of the elements within the array (which is deterministic in contrast to the entries of an object).
+The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).
 
 ## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
 
