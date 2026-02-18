@@ -9,7 +9,7 @@ Expires: 22 August 2026                               Universität Bremen
                                                         18 February 2026
 
 
-            Semantic Definition Format (SDF): Mapping files
+             Semantic Definition Format (SDF): Supplements
                    draft-ietf-asdf-sdf-mapping-latest
 
 Abstract
@@ -24,7 +24,7 @@ Abstract
 
    An SDF specification often needs to be augmented by additional
    information that is specific to its use in a particular ecosystem or
-   application.  SDF mapping files provide a mechanism to represent this
+   application.  SDF Supplements provide a mechanism to represent this
    augmentation.
 
 About This Document
@@ -55,7 +55,7 @@ Status of This Memo
 
 Bormann & Romann         Expires 22 August 2026                 [Page 1]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -91,27 +91,27 @@ Table of Contents
    2.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Example Model 1 (ecosystem: IPSO/OMA) . . . . . . . . . .   4
      2.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .   5
-   3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   9
-   4.  Augmentation Mechanism  . . . . . . . . . . . . . . . . . . .  11
-     4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  14
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  15
-     5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  15
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  16
-   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  17
-   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  17
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  17
+   3.  Formal Syntax of SDF Supplements  . . . . . . . . . . . . . .   8
+   4.  Augmentation Mechanism  . . . . . . . . . . . . . . . . . . .  10
+     4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  13
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
+     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  14
+     5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  14
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  15
+   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  16
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
 
 
 
 
 Bormann & Romann         Expires 22 August 2026                 [Page 2]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
 1.  Introduction
@@ -126,16 +126,15 @@ Internet-Draft                 SDF Mapping                 February 2026
 
    An SDF specification often needs to be augmented by additional
    information that is specific to its use in a particular ecosystem or
-   application.  SDF mapping files provide a mechanism to represent this
+   application.  SDF Supplements provide a mechanism to represent this
    augmentation.
 
 
-   // In this revision, we have renamed the map quality to patches since
+   // In this revision, we have renamed the map quality to amend since
    // the underlying data structure changed from an object to an array.
-   // For this reason, we are also considering changing the name
-   // "Mapping File" to something like "Augmentation File" to reflect
-   // the fact that the file does not actually contain a _map_ for
-   // describing the augmentation anymore.
+   // For this reason, we also change the term "Mapping File" to
+   // "Supplement" to also reflect the fact that the file does not
+   // actually contain a _map_ for describing the augmentation anymore.
 
 1.1.  Terminology and Conventions
 
@@ -152,31 +151,24 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 2.  Overview
 
-   An SDF mapping file provides augmentation information for one or more
+   An SDF Supplement provides augmentation information for one or more
    SDF models.  Its main contents are an array of patches that are
    applied using SDF name references (Section 4.3 of
    [I-D.ietf-asdf-sdf]) as the respective target.
 
-
-
-
-
-
+   When processing the Supplement together with one or more SDF models,
+   the qualities from the array elements are added to the SDF model at
+   the referenced name, as in a merge-patch operation [RFC7396].  Note
+   that this is somewhat similar to the way sdfRef (Section 4.4 of
+   [I-D.ietf-asdf-sdf]) works, but in a Supplement the arrows point in
+   the inverse direction (from the augmenter to the augmented).
 
 
 
 Bormann & Romann         Expires 22 August 2026                 [Page 3]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
-
-   When processing the mapping file together with one or more SDF
-   models, the qualities from the array elements are added to the SDF
-   model at the referenced name, as in a merge-patch operation
-   [RFC7396].  Note that this is somewhat similar to the way sdfRef
-   (Section 4.4 of [I-D.ietf-asdf-sdf]) works, but in a mapping file the
-   arrows point in the inverse direction (from the augmenter to the
-   augmented).
 
    Note that the order of the patch application is that of the elements
    within the array (which is deterministic in contrast to the entries
@@ -184,8 +176,8 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 2.1.  Example Model 1 (ecosystem: IPSO/OMA)
 
-   An example for an SDF mapping file is given in Figure 1.  This
-   mapping file is meant to attach to an SDF specification published by
+   An example for an SDF Supplement is given in Figure 1.  This
+   Supplement is meant to attach to an SDF specification published by
    OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
    // Note that this example uses namespaces to identify elements of
    // the referenced specification(s), but has un-namespaced quality
@@ -197,34 +189,7 @@ Internet-Draft                 SDF Mapping                 February 2026
    // SDF definition namespaces and not quality namespaces, which are
    // one meta-level higher).
 
-   *  Start of a mapping file for certain OneDM playground models:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bormann & Romann         Expires 22 August 2026                 [Page 4]
-
-Internet-Draft                 SDF Mapping                 February 2026
-
+   *  Start of a Supplement for certain OneDM playground models:
 
    {
      "info": {
@@ -234,53 +199,48 @@ Internet-Draft                 SDF Mapping                 February 2026
        "onedm": "https://onedm.org/models"
      },
      "defaultNamespace": "onedm",
-     "map": [
+     "amend": [
        {
-         "target": "#/sdfObject/Digital_Input",
-         "patch": {
+         "#/sdfObject/Digital_Input": {
            "id": 3200
          }
        },
        {
-         "target": "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State",
-         "patch": {
+         "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State": {
            "id": 5500
          }
        },
        {
-         "target": "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter",
-         "patch": {
+         "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
            "id": 5501
          }
        }
      ]
    }
 
-             Figure 1: A simple example of an SDF mapping file
+
+
+
+Bormann & Romann         Expires 22 August 2026                 [Page 4]
+
+Internet-Draft               SDF Supplements               February 2026
+
+
+              Figure 1: A simple example of an SDF Supplement
 
 2.2.  Example Model 2 (ecosystem: W3C WoT)
 
    This example shows a translation of a hypothetical W3C WoT Thing
    Model (as defined in Section 10 of [W3C.wot-thing-description11])
-   into an SDF model plus a mapping file to catch Thing Model attributes
+   into an SDF model plus a Supplement to catch Thing Model attributes
    that don't currently have SDF qualities defined (namely, titles and
    descriptions members used for internationalization).
 
-   A second mapping file is more experimental in that it captures
+   A second Supplement is more experimental in that it captures
    information that is actually instance-specific, in this case a forms
    member that binds the status property to an instance-specific CoAP
    resource.
    // Namespaces are all wrong in this example.
-
-
-
-
-
-
-Bormann & Romann         Expires 22 August 2026                 [Page 5]
-
-Internet-Draft                 SDF Mapping                 February 2026
-
 
    The form really should be part of the class level; defining the
    entire form instead of just the link in the instance information is a
@@ -314,29 +274,17 @@ Internet-Draft                 SDF Mapping                 February 2026
        }
    }
 
+
+
+
+Bormann & Romann         Expires 22 August 2026                 [Page 5]
+
+Internet-Draft               SDF Supplements               February 2026
+
+
                       Figure 2: Input: WoT Thing Model
 
    *  The output: SDF model
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bormann & Romann         Expires 22 August 2026                 [Page 6]
-
-Internet-Draft                 SDF Mapping                 February 2026
-
 
    {
      "info": {
@@ -362,13 +310,65 @@ Internet-Draft                 SDF Mapping                 February 2026
 
                        Figure 3: Output 1: SDF Model
 
-   *  The other output: SDF mapping file for class information
+   *  The other output: SDF Supplement for class information
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann & Romann         Expires 22 August 2026                 [Page 6]
+
+Internet-Draft               SDF Supplements               February 2026
+
+
+   {
+     "info": {
+       "title": "Lamp Thing Model: WoT TM mapping"
+     },
+     "namespace": {
+       "wot": "http://www.w3.org/ns/td"
+     },
+     "defaultNamespace": "wot",
+     "amend": [
+       {
+         "#/sdfObject/LampThingModel": {
+           "titles": {
+             "en": "Lamp Thing Model",
+             "de": "Thing Model für eine Lampe"
+           }
+         }
+       },
+       {
+         "#/sdfObject/LampThingModel/sdfProperty/status": {
+           "descriptions": {
+             "en": "Current status of the lamp",
+             "de": "Aktueller Status der Lampe"
+           }
+         }
+       }
+     ]
+   }
+
+                     Figure 4: Output 2: SDF Supplement
+
+   *  A third output: SDF Supplement for Protocol Bindings
 
 
 
@@ -391,63 +391,7 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 Bormann & Romann         Expires 22 August 2026                 [Page 7]
 
-Internet-Draft                 SDF Mapping                 February 2026
-
-
-   {
-     "info": {
-       "title": "Lamp Thing Model: WoT TM mapping"
-     },
-     "namespace": {
-       "wot": "http://www.w3.org/ns/td"
-     },
-     "defaultNamespace": "wot",
-     "map": [
-       {
-         "target": "#/sdfObject/LampThingModel",
-         "patch": {
-           "titles": {
-             "en": "Lamp Thing Model",
-             "de": "Thing Model für eine Lampe"
-           }
-         }
-       },
-       {
-         "target": "#/sdfObject/LampThingModel/sdfProperty/status",
-         "patch": {
-           "descriptions": {
-             "en": "Current status of the lamp",
-             "de": "Aktueller Status der Lampe"
-           }
-         }
-       }
-     ]
-   }
-
-                    Figure 4: Output 2: SDF Mapping File
-
-   *  A third output: SDF mapping file for Protocol Bindings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bormann & Romann         Expires 22 August 2026                 [Page 8]
-
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
    {
@@ -458,11 +402,10 @@ Internet-Draft                 SDF Mapping                 February 2026
        "wot": "http://www.w3.org/ns/td"
      },
      "defaultNamespace": "wot",
-     "map": [
+     "amend": [
        {
-         "target": "#/sdfObject/LampThingModel/sdfProperty/status",
-         "patch": {
-           "forms": [
+         "#/sdfObject/LampThingModel/sdfProperty/status": {
+           "descriptions": [
              {
                "href": "coap://example.org/status"
              }
@@ -472,19 +415,19 @@ Internet-Draft                 SDF Mapping                 February 2026
      ]
    }
 
-         Figure 5: Output 3: SDF Mapping File for Protocol Bindings
+          Figure 5: Output 3: SDF Supplement for Protocol Bindings
 
-3.  Formal Syntax of SDF mapping files
+3.  Formal Syntax of SDF Supplements
 
-   An SDF mapping file has three optional components that are taken
+   An SDF Supplement has three optional components that are taken
    unchanged from SDF: The info block, the namespace declaration, and
-   the default namespace.  The mandatory fourth component, the patches,
-   contains the list of augmentations that are supposed to be applied to
-   the target model, using an SDF name reference (usually a namespace
-   and a JSON pointer) as the augmentation target to which a specified
-   quality is to be applied as the patch.
+   the default namespace.  The mandatory fourth component, the amend
+   block, contains the list of amendments that are supposed to be
+   applied to the target model, using an SDF name reference (usually a
+   namespace and a JSON pointer) as the target to which a specified
+   quality is applied to.
 
-   Figure 6 describes the syntax of SDF mapping files using CDDL
+   Figure 6 describes the syntax of SDF Supplements using CDDL
    [RFC8610].
 
    start = sdf-mapping
@@ -494,20 +437,19 @@ Internet-Draft                 SDF Mapping                 February 2026
     ? info: sdfinfo
     ? namespace: named<text>
     ? defaultNamespace: text
-    patches: [ * patches ]
+    amend: [ * amendments ]
    }
 
-   patch = {
+   amendments = {
+     + global-sdf-pointer => additionalqualities,
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 9]
+Bormann & Romann         Expires 22 August 2026                 [Page 8]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
-     target: global-sdf-pointer,
-     value: additionalqualities,
    }
 
    ; we can't really be much more specific here:
@@ -554,16 +496,16 @@ Internet-Draft                 SDF Mapping                 February 2026
       date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
                                 ; month/year
       time-hour       = 2DIGIT  ; 00-23
-
-
-
-Bormann & Romann         Expires 22 August 2026                [Page 10]
-
-Internet-Draft                 SDF Mapping                 February 2026
-
-
       time-minute     = 2DIGIT  ; 00-59
       time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap sec
+
+
+
+Bormann & Romann         Expires 22 August 2026                 [Page 9]
+
+Internet-Draft               SDF Supplements               February 2026
+
+
                                 ; rules
       time-secfrac    = "." 1*DIGIT
       DIGIT           =  %x30-39 ; 0-9
@@ -575,7 +517,7 @@ Internet-Draft                 SDF Mapping                 February 2026
       modified-dt     = full-date ["T" partial-time "Z"]
    '
 
-               Figure 6: CDDL definition of SDF mapping file
+                Figure 6: CDDL definition of SDF Supplements
 
    The JSON pointer that is used a the target can point to a JSON map in
    the SDF model to be augmented by adding or replacing map entries.  If
@@ -588,12 +530,12 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 4.  Augmentation Mechanism
 
-   An SDF model and a compatible mapping file can be combined to create
-   an _augmented_ SDF model.  (This process can be repeated with
-   multiple mapping files by using the outcome of one augmentation as
-   the input of the next one.)  As augmentation is not equal to
-   instantiation, augmented SDF models are still abstract in nature, but
-   are enriched with ecosystem-specific information.
+   An SDF model and a compatible Supplement can be combined to create an
+   _augmented_ SDF model.  (This process can be repeated with multiple
+   Supplements by using the outcome of one augmentation as the input of
+   the next one.)  As augmentation is not equal to instantiation,
+   augmented SDF models are still abstract in nature, but are enriched
+   with ecosystem-specific information.
 
       |  Note that it might be necessary to specify an augmentation
       |  mechanism for instance descriptions as well at a later point in
@@ -606,30 +548,32 @@ Internet-Draft                 SDF Mapping                 February 2026
 
    Instead of a model file reaching out to other model files and
    integrating aspects into itself via sdfRef (_pull_ approach), the
-   mapping file _pushes_ information into a new copy of a specific given
+   Supplement _pushes_ information into a new copy of a specific given
    SDF model.  The original SDF model does not need to know which
-   mapping files it will be used with and can be used with several such
-   mapping files independently of each other.
+   Supplements it will be used with and can be used with several such
+   Supplements independently of each other.
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 11]
+
+
+Bormann & Romann         Expires 22 August 2026                [Page 10]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
    An augmented SDF model is produced from two inputs: An SDF model and
-   a compatible mapping file, i.e. every target JSON pointer within
-   elements of the patches array points to a location that already
-   exists within the SDF model or has been created by a previous
-   augmentation step.  To perform the augmentation, a processor needs to
-   create a copy of the original SDF model.  It then iterates over all
-   entries within the mapping file's patches array.  During each
-   iteration, the processor first obtains a reference to the target
-   referred to by the target JSON pointer.  This reference is then used
-   as the Target argument of the JSON Merge Patch algorithm [RFC7396]
-   and the entry's patch quality as the Patch argument; the target is
-   replaced with the result of the merge-patch.
+   a compatible Supplement, i.e. every JSON pointer key within elements
+   of the amend array points to a location that already exists within
+   the SDF model or has been created by a previous augmentation step.
+   To perform the augmentation, a processor needs to create a copy of
+   the original SDF model.  It then iterates over all entries within the
+   Supplement's amend array elements.  During each iteration, the
+   processor first obtains a reference to the target referred to by the
+   JSON pointer in the respective key.  This reference is then used as
+   the Target argument of the JSON Merge Patch algorithm [RFC7396] and
+   the entry's value as the Patch argument; the target is replaced with
+   the result of the merge-patch.
 
    Once the iteration has finished, the processor returns the resulting
    augmented SDF model.  Should the resolution of a JSON pointer or an
@@ -637,7 +581,7 @@ Internet-Draft                 SDF Mapping                 February 2026
    thrown instead.
 
    An example for an augmented SDF model can be seen in Figure 7.  This
-   is the result of applying the WoT-specific mapping file from Figure 4
+   is the result of applying the WoT-specific Supplement from Figure 4
    to the SDF model shown in Figure 3.  This augmented SDF model is one
    step away from being converted to a WoT Thing Model or Thing
    Description, which requires some information that cannot be provided
@@ -669,9 +613,9 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 12]
+Bormann & Romann         Expires 22 August 2026                [Page 11]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
    {
@@ -707,16 +651,16 @@ Internet-Draft                 SDF Mapping                 February 2026
       Figure 7: An SDF model that has been augmented with WoT-specific
                                 vocabulary.
 
-      |  Since the pair of an SDF model and a mapping file is equivalent
+      |  Since the pair of an SDF model and a Supplement is equivalent
       |  in semantics to the augmented model created from the two, there
       |  is no fundamental difference between specifying aspects in the
-      |  SDF model or leaving them in a mapping file.  Also, parts of an
+      |  SDF model or leaving them in a Supplement.  Also, parts of an
       |  ecosystem-specific vocabulary may in fact be mappable to the
       |  SDF base vocabulary.  Therefore, developing the mapping between
       |  SDF and an ecosystem requires careful consideration which of
       |  the features should be available to other ecosystems and
       |  therefore should best be part of the common SDF model, and
-      |  which are best handled in a mapping file specific to the
+      |  which are best handled in a Supplement specific to the
       |  ecosystem.
 
 
@@ -725,9 +669,9 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 13]
+Bormann & Romann         Expires 22 August 2026                [Page 12]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
 4.1.  Logging Augmentation
@@ -736,10 +680,10 @@ Internet-Draft                 SDF Mapping                 February 2026
    other SDF model, it may be necessary to trace the provenance of the
    information that flowed into it, e.g., in the info block.  For this
    purpose, a new quality called augmentationLog is introduced that
-   contains an array of URIs pointing to the mapping files that have
-   been used to augment the original SDF file (which can also be
-   indicated via the originalSdfModel quality).  These additional
-   qualities allow for reproducing the augmentation process.
+   contains an array of URIs pointing to the Supplements that have been
+   used to augment the original SDF file (which can also be indicated
+   via the originalSdfModel quality).  These additional qualities allow
+   for reproducing the augmentation process.
 
    For logging while performing an augmentation, the processor has to
    perform the following steps:
@@ -757,13 +701,13 @@ Internet-Draft                 SDF Mapping                 February 2026
 
        2.  The processor creates the augmentationLog quality with an
            array containing URIs that can be used to access the current
-           mapping file as its sole item.
+           Supplement as its sole item.
 
    3.  Otherwise, if augmentationLog does not contain an array, stop and
        throw an error.
 
    4.  Otherwise, the processor adds a URI that can be used to access
-       the current mapping file to the array of the augmentationLog
+       the current Supplement to the array of the augmentationLog
        quality.
 
    {
@@ -781,9 +725,9 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 14]
+Bormann & Romann         Expires 22 August 2026                [Page 13]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
        Figure 8: An augmented SDF model with an augmentation log and
@@ -796,14 +740,14 @@ Internet-Draft                 SDF Mapping                 February 2026
    IANA is requested to add the following Media-Type to the "Media
    Types" registry.
 
-   +==================+==============================+=============+
-   | Name             | Template                     | Reference   |
-   +==================+==============================+=============+
-   | sdf-mapping+json | application/sdf-mapping+json | RFC XXXX,   |
-   |                  |                              | Section 5.1 |
-   +------------------+------------------------------+-------------+
+   +==================+=================================+=============+
+   | Name             | Template                        | Reference   |
+   +==================+=================================+=============+
+   | sdf-mapping+json | application/sdf-supplement+json | RFC XXXX,   |
+   |                  |                                 | Section 5.1 |
+   +------------------+---------------------------------+-------------+
 
-              Table 1: A media type for SDF mapping files
+                Table 1: A media type for SDF Supplements
 
 
    // RFC Editor: please replace RFC XXXX with this RFC number and
@@ -837,9 +781,9 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 15]
+Bormann & Romann         Expires 22 August 2026                [Page 14]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
 6.  Security Considerations
@@ -893,9 +837,9 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 16]
+Bormann & Romann         Expires 22 August 2026                [Page 15]
 
-Internet-Draft                 SDF Mapping                 February 2026
+Internet-Draft               SDF Supplements               February 2026
 
 
    [RFC8576]  Garcia-Morchon, O., Kumar, S., and M. Sethi, "Internet of
@@ -910,18 +854,18 @@ Internet-Draft                 SDF Mapping                 February 2026
 
 List of Figures
 
-   Figure 1:  A simple example of an SDF mapping file
+   Figure 1:  A simple example of an SDF Supplement
    Figure 2:  Input: WoT Thing Model
    Figure 3:  Output 1: SDF Model
-   Figure 4:  Output 2: SDF Mapping File
-   Figure 5:  Output 3: SDF Mapping File for Protocol Bindings
-   Figure 6:  CDDL definition of SDF mapping file
+   Figure 4:  Output 2: SDF Supplement
+   Figure 5:  Output 3: SDF Supplement for Protocol Bindings
+   Figure 6:  CDDL definition of SDF Supplements
    Figure 7:  An SDF model that has been augmented with WoT-specific
               vocabulary.
 
 List of Tables
 
-   Table 1:   A media type for SDF mapping files
+   Table 1:   A media type for SDF Supplements
 
 Acknowledgements
 
@@ -949,4 +893,4 @@ Authors' Addresses
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 17]
+Bormann & Romann         Expires 22 August 2026                [Page 16]
