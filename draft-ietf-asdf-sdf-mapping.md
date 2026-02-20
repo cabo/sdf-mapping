@@ -116,32 +116,51 @@ augmenter to the augmented).
 
 The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).
 
-# Formal Syntax of SDF Supplements {#syntax}
+# Data Model of SDF Supplements {#data-model}
 
-An SDF Supplement has three optional components that are taken
-unchanged from SDF: The info block, the namespace declaration, and the
-default namespace.
-The mandatory fourth component, the `amend` block, contains the list of amendments that are supposed to be applied to the target model,
-using an SDF name reference (usually a namespace and a JSON pointer) as the target to which a specified quality is applied to.
+<!-- TODO: This text is currently  -->
 
-{{mapping-cddl}} describes the syntax of SDF Supplements using CDDL {{-cddl}}.
+The data model of SDF Supplements makes use of some of the structural features of SDF models (namely the `info` and namespaces blocks), but complements them with a mandatory third Amendments block.
 
-~~~ cddl
-{::include mapping.cddl}
-~~~
-{: #mapping-cddl title="CDDL definition of SDF Supplements"}
+## Information Block
 
-The JSON pointer that is used a the `target` can
-point to a JSON map in the SDF model to be augmented by adding or
-replacing map entries.
-If necessary, the JSON map is created at the position indicated with
-the contents of the `patch` [^example].
-Alternatively, the JSON pointer can point to an array (also possibly
-created if not existing before) and add an element to that array by
-using the "`‑`" syntax introduced in the penultimate paragraph of
-{{Section 4 of -pointer}}.
+A Supplements's information block may contain exactly the same qualities as an SDF model.
 
-[^example]: (add examples)
+| Quality     | Type             | Description                                                 |
+| ----------- | ---------------- | ----------------------------------------------------------- |
+| title       | string           | A short summary to be displayed in search results, etc.     |
+| description | string           | Long-form text description (no constraints)                 |
+| version     | string           | The incremental version of the definition                   |
+| copyright   | string           | Link to text or embedded text containing a copyright notice |
+| license     | string           | Link to text or embedded text containing license terms      |
+| modified    | string           | Time of the latest modification                             |
+| features    | array of strings | List of extension features used                             |
+| $comment    | string           | Source code comments only, no semantics                     |
+{: #infoblockqual title="Qualities of the Information Block"}
+
+## Namespaces Block
+
+The `namespace` and `defaultNamespaces` qualities are also taken over unchanged from base SDF.
+
+| Quality          | Type   | Description                                                                                          |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------- |
+| namespace        | map    | Defines short names mapped to namespace URIs, to be used as identifier prefixes                      |
+| defaultNamespace | string | Identifies one of the prefixes in the namespace map to be used as a default in resolving identifiers |
+{: #nssec title="Qualities of the Namespaces Block"}
+
+## Amendments Block
+
+The mandatory third component, the Amendments block, contains the set of patches that are supposed to be applied to the target model,
+Under the `amend` quality, the block consists of an array of JSON maps, whose keys indicate the target for the JSON Merge Patch algorithm {{-merge-patch}}.
+
+| Quality | Type          | Description                                                                                    |
+| ------- | ------------- | ---------------------------------------------------------------------------------------------- |
+| amend   | array of maps | Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target. |
+{: #amendssec title="Qualities of the Amendments Block"}
+
+The JSON pointers can point to a JSON map in the SDF model to be augmented by adding or replacing map entries.
+If necessary, a new JSON map is created at the indicated position.
+Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "`‑`" syntax introduced in the penultimate paragraph of {{Section 4 of -pointer}}.
 
 # Augmentation Mechanism
 
@@ -505,6 +524,13 @@ Some wider issues are discussed in {{-seccons}}.
 
 
 --- back
+
+# Formal Syntax of SDF Supplements {#syntax}
+
+~~~ cddl
+{::include mapping.cddl}
+~~~
+{: #mapping-cddl title="CDDL definition of SDF Supplements"}
 
 {::include-all lists.md}
 
