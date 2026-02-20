@@ -297,14 +297,14 @@ Internet-Draft               SDF Supplements               February 2026
    element to that array by using the "-" syntax introduced in the
    penultimate paragraph of Section 4 of [RFC6901].
 
-                     +=========+======+=============+
-                     | Quality | Type | Description |
-                     +=========+======+=============+
-                     | amend   | map  | TODO.       |
-                     +---------+------+-------------+
+                 +=========+===============+=============+
+                 | Quality | Type          | Description |
+                 +=========+===============+=============+
+                 | amend   | array of maps | TODO.       |
+                 +---------+---------------+-------------+
 
-                        Table 3: Qualities of the
-                             Amendments Block
+                    Table 3: Qualities of the Amendments
+                                   Block
 
 4.  Augmentation Mechanism
 
@@ -1040,8 +1040,8 @@ List of Figures
 List of Tables
 
    Table 1:   Qualities of the Information Block
-   Table 2:   Qualities of the Namespaces Block
    Table 3:   Qualities of the Amendments Block
+   Table 2:   Qualities of the Namespaces Block
    Table 4:   A media type for SDF Supplements
 
 Acknowledgements
