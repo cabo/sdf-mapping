@@ -1430,16 +1430,8 @@ augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
         <h3 id="name-amendments-block">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-amendments-block" class="section-name selfRef">Amendments Block</a>
         </h3>
-<p id="section-3.3-1">The mandatory third component, the Amendments block, contains the list of amendments that are supposed to be applied to the target model,<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">The JSON pointer that is used a the <code>target</code> can
-point to a JSON map in the SDF model to be augmented by adding or
-replacing map entries.
-If necessary, the JSON map is created at the position indicated with
-the contents of the <code>patch</code> <span class="cref" id="example">(add examples)</span>.
-Alternatively, the JSON pointer can point to an array (also possibly
-created if not existing before) and add an element to that array by
-using the "<code>‑</code>" syntax introduced in the penultimate paragraph of
-<span><a href="https://rfc-editor.org/rfc/rfc6901#section-4" class="relref">Section 4</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">The mandatory third component, the Amendments block, contains the set of patches that are supposed to be applied to the target model,
+Under the <code>amend</code> quality, the block consists of an array of JSON maps, whose keys indicate the target for the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <span id="name-qualities-of-the-amendments"></span><div id="amendssec">
 <table class="center" id="table-3">
           <caption>
@@ -1457,11 +1449,14 @@ using the "<code>‑</code>" syntax introduced in the penultimate paragraph of
             <tr>
               <td class="text-left" rowspan="1" colspan="1">amend</td>
               <td class="text-left" rowspan="1" colspan="1">array of maps</td>
-              <td class="text-left" rowspan="1" colspan="1">TODO.</td>
+              <td class="text-left" rowspan="1" colspan="1">Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target.</td>
             </tr>
           </tbody>
         </table>
 </div>
+<p id="section-3.3-3">The JSON pointers can point to a JSON map in the SDF model to be augmented by adding or replacing map entries.
+If necessary, a new JSON map is created at the indicated position.
+Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "<code>‑</code>" syntax introduced in the penultimate paragraph of <span><a href="https://rfc-editor.org/rfc/rfc6901#section-4" class="relref">Section 4</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
