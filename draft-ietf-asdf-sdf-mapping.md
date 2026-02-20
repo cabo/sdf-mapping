@@ -116,149 +116,6 @@ augmenter to the augmented).
 
 The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).
 
-## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
-
-An example for an SDF Supplement is given in {{code-example1}}.
-This Supplement is meant to attach to an SDF specification published
-by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
-[^namespace-note]
-
-[^namespace-note]: \\
-    Note that this example uses namespaces to identify elements of the
-    referenced specification(s), but has un-namespaced quality names.
-    These two kinds of namespaces are unrelated in SDF, and a more
-    robust example may need to make use of Quality Name Prefixes
-    as defined in {{Section 2.3.3-3 of -sdf}} (independent of a potential
-    feature to add namespace references to definitions that are not
-    intended to go into the default namespace — these are SDF
-    definition namespaces and not quality namespaces, which are one
-    meta-level higher).
-
-* Start of a Supplement for certain OneDM playground models:
-
-~~~ sdf
-info:
-  title: IPSO ID mapping
-namespace:
-  onedm: https://onedm.org/models
-defaultNamespace: onedm
-amend:
-  - "#/sdfObject/Digital_Input":
-      id: 3200
-  - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
-      id: 5500
-  - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
-      id: 5501
-~~~
-{: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF Supplement"}
-
-## Example Model 2 (ecosystem: W3C WoT) {#example2}
-
-This example shows a translation of a hypothetical W3C WoT Thing Model
-(as defined in Section 10 of {{-wot-td}})
-into an SDF model plus a Supplement to catch Thing Model attributes
-that don't currently have SDF qualities defined (namely, `titles` and
-`descriptions` members used for internationalization).
-
-A second Supplement is more experimental in that it captures
-information that is actually instance-specific,
-in this case a `forms` member that binds the `status` property to an
-instance-specific CoAP resource.
-[^td-note]
-
-The form really should be part of the class level; defining the entire
-form instead of just the link in the instance information is a
-symptom of not yet getting the class/instance boundary right.
-
-[^td-note]: \\
-    Namespaces are all wrong in this example.
-
-* The input: WoT Thing Model
-
-~~~ json
-{
-    "@context": "https://www.w3.org/2022/wot/td/v1.1",
-    "@type" : "tm:ThingModel",
-    "title": "Lamp Thing Model",
-    "titles": {
-      "en": "Lamp Thing Model",
-      "de": "Thing Model für eine Lampe"
-    },
-    "properties": {
-        "status": {
-            "description": "Current status of the lamp",
-            "descriptions": {
-              "en": "Current status of the lamp",
-              "de": "Aktueller Status der Lampe"
-            },
-            "type": "string",
-            "readOnly": true,
-            "forms": [
-              {
-                "href": "coap://example.org/status"
-              }
-            ]
-        }
-    }
-}
-~~~
-{: #code-wot-input title="Input: WoT Thing Model"}
-
-* The output: SDF model
-
-~~~ sdf
-info:
-  title: Lamp Thing Model
-namespace:
-  wot: http://www.w3.org/ns/td
-defaultNamespace: wot
-sdfObject:
-  LampThingModel:
-    label: Lamp Thing Model
-    sdfProperty:
-      status:
-        description: Current status of the lamp
-        writable: false
-        type: string
-~~~
-{: #code-wot-output1 check="json" pre="yaml2json" title="Output 1: SDF Model"}
-
-* The other output: SDF Supplement for class information
-
-~~~ sdf
-info:
-  title: 'Lamp Thing Model: WoT TM mapping'
-namespace:
-  wot: http://www.w3.org/ns/td
-defaultNamespace: wot
-amend:
-  - "#/sdfObject/LampThingModel":
-      titles:
-        en: Lamp Thing Model
-        de: Thing Model für eine Lampe
-  - "#/sdfObject/LampThingModel/sdfProperty/status":
-      descriptions:
-        en: Current status of the lamp
-        de: Aktueller Status der Lampe
-~~~
-{: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Supplement"}
-
-* A third output: SDF Supplement for Protocol Bindings
-
-~~~ sdf
-info:
-  title: 'Lamp Thing Model: WoT TM Protocol Binding'
-namespace:
-  wot: http://www.w3.org/ns/td
-defaultNamespace: wot
-amend:
-  - "#/sdfObject/LampThingModel/sdfProperty/status":
-      descriptions:
-      - href: coap://example.org/status
-~~~
-{: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Supplement for Protocol Bindings"}
-
-
 # Formal Syntax of SDF Supplements {#syntax}
 
 An SDF Supplement has three optional components that are taken
@@ -416,6 +273,154 @@ info:
     (An array in the info block that receives additions from a mapping
     file using the "`‑`" pointer syntax may be a good receptacle for
     receiving information about multiple augmentations.)
+
+# Ecosystem-specific Examples
+
+In the following, we will outline a number of examples that illustrate how
+Supplements can be used to enrich a given SDF model with ecosystem-specific
+information.
+
+## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
+
+An example for an SDF Supplement is given in {{code-example1}}.
+This Supplement is meant to attach to an SDF specification published
+by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
+[^namespace-note]
+
+[^namespace-note]: \\
+    Note that this example uses namespaces to identify elements of the
+    referenced specification(s), but has un-namespaced quality names.
+    These two kinds of namespaces are unrelated in SDF, and a more
+    robust example may need to make use of Quality Name Prefixes
+    as defined in {{Section 2.3.3-3 of -sdf}} (independent of a potential
+    feature to add namespace references to definitions that are not
+    intended to go into the default namespace — these are SDF
+    definition namespaces and not quality namespaces, which are one
+    meta-level higher).
+
+* Start of a Supplement for certain OneDM playground models:
+
+~~~ sdf
+info:
+  title: IPSO ID mapping
+namespace:
+  onedm: https://onedm.org/models
+defaultNamespace: onedm
+amend:
+  - "#/sdfObject/Digital_Input":
+      id: 3200
+  - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
+      id: 5500
+  - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
+      id: 5501
+~~~
+{: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF Supplement"}
+
+## Example Model 2 (ecosystem: W3C WoT) {#example2}
+
+This example shows a translation of a hypothetical W3C WoT Thing Model
+(as defined in Section 10 of {{-wot-td}})
+into an SDF model plus a Supplement to catch Thing Model attributes
+that don't currently have SDF qualities defined (namely, `titles` and
+`descriptions` members used for internationalization).
+
+A second Supplement is more experimental in that it captures
+information that is actually instance-specific,
+in this case a `forms` member that binds the `status` property to an
+instance-specific CoAP resource.
+[^td-note]
+
+The form really should be part of the class level; defining the entire
+form instead of just the link in the instance information is a
+symptom of not yet getting the class/instance boundary right.
+
+[^td-note]: \\
+    Namespaces are all wrong in this example.
+
+* The input: WoT Thing Model
+
+~~~ json
+{
+    "@context": "https://www.w3.org/2022/wot/td/v1.1",
+    "@type" : "tm:ThingModel",
+    "title": "Lamp Thing Model",
+    "titles": {
+      "en": "Lamp Thing Model",
+      "de": "Thing Model für eine Lampe"
+    },
+    "properties": {
+        "status": {
+            "description": "Current status of the lamp",
+            "descriptions": {
+              "en": "Current status of the lamp",
+              "de": "Aktueller Status der Lampe"
+            },
+            "type": "string",
+            "readOnly": true,
+            "forms": [
+              {
+                "href": "coap://example.org/status"
+              }
+            ]
+        }
+    }
+}
+~~~
+{: #code-wot-input title="Input: WoT Thing Model"}
+
+* The output: SDF model
+
+~~~ sdf
+info:
+  title: Lamp Thing Model
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+sdfObject:
+  LampThingModel:
+    label: Lamp Thing Model
+    sdfProperty:
+      status:
+        description: Current status of the lamp
+        writable: false
+        type: string
+~~~
+{: #code-wot-output1 check="json" pre="yaml2json" title="Output 1: SDF Model"}
+
+* The other output: SDF Supplement for class information
+
+~~~ sdf
+info:
+  title: 'Lamp Thing Model: WoT TM mapping'
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+amend:
+  - "#/sdfObject/LampThingModel":
+      titles:
+        en: Lamp Thing Model
+        de: Thing Model für eine Lampe
+  - "#/sdfObject/LampThingModel/sdfProperty/status":
+      descriptions:
+        en: Current status of the lamp
+        de: Aktueller Status der Lampe
+~~~
+{: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Supplement"}
+
+* A third output: SDF Supplement for Protocol Bindings
+
+~~~ sdf
+info:
+  title: 'Lamp Thing Model: WoT TM Protocol Binding'
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+amend:
+  - "#/sdfObject/LampThingModel/sdfProperty/status":
+      descriptions:
+      - href: coap://example.org/status
+~~~
+{: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Supplement for Protocol Bindings"}
 
 IANA Considerations {#iana}
 ===================
