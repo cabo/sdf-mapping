@@ -1040,8 +1040,8 @@ List of Figures
 List of Tables
 
    Table 1:   Qualities of the Information Block
-   Table 3:   Qualities of the Amendments Block
    Table 2:   Qualities of the Namespaces Block
+   Table 3:   Qualities of the Amendments Block
    Table 4:   A media type for SDF Supplements
 
 Acknowledgements
