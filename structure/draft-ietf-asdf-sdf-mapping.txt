@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 24 August 2026                               Universität Bremen
-                                                        20 February 2026
+Expires: 25 August 2026                               Universität Bremen
+                                                        21 February 2026
 
 
              Semantic Definition Format (SDF): Supplements
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 1]
+Bormann & Romann         Expires 25 August 2026                 [Page 1]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -68,7 +68,7 @@ Internet-Draft               SDF Supplements               February 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2026.
+   This Internet-Draft will expire on 25 August 2026.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 2]
+Bormann & Romann         Expires 25 August 2026                 [Page 2]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -165,7 +165,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 3]
+Bormann & Romann         Expires 25 August 2026                 [Page 3]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -221,7 +221,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 4]
+Bormann & Romann         Expires 25 August 2026                 [Page 4]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -277,7 +277,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 5]
+Bormann & Romann         Expires 25 August 2026                 [Page 5]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -333,7 +333,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 6]
+Bormann & Romann         Expires 25 August 2026                 [Page 6]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -389,7 +389,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 7]
+Bormann & Romann         Expires 25 August 2026                 [Page 7]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -445,7 +445,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 8]
+Bormann & Romann         Expires 25 August 2026                 [Page 8]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -490,8 +490,8 @@ Internet-Draft               SDF Supplements               February 2026
      "info": {
        "title": "Augmented SDF model with augmentation log.",
        "augmentationLog": [
-         "https://example.org/sdf-mapping-file-1",
-         "https://example.org/sdf-mapping-file-2"
+         "https://example.org/sdf-supplement-1",
+         "https://example.org/sdf-supplement-2"
        ],
        "originalSdfModel": "https://example.org/original-sdf-model"
      }
@@ -501,7 +501,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                 [Page 9]
+Bormann & Romann         Expires 25 August 2026                 [Page 9]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -557,7 +557,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 10]
+Bormann & Romann         Expires 25 August 2026                [Page 10]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -613,7 +613,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 11]
+Bormann & Romann         Expires 25 August 2026                [Page 11]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -669,7 +669,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 12]
+Bormann & Romann         Expires 25 August 2026                [Page 12]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -725,7 +725,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 13]
+Bormann & Romann         Expires 25 August 2026                [Page 13]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -781,7 +781,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 14]
+Bormann & Romann         Expires 25 August 2026                [Page 14]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -816,28 +816,28 @@ Internet-Draft               SDF Supplements               February 2026
    IANA is requested to add the following Media-Type to the "Media
    Types" registry.
 
-   +==================+=================================+=============+
-   | Name             | Template                        | Reference   |
-   +==================+=================================+=============+
-   | sdf-mapping+json | application/sdf-supplement+json | RFC XXXX,   |
-   |                  |                                 | Section 6.1 |
-   +------------------+---------------------------------+-------------+
+   +=====================+=====================+=============+
+   | Name                | Template            | Reference   |
+   +=====================+=====================+=============+
+   | sdf-supplement+json | application/sdf-    | RFC XXXX,   |
+   |                     | supplement+json     | Section 6.1 |
+   +---------------------+---------------------+-------------+
 
-                Table 4: A media type for SDF Supplements
+            Table 4: A media type for SDF Supplements
 
 
    // RFC Editor: please replace RFC XXXX with this RFC number and
    // remove this note.
 
    Type name:  application
-   Subtype name:  sdf-mapping+json
+   Subtype name:  sdf-supplement+json
    Required parameters:  none
    Optional parameters:  none
    Encoding considerations:  binary (JSON is UTF-8-encoded text)
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 15]
+Bormann & Romann         Expires 25 August 2026                [Page 15]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -893,7 +893,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 16]
+Bormann & Romann         Expires 25 August 2026                [Page 16]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -949,7 +949,7 @@ Appendix A.  Formal Syntax of SDF Supplements
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 17]
+Bormann & Romann         Expires 25 August 2026                [Page 17]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -1005,7 +1005,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 18]
+Bormann & Romann         Expires 25 August 2026                [Page 18]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -1061,7 +1061,7 @@ Authors' Addresses
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 19]
+Bormann & Romann         Expires 25 August 2026                [Page 19]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -1117,4 +1117,4 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 24 August 2026                [Page 20]
+Bormann & Romann         Expires 25 August 2026                [Page 20]
