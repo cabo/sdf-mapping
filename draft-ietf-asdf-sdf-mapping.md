@@ -417,6 +417,46 @@ info:
     file using the "`‑`" pointer syntax may be a good receptacle for
     receiving information about multiple augmentations.)
 
+# SDF Collections
+
+For the processing or storing of SDF models alongside corresponding Supplements, we introduce a simple additional document type which called "SDF Collection".
+These documents are simply JSON texts containing an array with an SDF model as their first element and zero or more Supplements as subsequent elements.
+{{sdf-collection}} shows an example SDF Collection that contains one model and one supplement.
+
+TODO: Add corresponding CDDL Schema
+
+~~~ sdf
+- info:
+    title: I am an SDF Model!
+  sdfObject:
+    lamp:
+      sdfProperty:
+        brightness:
+          type: number
+- info:
+    title: I am an SDF Supplement!
+  amend:
+    - "#/sdfObject/lamp/sdfProperty/brightness":
+        minimum: 0
+        maximum: 100
+~~~
+{: #sdf-collection check="json" pre="yaml2json" title="Collection of an SDF Model and a Supplement."}
+
+{{sdf-collection-resolved}} shows the resolved version of the previous collection, applying the Supplement to the SDF Model.
+
+~~~ sdf
+info:
+  title: I am an SDF model!
+sdfObject:
+  lamp:
+    sdfProperty:
+      brightness:
+        type: number
+        minimum: 0
+        maximum: 100
+~~~
+{: #sdf-collection-resolved check="json" pre="yaml2json" title="Resulting SDF Model from resolving the SDF collection from the previous figure."}
+
 IANA Considerations {#iana}
 ===================
 
