@@ -280,8 +280,8 @@ the following steps:
 info:
   title: Augmented SDF model with augmentation log.
   augmentationLog:
-    - https://example.org/sdf-mapping-file-1
-    - https://example.org/sdf-mapping-file-2
+    - https://example.org/sdf-supplement-1
+    - https://example.org/sdf-supplement-2
   originalSdfModel: https://example.org/original-sdf-model
 # TODO: Do we need more information here?
 ~~~
@@ -289,8 +289,8 @@ info:
 
 [^logging]: A convention for "logging" the augmentation steps that
     went into an augmented model needs to be further fleshed out.
-    (An array in the info block that receives additions from a mapping
-    file using the "`‑`" pointer syntax may be a good receptacle for
+    (An array in the info block that receives additions from a supplement
+    using the "`‑`" pointer syntax may be a good receptacle for
     receiving information about multiple augmentations.)
 
 # Ecosystem-specific Examples
@@ -449,9 +449,9 @@ Media Type
 
 IANA is requested to add the following Media-Type to the "Media Types" registry.
 
-| Name             | Template                     | Reference             |
-|------------------|------------------------------|-----------------------|
-| sdf-mapping+json | application/sdf-supplement+json | RFC XXXX, {{media-type}} |
+| Name                | Template                        | Reference                |
+|---------------------|---------------------------------|--------------------------|
+| sdf-supplement+json | application/sdf-supplement+json | RFC XXXX, {{media-type}} |
 {: #new-media-types title="A media type for SDF Supplements" align="left"}
 
 [^to-be-removed]
@@ -463,7 +463,7 @@ Type name:
 : application
 
 Subtype name:
-: sdf-mapping+json
+: sdf-supplement+json
 
 Required parameters:
 : none
