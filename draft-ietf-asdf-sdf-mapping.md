@@ -116,6 +116,189 @@ augmenter to the augmented).
 
 The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).
 
+# Data Model of SDF Supplements {#data-model}
+
+<!-- TODO: This text is currently  -->
+
+The data model of SDF Supplements makes use of some of the structural features of SDF models (namely the `info` and namespaces blocks), but complements them with a mandatory third Amendments block.
+
+## Information Block
+
+A Supplements's information block may contain exactly the same qualities as an SDF model.
+
+| Quality     | Type             | Description                                                 |
+| ----------- | ---------------- | ----------------------------------------------------------- |
+| title       | string           | A short summary to be displayed in search results, etc.     |
+| description | string           | Long-form text description (no constraints)                 |
+| version     | string           | The incremental version of the definition                   |
+| copyright   | string           | Link to text or embedded text containing a copyright notice |
+| license     | string           | Link to text or embedded text containing license terms      |
+| modified    | string           | Time of the latest modification                             |
+| features    | array of strings | List of extension features used                             |
+| $comment    | string           | Source code comments only, no semantics                     |
+{: #infoblockqual title="Qualities of the Information Block"}
+
+## Namespaces Block
+
+The `namespace` and `defaultNamespaces` qualities are also taken over unchanged from base SDF.
+
+| Quality          | Type   | Description                                                                                          |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------- |
+| namespace        | map    | Defines short names mapped to namespace URIs, to be used as identifier prefixes                      |
+| defaultNamespace | string | Identifies one of the prefixes in the namespace map to be used as a default in resolving identifiers |
+{: #nssec title="Qualities of the Namespaces Block"}
+
+## Amendments Block
+
+The mandatory third component, the Amendments block, contains the set of patches that are supposed to be applied to the target model,
+Under the `amend` quality, the block consists of an array of JSON maps, whose keys indicate the target for the JSON Merge Patch algorithm {{-merge-patch}}.
+
+| Quality | Type          | Description                                                                                    |
+| ------- | ------------- | ---------------------------------------------------------------------------------------------- |
+| amend   | array of maps | Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target. |
+{: #amendssec title="Qualities of the Amendments Block"}
+
+The JSON pointers can point to a JSON map in the SDF model to be augmented by adding or replacing map entries.
+If necessary, a new JSON map is created at the indicated position.
+Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "`‑`" syntax introduced in the penultimate paragraph of {{Section 4 of -pointer}}.
+
+# Augmentation Mechanism
+
+<!-- TODO: Discuss used terminology -->
+An SDF model and a compatible Supplement can be combined to create
+an _augmented_ SDF model.
+(This process can be repeated with multiple Supplements by using the
+outcome of one augmentation as the input of the next one.)
+As augmentation is not equal to instantiation, augmented SDF models
+are still abstract in nature, but are enriched with ecosystem-specific
+information.
+
+{:aside}
+>
+Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.
+
+The augmentation mechanism is related to the resolution mechanism
+defined in {{Section 4.4 of -sdf}}, but fundamentally different:
+
+Instead of a model file reaching out to other model files and
+integrating aspects into itself via `sdfRef` (*pull* approach), the
+Supplement *pushes* information into a new copy of a specific given
+SDF model.
+The original SDF model does not need to know which Supplements it
+will be used with and can be used with several such Supplements
+independently of each other.
+
+An augmented SDF model is produced from two inputs: An SDF model and a compatible Supplement, i.e. every JSON pointer key within elements of the  `amend` array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
+To perform the augmentation, a processor needs to create a copy of the original SDF model.
+It then iterates over all entries within the Supplement's `amend` array elements.
+During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
+This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's value as the `Patch` argument; the target is replaced with the result of the merge-patch.
+
+Once the iteration has finished, the processor returns the resulting augmented SDF model.
+Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.
+
+An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
+This is the result of applying the WoT-specific Supplement from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
+This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
+which requires some information that cannot be provided in an SDF
+model that is limited to the vocabulary defined in the SDF base specification.
+
+<!-- TODO: Prefix WoT-specific qualities with wot:? -->
+~~~ sdf
+info:
+  title: Lamp Thing Model
+namespace:
+  wot: http://www.w3.org/ns/td
+defaultNamespace: wot
+sdfObject:
+  LampThingModel:
+    label: Lamp Thing Model
+    titles:
+      en: Lamp Thing Model
+      de: Thing Model für eine Lampe
+    sdfProperty:
+      status:
+        description: Current status of the lamp
+        descriptions:
+          en: Current status of the lamp
+          de: Aktueller Status der Lampe
+        writable: false
+        type: string
+~~~
+{: #code-augmented-sdf-model check="json" pre="yaml2json" title="An SDF model that has been augmented with WoT-specific vocabulary."}
+
+{:aside}
+>
+Since the pair of an SDF model and a Supplement is equivalent in
+semantics to the augmented model created from the two, there is no
+fundamental difference between specifying aspects in the SDF model or
+leaving them in a Supplement.
+Also, parts of an ecosystem-specific vocabulary may in fact be
+mappable to the SDF base vocabulary.
+Therefore, developing the mapping between SDF and an ecosystem
+requires careful consideration which of the features should be available
+to other ecosystems and therefore should best be part of the common
+SDF model, and which are best handled in a Supplement specific to the
+ecosystem.
+
+<!-- TODO: Also needs to take NIPC into account somewhere -->
+
+## Logging Augmentation
+
+Since an augmented model is not fundamentally different from any other
+SDF model, it may be necessary to trace the provenance of the
+information that flowed into it, e.g., in the info block.
+For this purpose, a new quality called `augmentationLog` is introduced
+that contains an array of URIs pointing to the Supplements that have been
+used to augment the original SDF file (which can also be indicated via
+the `originalSdfModel` quality).
+These additional qualities allow for reproducing the augmentation process.
+
+For logging while performing an augmentation, the processor has to perform
+the following steps:
+
+<!-- TODO: This algorithm probably needs to be reworked or at least reformatted. -->
+1. If the `info` block is not present in the model that is being augmented,
+  the processor creates it.
+2. If the `info` block does not contain an `augmentationLog` quality, the processor
+  performs the following steps:
+    1. If the `originalSdfModel` quality is not present in the `info`
+       block, the processor adds it with a URI that can be used to
+       access the SDF model that is currently being augmented as its
+       value.
+    2. The processor creates the `augmentationLog` quality with an
+       array containing URIs that can be used to access the current
+       Supplement as its sole item.
+2. Otherwise, if `augmentationLog` does not contain an array, stop and
+   throw an error.
+3. Otherwise, the processor adds a URI that can be used to access the
+   current Supplement to the array of the `augmentationLog` quality.
+
+<!-- [^logging] -->
+
+~~~ sdf
+info:
+  title: Augmented SDF model with augmentation log.
+  augmentationLog:
+    - https://example.org/sdf-supplement-1
+    - https://example.org/sdf-supplement-2
+  originalSdfModel: https://example.org/original-sdf-model
+# TODO: Do we need more information here?
+~~~
+{: #augmentation-log check="json" pre="yaml2json" title="An augmented SDF model with an augmentation log and information regarding the original SDF model."}
+
+[^logging]: A convention for "logging" the augmentation steps that
+    went into an augmented model needs to be further fleshed out.
+    (An array in the info block that receives additions from a supplement
+    using the "`‑`" pointer syntax may be a good receptacle for
+    receiving information about multiple augmentations.)
+
+# Ecosystem-specific Examples
+
+In the following, we will outline a number of examples that illustrate how
+Supplements can be used to enrich a given SDF model with ecosystem-specific
+information.
+
 ## Example Model 1 (ecosystem: IPSO/OMA) {#example1}
 
 An example for an SDF Supplement is given in {{code-example1}}.
@@ -258,165 +441,6 @@ amend:
 ~~~
 {: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Supplement for Protocol Bindings"}
 
-
-# Formal Syntax of SDF Supplements {#syntax}
-
-An SDF Supplement has three optional components that are taken
-unchanged from SDF: The info block, the namespace declaration, and the
-default namespace.
-The mandatory fourth component, the `amend` block, contains the list of amendments that are supposed to be applied to the target model,
-using an SDF name reference (usually a namespace and a JSON pointer) as the target to which a specified quality is applied to.
-
-{{mapping-cddl}} describes the syntax of SDF Supplements using CDDL {{-cddl}}.
-
-~~~ cddl
-{::include mapping.cddl}
-~~~
-{: #mapping-cddl title="CDDL definition of SDF Supplements"}
-
-The JSON pointer that is used a the `target` can
-point to a JSON map in the SDF model to be augmented by adding or
-replacing map entries.
-If necessary, the JSON map is created at the position indicated with
-the contents of the `patch` [^example].
-Alternatively, the JSON pointer can point to an array (also possibly
-created if not existing before) and add an element to that array by
-using the "`‑`" syntax introduced in the penultimate paragraph of
-{{Section 4 of -pointer}}.
-
-[^example]: (add examples)
-
-# Augmentation Mechanism
-
-<!-- TODO: Discuss used terminology -->
-An SDF model and a compatible Supplement can be combined to create
-an _augmented_ SDF model.
-(This process can be repeated with multiple Supplements by using the
-outcome of one augmentation as the input of the next one.)
-As augmentation is not equal to instantiation, augmented SDF models
-are still abstract in nature, but are enriched with ecosystem-specific
-information.
-
-{:aside}
->
-Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.
-
-The augmentation mechanism is related to the resolution mechanism
-defined in {{Section 4.4 of -sdf}}, but fundamentally different:
-
-Instead of a model file reaching out to other model files and
-integrating aspects into itself via `sdfRef` (*pull* approach), the
-Supplement *pushes* information into a new copy of a specific given
-SDF model.
-The original SDF model does not need to know which Supplements it
-will be used with and can be used with several such Supplements
-independently of each other.
-
-An augmented SDF model is produced from two inputs: An SDF model and a compatible Supplement, i.e. every JSON pointer key within elements of the  `amend` array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
-To perform the augmentation, a processor needs to create a copy of the original SDF model.
-It then iterates over all entries within the Supplement's `amend` array elements.
-During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
-This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's value as the `Patch` argument; the target is replaced with the result of the merge-patch.
-
-Once the iteration has finished, the processor returns the resulting augmented SDF model.
-Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.
-
-An example for an augmented SDF model can be seen in {{code-augmented-sdf-model}}.
-This is the result of applying the WoT-specific Supplement from {{code-wot-output2}} to the SDF model shown in {{code-wot-output1}}.
-This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
-which requires some information that cannot be provided in an SDF
-model that is limited to the vocabulary defined in the SDF base specification.
-
-<!-- TODO: Prefix WoT-specific qualities with wot:? -->
-~~~ sdf
-info:
-  title: Lamp Thing Model
-namespace:
-  wot: http://www.w3.org/ns/td
-defaultNamespace: wot
-sdfObject:
-  LampThingModel:
-    label: Lamp Thing Model
-    titles:
-      en: Lamp Thing Model
-      de: Thing Model für eine Lampe
-    sdfProperty:
-      status:
-        description: Current status of the lamp
-        descriptions:
-          en: Current status of the lamp
-          de: Aktueller Status der Lampe
-        writable: false
-        type: string
-~~~
-{: #code-augmented-sdf-model check="json" pre="yaml2json" title="An SDF model that has been augmented with WoT-specific vocabulary."}
-
-{:aside}
->
-Since the pair of an SDF model and a Supplement is equivalent in
-semantics to the augmented model created from the two, there is no
-fundamental difference between specifying aspects in the SDF model or
-leaving them in a Supplement.
-Also, parts of an ecosystem-specific vocabulary may in fact be
-mappable to the SDF base vocabulary.
-Therefore, developing the mapping between SDF and an ecosystem
-requires careful consideration which of the features should be available
-to other ecosystems and therefore should best be part of the common
-SDF model, and which are best handled in a Supplement specific to the
-ecosystem.
-
-<!-- TODO: Also needs to take NIPC into account somewhere -->
-
-## Logging Augmentation
-
-Since an augmented model is not fundamentally different from any other
-SDF model, it may be necessary to trace the provenance of the
-information that flowed into it, e.g., in the info block.
-For this purpose, a new quality called `augmentationLog` is introduced
-that contains an array of URIs pointing to the Supplements that have been
-used to augment the original SDF file (which can also be indicated via
-the `originalSdfModel` quality).
-These additional qualities allow for reproducing the augmentation process.
-
-For logging while performing an augmentation, the processor has to perform
-the following steps:
-
-<!-- TODO: This algorithm probably needs to be reworked or at least reformatted. -->
-1. If the `info` block is not present in the model that is being augmented,
-  the processor creates it.
-2. If the `info` block does not contain an `augmentationLog` quality, the processor
-  performs the following steps:
-    1. If the `originalSdfModel` quality is not present in the `info`
-       block, the processor adds it with a URI that can be used to
-       access the SDF model that is currently being augmented as its
-       value.
-    2. The processor creates the `augmentationLog` quality with an
-       array containing URIs that can be used to access the current
-       Supplement as its sole item.
-2. Otherwise, if `augmentationLog` does not contain an array, stop and
-   throw an error.
-3. Otherwise, the processor adds a URI that can be used to access the
-   current Supplement to the array of the `augmentationLog` quality.
-
-<!-- [^logging] -->
-
-~~~ sdf
-info:
-  title: Augmented SDF model with augmentation log.
-  augmentationLog:
-    - https://example.org/sdf-mapping-file-1
-    - https://example.org/sdf-mapping-file-2
-  originalSdfModel: https://example.org/original-sdf-model
-# TODO: Do we need more information here?
-~~~
-{: #augmentation-log check="json" pre="yaml2json" title="An augmented SDF model with an augmentation log and information regarding the original SDF model."}
-
-[^logging]: A convention for "logging" the augmentation steps that
-    went into an augmented model needs to be further fleshed out.
-    (An array in the info block that receives additions from a mapping
-    file using the "`‑`" pointer syntax may be a good receptacle for
-    receiving information about multiple augmentations.)
-
 IANA Considerations {#iana}
 ===================
 
@@ -425,9 +449,9 @@ Media Type
 
 IANA is requested to add the following Media-Type to the "Media Types" registry.
 
-| Name             | Template                     | Reference             |
-|------------------|------------------------------|-----------------------|
-| sdf-mapping+json | application/sdf-supplement+json | RFC XXXX, {{media-type}} |
+| Name                | Template                        | Reference                |
+|---------------------|---------------------------------|--------------------------|
+| sdf-supplement+json | application/sdf-supplement+json | RFC XXXX, {{media-type}} |
 {: #new-media-types title="A media type for SDF Supplements" align="left"}
 
 [^to-be-removed]
@@ -439,7 +463,7 @@ Type name:
 : application
 
 Subtype name:
-: sdf-mapping+json
+: sdf-supplement+json
 
 Required parameters:
 : none
@@ -500,6 +524,13 @@ Some wider issues are discussed in {{-seccons}}.
 
 
 --- back
+
+# Formal Syntax of SDF Supplements {#syntax}
+
+~~~ cddl
+{::include mapping.cddl}
+~~~
+{: #mapping-cddl title="CDDL definition of SDF Supplements"}
 
 {::include-all lists.md}
 

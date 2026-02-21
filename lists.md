@@ -3,6 +3,12 @@
 {:unnumbered}
 
 {:compact hangindent="11"}
+{{code-augmented-sdf-model}}:
+: {{<<code-augmented-sdf-model}}
+
+{{augmentation-log}}:
+: {{<<augmentation-log}}
+
 {{code-example1}}:
 : {{<<code-example1}}
 
@@ -21,14 +27,20 @@
 {{mapping-cddl}}:
 : {{<<mapping-cddl}}
 
-{{code-augmented-sdf-model}}:
-: {{<<code-augmented-sdf-model}}
-
 
 # List of Tables
 {:unnumbered}
 
 {:compact hangindent="11"}
+{{infoblockqual}}:
+: {{<<infoblockqual}}
+
+{{nssec}}:
+: {{<<nssec}}
+
+{{amendssec}}:
+: {{<<amendssec}}
+
 {{new-media-types}}:
 : {{<<new-media-types}}
 
