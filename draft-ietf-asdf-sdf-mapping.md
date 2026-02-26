@@ -42,7 +42,7 @@ normative:
 #  RFC3986: uri
 #  W3C.NOTE-curie-20101216: curie
 #  RFC0020: ascii
-  I-D.ietf-asdf-sdf: sdf
+  RFC9880: sdf
 informative:
   RFC8576: seccons
   W3C.wot-thing-description11: wot-td
