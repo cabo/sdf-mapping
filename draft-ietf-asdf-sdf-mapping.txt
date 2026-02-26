@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 22 August 2026                               Universität Bremen
-                                                        18 February 2026
+Expires: 30 August 2026                               Universität Bremen
+                                                        26 February 2026
 
 
              Semantic Definition Format (SDF): Supplements
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 1]
+Bormann & Romann         Expires 30 August 2026                 [Page 1]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -68,7 +68,7 @@ Internet-Draft               SDF Supplements               February 2026
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2026.
+   This Internet-Draft will expire on 30 August 2026.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 2]
+Bormann & Romann         Expires 30 August 2026                 [Page 2]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -138,7 +138,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 1.1.  Terminology and Conventions
 
-   The definitions of [I-D.ietf-asdf-sdf] apply.
+   The definitions of [RFC9880] apply.
 
    The term "byte" is used in its now-customary sense as a synonym for
    "octet".
@@ -153,19 +153,19 @@ Internet-Draft               SDF Supplements               February 2026
 
    An SDF Supplement provides augmentation information for one or more
    SDF models.  Its main contents are an array of patches that are
-   applied using SDF name references (Section 4.3 of
-   [I-D.ietf-asdf-sdf]) as the respective target.
+   applied using SDF name references (Section 4.3 of [RFC9880]) as the
+   respective target.
 
    When processing the Supplement together with one or more SDF models,
    the qualities from the array elements are added to the SDF model at
    the referenced name, as in a merge-patch operation [RFC7396].  Note
    that this is somewhat similar to the way sdfRef (Section 4.4 of
-   [I-D.ietf-asdf-sdf]) works, but in a Supplement the arrows point in
-   the inverse direction (from the augmenter to the augmented).
+   [RFC9880]) works, but in a Supplement the arrows point in the inverse
+   direction (from the augmenter to the augmented).
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 3]
+Bormann & Romann         Expires 30 August 2026                 [Page 3]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -183,11 +183,11 @@ Internet-Draft               SDF Supplements               February 2026
    // the referenced specification(s), but has un-namespaced quality
    // names.  These two kinds of namespaces are unrelated in SDF, and a
    // more robust example may need to make use of Quality Name Prefixes
-   // as defined in Section 2.3.3-3 of [I-D.ietf-asdf-sdf] (independent
-   // of a potential feature to add namespace references to definitions
-   // that are not intended to go into the default namespace — these are
-   // SDF definition namespaces and not quality namespaces, which are
-   // one meta-level higher).
+   // as defined in Section 2.3.3-3 of [RFC9880] (independent of a
+   // potential feature to add namespace references to definitions that
+   // are not intended to go into the default namespace — these are SDF
+   // definition namespaces and not quality namespaces, which are one
+   // meta-level higher).
 
    *  Start of a Supplement for certain OneDM playground models:
 
@@ -221,7 +221,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 4]
+Bormann & Romann         Expires 30 August 2026                 [Page 4]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -277,7 +277,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 5]
+Bormann & Romann         Expires 30 August 2026                 [Page 5]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -333,7 +333,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 6]
+Bormann & Romann         Expires 30 August 2026                 [Page 6]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -389,7 +389,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 7]
+Bormann & Romann         Expires 30 August 2026                 [Page 7]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -445,7 +445,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 8]
+Bormann & Romann         Expires 30 August 2026                 [Page 8]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -501,7 +501,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                 [Page 9]
+Bormann & Romann         Expires 30 August 2026                 [Page 9]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -543,8 +543,7 @@ Internet-Draft               SDF Supplements               February 2026
       |  format might look like and whether such a format is needed.
 
    The augmentation mechanism is related to the resolution mechanism
-   defined in Section 4.4 of [I-D.ietf-asdf-sdf], but fundamentally
-   different:
+   defined in Section 4.4 of [RFC9880], but fundamentally different:
 
    Instead of a model file reaching out to other model files and
    integrating aspects into itself via sdfRef (_pull_ approach), the
@@ -557,7 +556,8 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 10]
+
+Bormann & Romann         Expires 30 August 2026                [Page 10]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -613,7 +613,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 11]
+Bormann & Romann         Expires 30 August 2026                [Page 11]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -669,7 +669,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 12]
+Bormann & Romann         Expires 30 August 2026                [Page 12]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -725,7 +725,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 13]
+Bormann & Romann         Expires 30 August 2026                [Page 13]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -781,7 +781,7 @@ Internet-Draft               SDF Supplements               February 2026
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 14]
+Bormann & Romann         Expires 30 August 2026                [Page 14]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -809,14 +809,6 @@ Internet-Draft               SDF Supplements               February 2026
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-   [I-D.ietf-asdf-sdf]
-              Koster, M., Bormann, C., and A. Keränen, "Semantic
-              Definition Format (SDF) for Data and Interactions of
-              Things", Work in Progress, Internet-Draft, draft-ietf-
-              asdf-sdf-25, 13 October 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-asdf-
-              sdf-25>.
-
    [RFC6901]  Bryan, P., Ed., Zyp, K., and M. Nottingham, Ed.,
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
               DOI 10.17487/RFC6901, April 2013,
@@ -832,12 +824,20 @@ Internet-Draft               SDF Supplements               February 2026
               JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
               June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
 
+   [RFC9880]  Koster, M., Ed., Bormann, C., Ed., and A. Keränen,
+              "Semantic Definition Format (SDF) for Data and
+              Interactions of Things", RFC 9880, DOI 10.17487/RFC9880,
+              January 2026, <https://www.rfc-editor.org/rfc/rfc9880>.
+
 7.2.  Informative References
 
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 15]
+
+
+
+Bormann & Romann         Expires 30 August 2026                [Page 15]
 
 Internet-Draft               SDF Supplements               February 2026
 
@@ -893,4 +893,4 @@ Authors' Addresses
 
 
 
-Bormann & Romann         Expires 22 August 2026                [Page 16]
+Bormann & Romann         Expires 30 August 2026                [Page 16]
