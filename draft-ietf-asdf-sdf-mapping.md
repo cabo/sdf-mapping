@@ -153,14 +153,26 @@ The `namespace` and `defaultNamespaces` qualities are also taken over unchanged 
 The mandatory third component, the Amendments block, contains the set of patches that are supposed to be applied to the target model,
 Under the `amend` quality, the block consists of an array of JSON maps, whose keys indicate the target for the JSON Merge Patch algorithm {{-merge-patch}}.
 
-| Quality | Type          | Description                                                                                    |
-| ------- | ------------- | ---------------------------------------------------------------------------------------------- |
-| amend   | array of maps | Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target. |
+| Quality | Type                    | Description                                                                                    |
+| ------- | ----------------------- | ---------------------------------------------------------------------------------------------- |
+| amend   | array of amendment maps | Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target. |
 {: #amendssec title="Qualities of the Amendments Block"}
 
 The JSON pointers can point to a JSON map in the SDF model to be augmented by adding or replacing map entries.
 If necessary, a new JSON map is created at the indicated position.
 Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "`‑`" syntax introduced in the penultimate paragraph of {{Section 4 of -pointer}}.
+
+The individual elements of an amendment are shown in {{amendment-qualities}}.
+Besides the `value` that is to be applied via the given `patchMethod`, the `fix` quality plays an important role for dynamically determining a (semantic) version history of an SDF model.
+
+<!-- TODO: Find a better name than "fix" -->
+
+| Quality     | Type      | Default        | Description                                                                                                                               |
+| ----------- | --------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| value       | any type  | –              | Contains the value that is supposed to be applied via the indicated patch method.                                                         |
+| patchMethod | string    | merge-patch    | Indicates which patch method should be used for applying this amendment. Defaults to the JSON Merge Patch algorithm {{-merge-patch}}.     |
+| fix         | boolean   | false          | Indicates whether this amendment serves as a true "patch" for the target (that fixes a bug or a mistake from a previous patch) amendment. |
+{: #amendment-qualities title="Qualities of an Amendment Map"}
 
 # Augmentation Mechanism
 
@@ -327,11 +339,14 @@ namespace:
 defaultNamespace: onedm
 amend:
   - "#/sdfObject/Digital_Input":
-      id: 3200
+      value:
+        id: 3200
   - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
-      id: 5500
+      value:
+        id: 5500
   - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
-      id: 5501
+      value:
+        id: 5501
 ~~~
 {: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF Supplement"}
 
@@ -416,13 +431,15 @@ namespace:
 defaultNamespace: wot
 amend:
   - "#/sdfObject/LampThingModel":
-      titles:
-        en: Lamp Thing Model
-        de: Thing Model für eine Lampe
+      value:
+        titles:
+          en: Lamp Thing Model
+          de: Thing Model für eine Lampe
   - "#/sdfObject/LampThingModel/sdfProperty/status":
-      descriptions:
-        en: Current status of the lamp
-        de: Aktueller Status der Lampe
+      value:
+        descriptions:
+          en: Current status of the lamp
+          de: Aktueller Status der Lampe
 ~~~
 {: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Supplement"}
 
@@ -436,8 +453,9 @@ namespace:
 defaultNamespace: wot
 amend:
   - "#/sdfObject/LampThingModel/sdfProperty/status":
-      descriptions:
-      - href: coap://example.org/status
+      value:
+        forms:
+        - href: coap://example.org/status
 ~~~
 {: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Supplement for Protocol Bindings"}
 
