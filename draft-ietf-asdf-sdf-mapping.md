@@ -305,6 +305,24 @@ info:
     using the "`‑`" pointer syntax may be a good receptacle for
     receiving information about multiple augmentations.)
 
+## Determining Semantic Versions {#semantic-versioning}
+
+Besides serving as a way to derive more specialized SDF models (e.g., with ecosystem-specific information), Supplements can also serve as a basis for determining the version history of a model, e.g., by beinng an input format accepted by servers that host SDF models.
+
+By looking at the kind of change each Amendment applies to the target model, we can determine whether a new version constitutes a major update, a minor update, or a patch in accordance with the semantic versioning approach. <!-- TODO: add semver reference -->
+While applying each Amendment to the target model, we can differentiate the following cases:
+
+1. The amendment has the `fix` quality set to `true`. In this case, the amendment constitutes a patch, since a bug in the previous version has been fixed.
+
+2. The amendment adds an additional interaction affordance, `sdfObject`, or `sdfThing` definition to the model. In this case, the change can be considered backwards-compatible addition, constituting a minor update.
+
+3. The amendment changes an existing interaction affordance. In this case, the change is not backwards-compatible and constitues a major update.
+
+When calculating the next version number for a single model, all of the amendments have to be taken into account and the "version bump" will correspond with the change with the largest impact (e.g., if two amendments contain patches and one amendment contains a minor update, the model needs to be increased to the next minor version number as a whole).
+
+In the future, version numbers for individual affordances and Groupings may be introduced that could be updated independently of each other.
+However, this approach faces some challenges when resolving the version number of an individual definitions, since the resolution of the correct model does not take fragment identifiers (and therefore the used JSON Pointers) into account.
+
 # Ecosystem-specific Examples
 
 In the following, we will outline a number of examples that illustrate how
