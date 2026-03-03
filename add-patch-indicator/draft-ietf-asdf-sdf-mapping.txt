@@ -95,17 +95,17 @@ Table of Contents
      3.3.  Amendments Block  . . . . . . . . . . . . . . . . . . . .   6
    4.  Augmentation Mechanism  . . . . . . . . . . . . . . . . . . .   7
      4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  10
+     4.2.  Determining Semantic Versions . . . . . . . . . . . . . .  11
    5.  Ecosystem-specific Examples . . . . . . . . . . . . . . . . .  11
-     5.1.  Example Model 1 (ecosystem: IPSO/OMA) . . . . . . . . . .  11
-     5.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .  12
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-     6.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  16
-     6.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  17
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  18
-   Appendix A.  Formal Syntax of SDF Supplements . . . . . . . . . .  18
+     5.1.  Example Model 1 (ecosystem: IPSO/OMA) . . . . . . . . . .  12
+     5.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .  13
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
+     6.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  17
+     6.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  18
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  18
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  19
 
 
 
@@ -114,10 +114,11 @@ Bormann & Romann        Expires 4 September 2026                [Page 2]
 Internet-Draft               SDF Supplements                  March 2026
 
 
-   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  20
-   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  20
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  20
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
+   Appendix A.  Formal Syntax of SDF Supplements . . . . . . . . . .  19
+   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  21
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 1.  Introduction
 
@@ -160,7 +161,6 @@ Internet-Draft               SDF Supplements                  March 2026
    SDF models.  Its main contents are an array of patches that are
    applied using SDF name references (Section 4.3 of
    [I-D.ietf-asdf-sdf]) as the respective target.
-
 
 
 
@@ -565,11 +565,58 @@ Internet-Draft               SDF Supplements                  March 2026
        Figure 2: An augmented SDF model with an augmentation log and
                information regarding the original SDF model.
 
+4.2.  Determining Semantic Versions
+
+   Besides serving as a way to derive more specialized SDF models (e.g.,
+   with ecosystem-specific information), Supplements can also serve as a
+   basis for determining the version history of a model, e.g., by beinng
+   an input format accepted by servers that host SDF models.
+
+   By looking at the kind of change each Amendment applies to the target
+   model, we can determine whether a new version constitutes a major
+   update, a minor update, or a patch in accordance with the semantic
+   versioning approach.  While applying each Amendment to the target
+   model, we can differentiate the following cases:
+
+   1.  The amendment has the fix quality set to true.  In this case, the
+       amendment constitutes a patch, since a bug in the previous
+       version has been fixed.
+
+   2.  The amendment adds an additional interaction affordance,
+       sdfObject, or sdfThing definition to the model.  In this case,
+       the change can be considered backwards-compatible addition,
+       constituting a minor update.
+
+   3.  The amendment changes an existing interaction affordance.  In
+       this case, the change is not backwards-compatible and constitues
+       a major update.
+
+   When calculating the next version number for a single model, all of
+   the amendments have to be taken into account and the "version bump"
+   will correspond with the change with the largest impact (e.g., if two
+   amendments contain patches and one amendment contains a minor update,
+   the model needs to be increased to the next minor version number as a
+   whole).
+
+   In the future, version numbers for individual affordances and
+   Groupings may be introduced that could be updated independently of
+   each other.  However, this approach faces some challenges when
+   resolving the version number of an individual definitions, since the
+   resolution of the correct model does not take fragment identifiers
+   (and therefore the used JSON Pointers) into account.
+
 5.  Ecosystem-specific Examples
 
    In the following, we will outline a number of examples that
    illustrate how Supplements can be used to enrich a given SDF model
    with ecosystem-specific information.
+
+
+
+Bormann & Romann        Expires 4 September 2026               [Page 11]
+
+Internet-Draft               SDF Supplements                  March 2026
+
 
 5.1.  Example Model 1 (ecosystem: IPSO/OMA)
 
@@ -613,7 +660,16 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 11]
+
+
+
+
+
+
+
+
+
+Bormann & Romann        Expires 4 September 2026               [Page 12]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -669,7 +725,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 12]
+Bormann & Romann        Expires 4 September 2026               [Page 13]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -725,7 +781,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 13]
+Bormann & Romann        Expires 4 September 2026               [Page 14]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -781,7 +837,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 14]
+Bormann & Romann        Expires 4 September 2026               [Page 15]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -837,7 +893,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 15]
+Bormann & Romann        Expires 4 September 2026               [Page 16]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -893,7 +949,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 16]
+Bormann & Romann        Expires 4 September 2026               [Page 17]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -949,7 +1005,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 17]
+Bormann & Romann        Expires 4 September 2026               [Page 18]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -1005,7 +1061,7 @@ Appendix A.  Formal Syntax of SDF Supplements
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 18]
+Bormann & Romann        Expires 4 September 2026               [Page 19]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -1061,7 +1117,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 19]
+Bormann & Romann        Expires 4 September 2026               [Page 20]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -1117,7 +1173,7 @@ Authors' Addresses
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 20]
+Bormann & Romann        Expires 4 September 2026               [Page 21]
 
 Internet-Draft               SDF Supplements                  March 2026
 
@@ -1173,4 +1229,4 @@ Internet-Draft               SDF Supplements                  March 2026
 
 
 
-Bormann & Romann        Expires 4 September 2026               [Page 21]
+Bormann & Romann        Expires 4 September 2026               [Page 22]

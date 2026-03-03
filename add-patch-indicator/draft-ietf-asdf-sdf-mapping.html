@@ -1206,6 +1206,9 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-logging-augmentation" class="internal xref">Logging Augmentation</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-determining-semantic-versio" class="internal xref">Determining Semantic Versions</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
@@ -1651,6 +1654,30 @@ current Supplement to the array of the <code>augmentationLog</code> quality.<a h
 <a href="#name-an-augmented-sdf-model-with" class="selfRef">An augmented SDF model with an augmentation log and information regarding the original SDF model.</a>
           </figcaption></figure>
 </div>
+</section>
+</div>
+<div id="semantic-versioning">
+<section id="section-4.2">
+        <h3 id="name-determining-semantic-versio">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-determining-semantic-versio" class="section-name selfRef">Determining Semantic Versions</a>
+        </h3>
+<p id="section-4.2-1">Besides serving as a way to derive more specialized SDF models (e.g., with ecosystem-specific information), Supplements can also serve as a basis for determining the version history of a model, e.g., by beinng an input format accepted by servers that host SDF models.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">By looking at the kind of change each Amendment applies to the target model, we can determine whether a new version constitutes a major update, a minor update, or a patch in accordance with the semantic versioning approach. 
+While applying each Amendment to the target model, we can differentiate the following cases:<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-3">
+<li id="section-4.2-3.1">
+            <p id="section-4.2-3.1.1">The amendment has the <code>fix</code> quality set to <code>true</code>. In this case, the amendment constitutes a patch, since a bug in the previous version has been fixed.<a href="#section-4.2-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-4.2-3.2">
+            <p id="section-4.2-3.2.1">The amendment adds an additional interaction affordance, <code>sdfObject</code>, or <code>sdfThing</code> definition to the model. In this case, the change can be considered backwards-compatible addition, constituting a minor update.<a href="#section-4.2-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-4.2-3.3">
+            <p id="section-4.2-3.3.1">The amendment changes an existing interaction affordance. In this case, the change is not backwards-compatible and constitues a major update.<a href="#section-4.2-3.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-4.2-4">When calculating the next version number for a single model, all of the amendments have to be taken into account and the "version bump" will correspond with the change with the largest impact (e.g., if two amendments contain patches and one amendment contains a minor update, the model needs to be increased to the next minor version number as a whole).<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-5">In the future, version numbers for individual affordances and Groupings may be introduced that could be updated independently of each other.
+However, this approach faces some challenges when resolving the version number of an individual definitions, since the resolution of the correct model does not take fragment identifiers (and therefore the used JSON Pointers) into account.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
