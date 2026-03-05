@@ -162,15 +162,17 @@ If necessary, a new JSON map is created at the indicated position.
 Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "`‑`" syntax introduced in the penultimate paragraph of {{Section 4 of -pointer}}.
 
 The individual elements of an amendment are shown in {{amendment-qualities}}.
-Besides the `delta` that is to be applied via the given `patchMethod`, the `fix` quality plays an important role for dynamically determining a (semantic) version history of an SDF model.
+Besides the `delta` that is to be applied via the given `patchMethod`, the `backwardsCompability` quality provides a way to indicate whether the amendment is backwards-compatible or not, while the `fix` quality allows for indicating whether the amendment should only be considered a patch update in the sense of semantic versioning.
+This patch update may also be non-backwards-compatible if it restores or establishes the functionality that was intended by a previous update.
 
 <!-- TODO: Find a better name than "fix" -->
 
-| Quality     | Type      | Default        | Description                                                                                                                               |
-| ----------- | --------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| delta       | any type  | –              | Contains the value that is supposed to be applied via the indicated patch method.                                                         |
-| patchMethod | string    | merge-patch    | Indicates which patch method should be used for applying this amendment. Defaults to the JSON Merge Patch algorithm {{-merge-patch}}.     |
-| fix         | boolean   | false          | Indicates whether this amendment serves as a true "patch" for the target (that fixes a bug or a mistake from a previous patch) amendment. |
+| Quality             | Type      | Default     | Description                                                                                                                                    |
+| ------------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| delta               | any type  | –           | Contains the value that is supposed to be applied via the indicated patch method.                                                              |
+| patchMethod         | string    | merge-patch | Indicates which patch method should be used for applying this amendment. Defaults to the JSON Merge Patch algorithm {{-merge-patch}}.          |
+| fix                 | boolean   | false       | Indicates whether this amendment serves as a true "patch" for the target (that fixes a bug or a mistake from a previous patch) amendment.      |
+| backwardsCompatible | boolean   | -           | Indicates whether this amendment is supposed to be backwards-compatible or not. Makes an (optional) promise regarding the amendment's effect.  |
 {: #amendment-qualities title="Qualities of an Amendment Map"}
 
 # Augmentation Mechanism

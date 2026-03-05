@@ -15,6 +15,7 @@ amendments = {
 amendment = {
   delta: additionalqualities
   ? fix: bool .default false ; TODO: Consider renaming/changing this quality
+  ? backwardsCompatible: bool
   ? patchMethod: text .default "merge-patch"
 }
 
