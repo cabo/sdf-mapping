@@ -309,12 +309,12 @@ Internet-Draft               SDF Supplements                  March 2026
 
    The individual elements of an amendment are shown in Table 4.
    Besides the delta that is to be applied via the given patchMethod,
-   the fix quality plays an important role for dynamically determining a
-   (semantic) version history of an SDF model.
-
-
-
-
+   the backwardsCompability quality provides a way to indicate whether
+   the amendment is backwards-compatible or not, while the fix quality
+   allows for indicating whether the amendment should only be considered
+   a patch update in the sense of semantic versioning.  This patch
+   update may also be non-backwards-compatible if it restores or
+   establishes the functionality that was intended by a previous update.
 
 
 
@@ -338,27 +338,41 @@ Bormann & Romann        Expires 6 September 2026                [Page 6]
 Internet-Draft               SDF Supplements                  March 2026
 
 
-   +=============+=========+=============+============================+
-   | Quality     | Type    | Default     | Description                |
-   +=============+=========+=============+============================+
-   | delta       | any     | –           | Contains the value that is |
-   |             | type    |             | supposed to be applied via |
-   |             |         |             | the indicated patch        |
-   |             |         |             | method.                    |
-   +-------------+---------+-------------+----------------------------+
-   | patchMethod | string  | merge-patch | Indicates which patch      |
-   |             |         |             | method should be used for  |
-   |             |         |             | applying this amendment.   |
-   |             |         |             | Defaults to the JSON Merge |
-   |             |         |             | Patch algorithm [RFC7396]. |
-   +-------------+---------+-------------+----------------------------+
-   | fix         | boolean | false       | Indicates whether this     |
-   |             |         |             | amendment serves as a true |
-   |             |         |             | "patch" for the target     |
-   |             |         |             | (that fixes a bug or a     |
-   |             |         |             | mistake from a previous    |
-   |             |         |             | patch) amendment.          |
-   +-------------+---------+-------------+----------------------------+
+   +=====================+=======+=============+======================+
+   | Quality             |Type   | Default     | Description          |
+   +=====================+=======+=============+======================+
+   | delta               |any    | –           | Contains the value   |
+   |                     |type   |             | that is supposed to  |
+   |                     |       |             | be applied via the   |
+   |                     |       |             | indicated patch      |
+   |                     |       |             | method.              |
+   +---------------------+-------+-------------+----------------------+
+   | patchMethod         |string | merge-patch | Indicates which      |
+   |                     |       |             | patch method should  |
+   |                     |       |             | be used for applying |
+   |                     |       |             | this amendment.      |
+   |                     |       |             | Defaults to the JSON |
+   |                     |       |             | Merge Patch          |
+   |                     |       |             | algorithm [RFC7396]. |
+   +---------------------+-------+-------------+----------------------+
+   | fix                 |boolean| false       | Indicates whether    |
+   |                     |       |             | this amendment       |
+   |                     |       |             | serves as a true     |
+   |                     |       |             | "patch" for the      |
+   |                     |       |             | target (that fixes a |
+   |                     |       |             | bug or a mistake     |
+   |                     |       |             | from a previous      |
+   |                     |       |             | patch) amendment.    |
+   +---------------------+-------+-------------+----------------------+
+   | backwardsCompatible |boolean| -           | Indicates whether    |
+   |                     |       |             | this amendment is    |
+   |                     |       |             | supposed to be       |
+   |                     |       |             | backwards-compatible |
+   |                     |       |             | or not.  Makes an    |
+   |                     |       |             | (optional) promise   |
+   |                     |       |             | regarding the        |
+   |                     |       |             | amendment's effect.  |
+   +---------------------+-------+-------------+----------------------+
 
                   Table 4: Qualities of an Amendment Map
 
@@ -370,6 +384,15 @@ Internet-Draft               SDF Supplements                  March 2026
    the next one.)  As augmentation is not equal to instantiation,
    augmented SDF models are still abstract in nature, but are enriched
    with ecosystem-specific information.
+
+
+
+
+
+Bormann & Romann        Expires 6 September 2026                [Page 7]
+
+Internet-Draft               SDF Supplements                  March 2026
+
 
       |  Note that it might be necessary to specify an augmentation
       |  mechanism for instance descriptions as well at a later point in
@@ -385,14 +408,6 @@ Internet-Draft               SDF Supplements                  March 2026
    SDF model.  The original SDF model does not need to know which
    Supplements it will be used with and can be used with several such
    Supplements independently of each other.
-
-
-
-
-Bormann & Romann        Expires 6 September 2026                [Page 7]
-
-Internet-Draft               SDF Supplements                  March 2026
-
 
    An augmented SDF model is produced from two inputs: An SDF model and
    a compatible Supplement, i.e. every JSON pointer key within elements
@@ -419,21 +434,6 @@ Internet-Draft               SDF Supplements                  March 2026
    Description, which requires some information that cannot be provided
    in an SDF model that is limited to the vocabulary defined in the SDF
    base specification.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1069,6 +1069,7 @@ Internet-Draft               SDF Supplements                  March 2026
    amendment = {
      delta: additionalqualities
      ? fix: bool .default false ; TODO: Consider renaming/changing this quality
+     ? backwardsCompatible: bool
      ? patchMethod: text .default "merge-patch"
    }
 
@@ -1113,7 +1114,6 @@ Internet-Draft               SDF Supplements                  March 2026
    rfc3339z = '
       date-fullyear   = 4DIGIT
       date-month      = 2DIGIT  ; 01-12
-      date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
 
 
 
@@ -1122,6 +1122,7 @@ Bormann & Romann        Expires 6 September 2026               [Page 20]
 Internet-Draft               SDF Supplements                  March 2026
 
 
+      date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
                                 ; month/year
       time-hour       = 2DIGIT  ; 00-23
       time-minute     = 2DIGIT  ; 00-59
@@ -1166,7 +1167,6 @@ Acknowledgements
    provided by Ari Keränen.
 
 Authors' Addresses
-
 
 
 

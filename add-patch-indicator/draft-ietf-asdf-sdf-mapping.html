@@ -1461,7 +1461,8 @@ Under the <code>amend</code> quality, the block consists of an array of JSON map
 If necessary, a new JSON map is created at the indicated position.
 Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "<code>‑</code>" syntax introduced in the penultimate paragraph of <span><a href="https://rfc-editor.org/rfc/rfc6901#section-4" class="relref">Section 4</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.3-4">The individual elements of an amendment are shown in <a href="#amendment-qualities" class="auto internal xref">Table 4</a>.
-Besides the <code>delta</code> that is to be applied via the given <code>patchMethod</code>, the <code>fix</code> quality plays an important role for dynamically determining a (semantic) version history of an SDF model.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+Besides the <code>delta</code> that is to be applied via the given <code>patchMethod</code>, the <code>backwardsCompability</code> quality provides a way to indicate whether the amendment is backwards-compatible or not, while the <code>fix</code> quality allows for indicating whether the amendment should only be considered a patch update in the sense of semantic versioning.
+This patch update may also be non-backwards-compatible if it restores or establishes the functionality that was intended by a previous update.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 <span id="name-qualities-of-an-amendment-m"></span><div id="amendment-qualities">
 <table class="center" id="table-4">
           <caption>
@@ -1494,6 +1495,12 @@ Besides the <code>delta</code> that is to be applied via the given <code>patchMe
               <td class="text-left" rowspan="1" colspan="1">boolean</td>
               <td class="text-left" rowspan="1" colspan="1">false</td>
               <td class="text-left" rowspan="1" colspan="1">Indicates whether this amendment serves as a true "patch" for the target (that fixes a bug or a mistake from a previous patch) amendment.</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">backwardsCompatible</td>
+              <td class="text-left" rowspan="1" colspan="1">boolean</td>
+              <td class="text-left" rowspan="1" colspan="1">-</td>
+              <td class="text-left" rowspan="1" colspan="1">Indicates whether this amendment is supposed to be backwards-compatible or not. Makes an (optional) promise regarding the amendment's effect.</td>
             </tr>
           </tbody>
         </table>
@@ -2156,6 +2163,7 @@ amendments = {
 amendment = {
   delta: additionalqualities
   ? fix: bool .default false ; TODO: Consider renaming/changing this quality
+  ? backwardsCompatible: bool
   ? patchMethod: text .default "merge-patch"
 }
 
