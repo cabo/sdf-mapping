@@ -118,7 +118,6 @@ The order of the application of patches is that of the elements within the array
 
 # Data Model of SDF Supplements {#data-model}
 
-<!-- TODO: This text is currently  -->
 
 The data model of SDF Supplements makes use of some of the structural features of SDF models (namely the `info` and namespaces blocks), but complements them with a mandatory third Amendments block.
 
