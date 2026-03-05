@@ -1058,11 +1058,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SDF Supplements</td>
-<td class="right">February 2026</td>
+<td class="right">March 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann &amp; Romann</td>
-<td class="center">Expires 30 August 2026</td>
+<td class="center">Expires 6 September 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1075,12 +1075,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-asdf-sdf-mapping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-02-26" class="published">26 February 2026</time>
+<time datetime="2026-03-05" class="published">5 March 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-30">30 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-09-06">6 September 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1146,7 +1146,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1184,18 +1184,21 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-example-model-1-ecosystem-i" class="internal xref">Example Model 1 (ecosystem: IPSO/OMA)</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-example-model-2-ecosystem-w" class="internal xref">Example Model 2 (ecosystem: W3C WoT)</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-formal-syntax-of-sdf-supple" class="internal xref">Formal Syntax of SDF Supplements</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-data-model-of-sdf-supplemen" class="internal xref">Data Model of SDF Supplements</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-information-block" class="internal xref">Information Block</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-namespaces-block" class="internal xref">Namespaces Block</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-amendments-block" class="internal xref">Amendments Block</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-augmentation-mechanism" class="internal xref">Augmentation Mechanism</a></p>
@@ -1206,41 +1209,55 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-ecosystem-specific-examples" class="internal xref">Ecosystem-specific Examples</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-media-type" class="internal xref">Media Type</a></p>
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-example-model-1-ecosystem-i" class="internal xref">Example Model 1 (ecosystem: IPSO/OMA)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-registries" class="internal xref">Registries</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-example-model-2-ecosystem-w" class="internal xref">Example Model 2 (ecosystem: W3C WoT)</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-media-type" class="internal xref">Media Type</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-registries" class="internal xref">Registries</a></p>
 </li>
             </ul>
 </li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-list-of-figures" class="internal xref">List of Figures</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-list-of-tables" class="internal xref">List of Tables</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-formal-syntax-of-sdf-supple" class="internal xref">Formal Syntax of SDF Supplements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-list-of-figures" class="internal xref">List of Figures</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-list-of-tables" class="internal xref">List of Tables</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1300,12 +1317,320 @@ Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href
 Supplement the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).<a href="#section-2-3" class="pilcrow">¶</a></p>
-<div id="example1">
-<section id="section-2.1">
-        <h3 id="name-example-model-1-ecosystem-i">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-model-1-ecosystem-i" class="section-name selfRef">Example Model 1 (ecosystem: IPSO/OMA)</a>
+</section>
+</div>
+<div id="data-model">
+<section id="section-3">
+      <h2 id="name-data-model-of-sdf-supplemen">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-data-model-of-sdf-supplemen" class="section-name selfRef">Data Model of SDF Supplements</a>
+      </h2>
+<p id="section-3-1">The data model of SDF Supplements makes use of some of the structural features of SDF models (namely the <code>info</code> and namespaces blocks), but complements them with a mandatory third Amendments block.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<div id="information-block">
+<section id="section-3.1">
+        <h3 id="name-information-block">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-information-block" class="section-name selfRef">Information Block</a>
         </h3>
-<p id="section-2.1-1">An example for an SDF Supplement is given in <a href="#code-example1" class="auto internal xref">Figure 1</a>.
+<p id="section-3.1-1">A Supplements's information block may contain exactly the same qualities as an SDF model.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<span id="name-qualities-of-the-informatio"></span><div id="infoblockqual">
+<table class="center" id="table-1">
+          <caption>
+<a href="#table-1" class="selfRef">Table 1</a>:
+<a href="#name-qualities-of-the-informatio" class="selfRef">Qualities of the Information Block</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Quality</th>
+              <th class="text-left" rowspan="1" colspan="1">Type</th>
+              <th class="text-left" rowspan="1" colspan="1">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">title</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">A short summary to be displayed in search results, etc.</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">description</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">Long-form text description (no constraints)</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">version</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">The incremental version of the definition</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">copyright</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">Link to text or embedded text containing a copyright notice</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">license</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">Link to text or embedded text containing license terms</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">modified</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">Time of the latest modification</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">features</td>
+              <td class="text-left" rowspan="1" colspan="1">array of strings</td>
+              <td class="text-left" rowspan="1" colspan="1">List of extension features used</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">$comment</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">Source code comments only, no semantics</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+</section>
+</div>
+<div id="namespaces-block">
+<section id="section-3.2">
+        <h3 id="name-namespaces-block">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-namespaces-block" class="section-name selfRef">Namespaces Block</a>
+        </h3>
+<p id="section-3.2-1">The <code>namespace</code> and <code>defaultNamespaces</code> qualities are also taken over unchanged from base SDF.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<span id="name-qualities-of-the-namespaces"></span><div id="nssec">
+<table class="center" id="table-2">
+          <caption>
+<a href="#table-2" class="selfRef">Table 2</a>:
+<a href="#name-qualities-of-the-namespaces" class="selfRef">Qualities of the Namespaces Block</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Quality</th>
+              <th class="text-left" rowspan="1" colspan="1">Type</th>
+              <th class="text-left" rowspan="1" colspan="1">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">namespace</td>
+              <td class="text-left" rowspan="1" colspan="1">map</td>
+              <td class="text-left" rowspan="1" colspan="1">Defines short names mapped to namespace URIs, to be used as identifier prefixes</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">defaultNamespace</td>
+              <td class="text-left" rowspan="1" colspan="1">string</td>
+              <td class="text-left" rowspan="1" colspan="1">Identifies one of the prefixes in the namespace map to be used as a default in resolving identifiers</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+</section>
+</div>
+<div id="amendments-block">
+<section id="section-3.3">
+        <h3 id="name-amendments-block">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-amendments-block" class="section-name selfRef">Amendments Block</a>
+        </h3>
+<p id="section-3.3-1">The mandatory third component, the Amendments block, contains the set of patches that are supposed to be applied to the target model,
+Under the <code>amend</code> quality, the block consists of an array of JSON maps, whose keys indicate the target for the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<span id="name-qualities-of-the-amendments"></span><div id="amendssec">
+<table class="center" id="table-3">
+          <caption>
+<a href="#table-3" class="selfRef">Table 3</a>:
+<a href="#name-qualities-of-the-amendments" class="selfRef">Qualities of the Amendments Block</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Quality</th>
+              <th class="text-left" rowspan="1" colspan="1">Type</th>
+              <th class="text-left" rowspan="1" colspan="1">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">amend</td>
+              <td class="text-left" rowspan="1" colspan="1">array of maps</td>
+              <td class="text-left" rowspan="1" colspan="1">Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target.</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+<p id="section-3.3-3">The JSON pointers can point to a JSON map in the SDF model to be augmented by adding or replacing map entries.
+If necessary, a new JSON map is created at the indicated position.
+Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "<code>‑</code>" syntax introduced in the penultimate paragraph of <span><a href="https://rfc-editor.org/rfc/rfc6901#section-4" class="relref">Section 4</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="augmentation-mechanism">
+<section id="section-4">
+      <h2 id="name-augmentation-mechanism">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-augmentation-mechanism" class="section-name selfRef">Augmentation Mechanism</a>
+      </h2>
+<p id="section-4-1">An SDF model and a compatible Supplement can be combined to create
+an <em>augmented</em> SDF model.
+(This process can be repeated with multiple Supplements by using the
+outcome of one augmentation as the input of the next one.)
+As augmentation is not equal to instantiation, augmented SDF models
+are still abstract in nature, but are enriched with ecosystem-specific
+information.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<aside id="section-4-2">
+        <p id="section-4-2.1">Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.<a href="#section-4-2.1" class="pilcrow">¶</a></p>
+</aside>
+<p id="section-4-3">The augmentation mechanism is related to the resolution mechanism
+defined in <span><a href="https://rfc-editor.org/rfc/rfc9880#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9880" class="cite xref">RFC9880</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">Instead of a model file reaching out to other model files and
+integrating aspects into itself via <code>sdfRef</code> (<em>pull</em> approach), the
+Supplement <em>pushes</em> information into a new copy of a specific given
+SDF model.
+The original SDF model does not need to know which Supplements it
+will be used with and can be used with several such Supplements
+independently of each other.<a href="#section-4-4" class="pilcrow">¶</a></p>
+<p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible Supplement, i.e. every JSON pointer key within elements of the  <code>amend</code> array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
+To perform the augmentation, a processor needs to create a copy of the original SDF model.
+It then iterates over all entries within the Supplement's <code>amend</code> array elements.
+During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
+This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
+<p id="section-4-6">Once the iteration has finished, the processor returns the resulting augmented SDF model.
+Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
+<p id="section-4-7">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 1</a>.
+This is the result of applying the WoT-specific Supplement from <a href="#code-wot-output2" class="auto internal xref">Figure 6</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 5</a>.
+This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
+which requires some information that cannot be provided in an SDF
+model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<span id="name-an-sdf-model-that-has-been-"></span><div id="code-augmented-sdf-model">
+<figure id="figure-1">
+        <div class="lang-sdf sourcecode" id="section-4-8.1">
+<pre>{
+  "info": {
+    "title": "Lamp Thing Model"
+  },
+  "namespace": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "sdfObject": {
+    "LampThingModel": {
+      "label": "Lamp Thing Model",
+      "titles": {
+        "en": "Lamp Thing Model",
+        "de": "Thing Model für eine Lampe"
+      },
+      "sdfProperty": {
+        "status": {
+          "description": "Current status of the lamp",
+          "descriptions": {
+            "en": "Current status of the lamp",
+            "de": "Aktueller Status der Lampe"
+          },
+          "writable": false,
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-an-sdf-model-that-has-been-" class="selfRef">An SDF model that has been augmented with WoT-specific vocabulary.</a>
+        </figcaption></figure>
+</div>
+<aside id="section-4-9">
+        <p id="section-4-9.1">Since the pair of an SDF model and a Supplement is equivalent in
+semantics to the augmented model created from the two, there is no
+fundamental difference between specifying aspects in the SDF model or
+leaving them in a Supplement.
+Also, parts of an ecosystem-specific vocabulary may in fact be
+mappable to the SDF base vocabulary.
+Therefore, developing the mapping between SDF and an ecosystem
+requires careful consideration which of the features should be available
+to other ecosystems and therefore should best be part of the common
+SDF model, and which are best handled in a Supplement specific to the
+ecosystem.<a href="#section-4-9.1" class="pilcrow">¶</a></p>
+</aside>
+<div id="logging-augmentation">
+<section id="section-4.1">
+        <h3 id="name-logging-augmentation">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-logging-augmentation" class="section-name selfRef">Logging Augmentation</a>
+        </h3>
+<p id="section-4.1-1">Since an augmented model is not fundamentally different from any other
+SDF model, it may be necessary to trace the provenance of the
+information that flowed into it, e.g., in the info block.
+For this purpose, a new quality called <code>augmentationLog</code> is introduced
+that contains an array of URIs pointing to the Supplements that have been
+used to augment the original SDF file (which can also be indicated via
+the <code>originalSdfModel</code> quality).
+These additional qualities allow for reproducing the augmentation process.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">For logging while performing an augmentation, the processor has to perform
+the following steps:<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.1-3">
+<li id="section-4.1-3.1">
+            <p id="section-4.1-3.1.1">If the <code>info</code> block is not present in the model that is being augmented,
+  the processor creates it.<a href="#section-4.1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-4.1-3.2">
+            <p id="section-4.1-3.2.1">If the <code>info</code> block does not contain an <code>augmentationLog</code> quality, the processor
+  performs the following steps:<a href="#section-4.1-3.2.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.1-3.2.2">
+<li id="section-4.1-3.2.2.1">
+                <p id="section-4.1-3.2.2.1.1">If the <code>originalSdfModel</code> quality is not present in the <code>info</code>
+block, the processor adds it with a URI that can be used to
+access the SDF model that is currently being augmented as its
+value.<a href="#section-4.1-3.2.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li id="section-4.1-3.2.2.2">
+                <p id="section-4.1-3.2.2.2.1">The processor creates the <code>augmentationLog</code> quality with an
+array containing URIs that can be used to access the current
+Supplement as its sole item.<a href="#section-4.1-3.2.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            </ol>
+</li>
+          <li id="section-4.1-3.3">
+            <p id="section-4.1-3.3.1">Otherwise, if <code>augmentationLog</code> does not contain an array, stop and
+throw an error.<a href="#section-4.1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-4.1-3.4">
+            <p id="section-4.1-3.4.1">Otherwise, the processor adds a URI that can be used to access the
+current Supplement to the array of the <code>augmentationLog</code> quality.<a href="#section-4.1-3.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<span id="name-an-augmented-sdf-model-with"></span><div id="augmentation-log">
+<figure id="figure-2">
+          <div class="lang-sdf sourcecode" id="section-4.1-4.1">
+<pre>{
+  "info": {
+    "title": "Augmented SDF model with augmentation log.",
+    "augmentationLog": [
+      "https://example.org/sdf-supplement-1",
+      "https://example.org/sdf-supplement-2"
+    ],
+    "originalSdfModel": "https://example.org/original-sdf-model"
+  }
+}
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-an-augmented-sdf-model-with" class="selfRef">An augmented SDF model with an augmentation log and information regarding the original SDF model.</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="ecosystem-specific-examples">
+<section id="section-5">
+      <h2 id="name-ecosystem-specific-examples">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-ecosystem-specific-examples" class="section-name selfRef">Ecosystem-specific Examples</a>
+      </h2>
+<p id="section-5-1">In the following, we will outline a number of examples that illustrate how
+Supplements can be used to enrich a given SDF model with ecosystem-specific
+information.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="example1">
+<section id="section-5.1">
+        <h3 id="name-example-model-1-ecosystem-i">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-example-model-1-ecosystem-i" class="section-name selfRef">Example Model 1 (ecosystem: IPSO/OMA)</a>
+        </h3>
+<p id="section-5.1-1">An example for an SDF Supplement is given in <a href="#code-example1" class="auto internal xref">Figure 3</a>.
 This Supplement is meant to attach to an SDF specification published
 by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 <span class="cref" id="namespace-note"><br>
@@ -1317,15 +1642,15 @@ as defined in <span><a href="https://rfc-editor.org/rfc/rfc9880#section-2.3.3-3"
 feature to add namespace references to definitions that are not
 intended to go into the default namespace — these are SDF
 definition namespaces and not quality namespaces, which are one
-meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
+meta-level higher).</span><a href="#section-5.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.1-2.1">
-            <p id="section-2.1-2.1.1">Start of a Supplement for certain OneDM playground models:<a href="#section-2.1-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5.1-2.1">
+            <p id="section-5.1-2.1.1">Start of a Supplement for certain OneDM playground models:<a href="#section-5.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-a-simple-example-of-an-sdf-"></span><div id="code-example1">
-<figure id="figure-1">
-          <div class="lang-sdf sourcecode" id="section-2.1-3.1">
+<figure id="figure-3">
+          <div class="lang-sdf sourcecode" id="section-5.1-3.1">
 <pre>{
   "info": {
     "title": "IPSO ID mapping"
@@ -1354,39 +1679,39 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 }
 </pre>
 </div>
-<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-a-simple-example-of-an-sdf-" class="selfRef">A simple example of an SDF Supplement</a>
           </figcaption></figure>
 </div>
 </section>
 </div>
 <div id="example2">
-<section id="section-2.2">
+<section id="section-5.2">
         <h3 id="name-example-model-2-ecosystem-w">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-model-2-ecosystem-w" class="section-name selfRef">Example Model 2 (ecosystem: W3C WoT)</a>
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-example-model-2-ecosystem-w" class="section-name selfRef">Example Model 2 (ecosystem: W3C WoT)</a>
         </h3>
-<p id="section-2.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
+<p id="section-5.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
 (as defined in Section 10 of <span>[<a href="#W3C.wot-thing-description11" class="cite xref">W3C.wot-thing-description11</a>]</span>)
 into an SDF model plus a Supplement to catch Thing Model attributes
 that don't currently have SDF qualities defined (namely, <code>titles</code> and
-<code>descriptions</code> members used for internationalization).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">A second Supplement is more experimental in that it captures
+<code>descriptions</code> members used for internationalization).<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">A second Supplement is more experimental in that it captures
 information that is actually instance-specific,
 in this case a <code>forms</code> member that binds the <code>status</code> property to an
 instance-specific CoAP resource.
 <span class="cref" id="td-note"><br>
-Namespaces are all wrong in this example.</span><a href="#section-2.2-2" class="pilcrow">¶</a></p>
-<p id="section-2.2-3">The form really should be part of the class level; defining the entire
+Namespaces are all wrong in this example.</span><a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">The form really should be part of the class level; defining the entire
 form instead of just the link in the instance information is a
-symptom of not yet getting the class/instance boundary right.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+symptom of not yet getting the class/instance boundary right.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-4.1">
-            <p id="section-2.2-4.1.1">The input: WoT Thing Model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5.2-4.1">
+            <p id="section-5.2-4.1.1">The input: WoT Thing Model<a href="#section-5.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-input-wot-thing-model"></span><div id="code-wot-input">
-<figure id="figure-2">
-          <div class="lang-json sourcecode" id="section-2.2-5.1">
+<figure id="figure-4">
+          <div class="lang-json sourcecode" id="section-5.2-5.1">
 <pre>
 {
     "@context": "https://www.w3.org/2022/wot/td/v1.1",
@@ -1415,18 +1740,18 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 }
 </pre>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-input-wot-thing-model" class="selfRef">Input: WoT Thing Model</a>
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-6.1">
-            <p id="section-2.2-6.1.1">The output: SDF model<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5.2-6.1">
+            <p id="section-5.2-6.1.1">The output: SDF model<a href="#section-5.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-1-sdf-model"></span><div id="code-wot-output1">
-<figure id="figure-3">
-          <div class="lang-sdf sourcecode" id="section-2.2-7.1">
+<figure id="figure-5">
+          <div class="lang-sdf sourcecode" id="section-5.2-7.1">
 <pre>{
   "info": {
     "title": "Lamp Thing Model"
@@ -1450,18 +1775,18 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 }
 </pre>
 </div>
-<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-output-1-sdf-model" class="selfRef">Output 1: SDF Model</a>
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-8.1">
-            <p id="section-2.2-8.1.1">The other output: SDF Supplement for class information<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5.2-8.1">
+            <p id="section-5.2-8.1.1">The other output: SDF Supplement for class information<a href="#section-5.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-2-sdf-supplement"></span><div id="code-wot-output2">
-<figure id="figure-4">
-          <div class="lang-sdf sourcecode" id="section-2.2-9.1">
+<figure id="figure-6">
+          <div class="lang-sdf sourcecode" id="section-5.2-9.1">
 <pre>{
   "info": {
     "title": "Lamp Thing Model: WoT TM mapping"
@@ -1491,18 +1816,18 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 }
 </pre>
 </div>
-<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-output-2-sdf-supplement" class="selfRef">Output 2: SDF Supplement</a>
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-10.1">
-            <p id="section-2.2-10.1.1">A third output: SDF Supplement for Protocol Bindings<a href="#section-2.2-10.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5.2-10.1">
+            <p id="section-5.2-10.1.1">A third output: SDF Supplement for Protocol Bindings<a href="#section-5.2-10.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-3-sdf-supplement-for"></span><div id="code-wot-output3">
-<figure id="figure-5">
-          <div class="lang-sdf sourcecode" id="section-2.2-11.1">
+<figure id="figure-7">
+          <div class="lang-sdf sourcecode" id="section-5.2-11.1">
 <pre>{
   "info": {
     "title": "Lamp Thing Model: WoT TM Protocol Binding"
@@ -1525,7 +1850,7 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 }
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
 <a href="#name-output-3-sdf-supplement-for" class="selfRef">Output 3: SDF Supplement for Protocol Bindings</a>
           </figcaption></figure>
 </div>
@@ -1533,20 +1858,209 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 </div>
 </section>
 </div>
-<div id="syntax">
-<section id="section-3">
-      <h2 id="name-formal-syntax-of-sdf-supple">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-formal-syntax-of-sdf-supple" class="section-name selfRef">Formal Syntax of SDF Supplements</a>
+<div id="iana">
+<section id="section-6">
+      <h2 id="name-iana-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-3-1">An SDF Supplement has three optional components that are taken
-unchanged from SDF: The info block, the namespace declaration, and the
-default namespace.
-The mandatory fourth component, the <code>amend</code> block, contains the list of amendments that are supposed to be applied to the target model,
-using an SDF name reference (usually a namespace and a JSON pointer) as the target to which a specified quality is applied to.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 6</a> describes the syntax of SDF Supplements using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<div id="media-type">
+<section id="section-6.1">
+        <h3 id="name-media-type">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
+        </h3>
+<p id="section-6.1-1">IANA is requested to add the following Media-Type to the "Media Types" registry.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<span id="name-a-media-type-for-sdf-supple"></span><div id="new-media-types">
+<table class="left" id="table-4">
+          <caption>
+<a href="#table-4" class="selfRef">Table 4</a>:
+<a href="#name-a-media-type-for-sdf-supple" class="selfRef">A media type for SDF Supplements</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Name</th>
+              <th class="text-left" rowspan="1" colspan="1">Template</th>
+              <th class="text-left" rowspan="1" colspan="1">Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">sdf-supplement+json</td>
+              <td class="text-left" rowspan="1" colspan="1">application/sdf-supplement+json</td>
+              <td class="text-left" rowspan="1" colspan="1">RFC XXXX, <a href="#media-type" class="auto internal xref">Section 6.1</a>
+</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+<p id="section-6.1-3"><span class="cref" id="to-be-removed">RFC Editor: please replace RFC XXXX with this RFC number and remove this note.</span><a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-6.1-4">
+          <dt id="section-6.1-4.1">Type name:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.2">
+            <p id="section-6.1-4.2.1">application<a href="#section-6.1-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.3">Subtype name:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.4">
+            <p id="section-6.1-4.4.1">sdf-supplement+json<a href="#section-6.1-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.5">Required parameters:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.6">
+            <p id="section-6.1-4.6.1">none<a href="#section-6.1-4.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.7">Optional parameters:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.8">
+            <p id="section-6.1-4.8.1">none<a href="#section-6.1-4.8.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.9">Encoding considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.10">
+            <p id="section-6.1-4.10.1">binary (JSON is UTF-8-encoded text)<a href="#section-6.1-4.10.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.11">Security considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.12">
+            <p id="section-6.1-4.12.1"><a href="#seccons" class="auto internal xref">Section 7</a> of RFC XXXX<a href="#section-6.1-4.12.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.13">Interoperability considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.14">
+            <p id="section-6.1-4.14.1">none<a href="#section-6.1-4.14.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.15">Published specification:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.16">
+            <p id="section-6.1-4.16.1"><a href="#media-type" class="auto internal xref">Section 6.1</a> of RFC XXXX<a href="#section-6.1-4.16.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.17">Applications that use this media type:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.18">
+            <p id="section-6.1-4.18.1">Tools for data and interaction modeling that describes Things, i.e.,
+ physical objects that are available for interaction over a network<a href="#section-6.1-4.18.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.19">Fragment identifier considerations:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.20">
+            <p id="section-6.1-4.20.1">A JSON Pointer fragment identifier may be used, as defined in
+<span><a href="https://rfc-editor.org/rfc/rfc6901#section-6" class="relref">Section 6</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-6.1-4.20.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.21">Person &amp; email address to contact for further information:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.22">
+            <p id="section-6.1-4.22.1">ASDF WG mailing list (asdf@ietf.org),
+or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-6.1-4.22.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.23">Intended usage:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.24">
+            <p id="section-6.1-4.24.1">COMMON<a href="#section-6.1-4.24.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.25">Restrictions on usage:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.26">
+            <p id="section-6.1-4.26.1">none<a href="#section-6.1-4.26.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.27">Author/Change controller:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.28">
+            <p id="section-6.1-4.28.1">IETF<a href="#section-6.1-4.28.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-6.1-4.29">Provisional registration:</dt>
+          <dd style="margin-left: 1.5em" id="section-6.1-4.30">
+            <p id="section-6.1-4.30.1">no<a href="#section-6.1-4.30.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="registries">
+<section id="section-6.2">
+        <h3 id="name-registries">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-registries" class="section-name selfRef">Registries</a>
+        </h3>
+<p id="section-6.2-1">(TBD: After any future additions, check if we need any.)<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="seccons">
+<section id="section-7">
+      <h2 id="name-security-considerations">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-7-1">Some wider issues are discussed in <span>[<a href="#RFC8576" class="cite xref">RFC8576</a>]</span>.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">(Specifics: TBD.)<a href="#section-7-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-combined-references">
+<section id="section-8">
+      <h2 id="name-references">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<div id="sec-normative-references">
+<section id="section-8.1">
+        <h3 id="name-normative-references">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="BCP14">[BCP14]</dt>
+        <dd>
+<div class="refInstance">Best Current Practice 14, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp14">https://www.rfc-editor.org/info/bcp14</a>&gt;</span>.<br><span>At the time of writing, this BCP comprises the following:</span>
+</div>
+<div class="refInstance" id="RFC2119">
+            <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </div>
+<div class="refInstance" id="RFC8174">
+            <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </div>
+</dd>
+<dd class="break"></dd>
+<dt id="RFC6901">[RFC6901]</dt>
+        <dd>
+<span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6901">https://www.rfc-editor.org/rfc/rfc6901</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7396">[RFC7396]</dt>
+        <dd>
+<span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">J. Snell</span>, <span class="refTitle">"JSON Merge Patch"</span>, <span class="seriesInfo">RFC 7396</span>, <span class="seriesInfo">DOI 10.17487/RFC7396</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7396">https://www.rfc-editor.org/rfc/rfc7396</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8610">[RFC8610]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9880">[RFC9880]</dt>
+      <dd>
+<span class="refAuthor">Koster, M., Ed.</span>, <span class="refAuthor">Bormann, C., Ed.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="seriesInfo">RFC 9880</span>, <span class="seriesInfo">DOI 10.17487/RFC9880</span>, <time datetime="2026-01" class="refDate">January 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9880">https://www.rfc-editor.org/rfc/rfc9880</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-8.2">
+        <h3 id="name-informative-references">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC8576">[RFC8576]</dt>
+        <dd>
+<span class="refAuthor">Garcia-Morchon, O.</span>, <span class="refAuthor">Kumar, S.</span>, and <span class="refAuthor">M. Sethi</span>, <span class="refTitle">"Internet of Things (IoT) Security: State of the Art and Challenges"</span>, <span class="seriesInfo">RFC 8576</span>, <span class="seriesInfo">DOI 10.17487/RFC8576</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8576">https://www.rfc-editor.org/rfc/rfc8576</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.wot-thing-description11">[W3C.wot-thing-description11]</dt>
+      <dd>
+<span class="refTitle">"Web of Things (WoT) Thing Description 1.1"</span>, <span class="seriesInfo">W3C REC wot-thing-description11</span>, <span class="seriesInfo">W3C wot-thing-description11</span>, <span>&lt;<a href="https://www.w3.org/TR/wot-thing-description11/">https://www.w3.org/TR/wot-thing-description11/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
+</div>
+<div id="syntax">
+<section id="appendix-A">
+      <h2 id="name-formal-syntax-of-sdf-supple">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-formal-syntax-of-sdf-supple" class="section-name selfRef">Formal Syntax of SDF Supplements</a>
+      </h2>
 <span id="name-cddl-definition-of-sdf-supp"></span><div id="mapping-cddl">
-<figure id="figure-6">
-        <div class="breakable lang-cddl sourcecode" id="section-3-3.1">
+<figure id="figure-8">
+        <div class="breakable lang-cddl sourcecode" id="appendix-A-1.1">
 <pre>
 start = sdf-mapping
 
@@ -1620,449 +2134,113 @@ rfc3339z = '
 '
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
 <a href="#name-cddl-definition-of-sdf-supp" class="selfRef">CDDL definition of SDF Supplements</a>
         </figcaption></figure>
-</div>
-<p id="section-3-4">The JSON pointer that is used a the <code>target</code> can
-point to a JSON map in the SDF model to be augmented by adding or
-replacing map entries.
-If necessary, the JSON map is created at the position indicated with
-the contents of the <code>patch</code> <span class="cref" id="example">(add examples)</span>.
-Alternatively, the JSON pointer can point to an array (also possibly
-created if not existing before) and add an element to that array by
-using the "<code>‑</code>" syntax introduced in the penultimate paragraph of
-<span><a href="https://rfc-editor.org/rfc/rfc6901#section-4" class="relref">Section 4</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="augmentation-mechanism">
-<section id="section-4">
-      <h2 id="name-augmentation-mechanism">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-augmentation-mechanism" class="section-name selfRef">Augmentation Mechanism</a>
-      </h2>
-<p id="section-4-1">An SDF model and a compatible Supplement can be combined to create
-an <em>augmented</em> SDF model.
-(This process can be repeated with multiple Supplements by using the
-outcome of one augmentation as the input of the next one.)
-As augmentation is not equal to instantiation, augmented SDF models
-are still abstract in nature, but are enriched with ecosystem-specific
-information.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<aside id="section-4-2">
-        <p id="section-4-2.1">Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.<a href="#section-4-2.1" class="pilcrow">¶</a></p>
-</aside>
-<p id="section-4-3">The augmentation mechanism is related to the resolution mechanism
-defined in <span><a href="https://rfc-editor.org/rfc/rfc9880#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9880" class="cite xref">RFC9880</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">Instead of a model file reaching out to other model files and
-integrating aspects into itself via <code>sdfRef</code> (<em>pull</em> approach), the
-Supplement <em>pushes</em> information into a new copy of a specific given
-SDF model.
-The original SDF model does not need to know which Supplements it
-will be used with and can be used with several such Supplements
-independently of each other.<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible Supplement, i.e. every JSON pointer key within elements of the  <code>amend</code> array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
-To perform the augmentation, a processor needs to create a copy of the original SDF model.
-It then iterates over all entries within the Supplement's <code>amend</code> array elements.
-During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
-This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<p id="section-4-6">Once the iteration has finished, the processor returns the resulting augmented SDF model.
-Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
-This is the result of applying the WoT-specific Supplement from <a href="#code-wot-output2" class="auto internal xref">Figure 4</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 3</a>.
-This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
-which requires some information that cannot be provided in an SDF
-model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-7" class="pilcrow">¶</a></p>
-<span id="name-an-sdf-model-that-has-been-"></span><div id="code-augmented-sdf-model">
-<figure id="figure-7">
-        <div class="lang-sdf sourcecode" id="section-4-8.1">
-<pre>{
-  "info": {
-    "title": "Lamp Thing Model"
-  },
-  "namespace": {
-    "wot": "http://www.w3.org/ns/td"
-  },
-  "defaultNamespace": "wot",
-  "sdfObject": {
-    "LampThingModel": {
-      "label": "Lamp Thing Model",
-      "titles": {
-        "en": "Lamp Thing Model",
-        "de": "Thing Model für eine Lampe"
-      },
-      "sdfProperty": {
-        "status": {
-          "description": "Current status of the lamp",
-          "descriptions": {
-            "en": "Current status of the lamp",
-            "de": "Aktueller Status der Lampe"
-          },
-          "writable": false,
-          "type": "string"
-        }
-      }
-    }
-  }
-}
-</pre>
-</div>
-<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
-<a href="#name-an-sdf-model-that-has-been-" class="selfRef">An SDF model that has been augmented with WoT-specific vocabulary.</a>
-        </figcaption></figure>
-</div>
-<aside id="section-4-9">
-        <p id="section-4-9.1">Since the pair of an SDF model and a Supplement is equivalent in
-semantics to the augmented model created from the two, there is no
-fundamental difference between specifying aspects in the SDF model or
-leaving them in a Supplement.
-Also, parts of an ecosystem-specific vocabulary may in fact be
-mappable to the SDF base vocabulary.
-Therefore, developing the mapping between SDF and an ecosystem
-requires careful consideration which of the features should be available
-to other ecosystems and therefore should best be part of the common
-SDF model, and which are best handled in a Supplement specific to the
-ecosystem.<a href="#section-4-9.1" class="pilcrow">¶</a></p>
-</aside>
-<div id="logging-augmentation">
-<section id="section-4.1">
-        <h3 id="name-logging-augmentation">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-logging-augmentation" class="section-name selfRef">Logging Augmentation</a>
-        </h3>
-<p id="section-4.1-1">Since an augmented model is not fundamentally different from any other
-SDF model, it may be necessary to trace the provenance of the
-information that flowed into it, e.g., in the info block.
-For this purpose, a new quality called <code>augmentationLog</code> is introduced
-that contains an array of URIs pointing to the Supplements that have been
-used to augment the original SDF file (which can also be indicated via
-the <code>originalSdfModel</code> quality).
-These additional qualities allow for reproducing the augmentation process.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">For logging while performing an augmentation, the processor has to perform
-the following steps:<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.1-3">
-<li id="section-4.1-3.1">
-            <p id="section-4.1-3.1.1">If the <code>info</code> block is not present in the model that is being augmented,
-  the processor creates it.<a href="#section-4.1-3.1.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-4.1-3.2">
-            <p id="section-4.1-3.2.1">If the <code>info</code> block does not contain an <code>augmentationLog</code> quality, the processor
-  performs the following steps:<a href="#section-4.1-3.2.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-4.1-3.2.2">
-<li id="section-4.1-3.2.2.1">
-                <p id="section-4.1-3.2.2.1.1">If the <code>originalSdfModel</code> quality is not present in the <code>info</code>
-block, the processor adds it with a URI that can be used to
-access the SDF model that is currently being augmented as its
-value.<a href="#section-4.1-3.2.2.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li id="section-4.1-3.2.2.2">
-                <p id="section-4.1-3.2.2.2.1">The processor creates the <code>augmentationLog</code> quality with an
-array containing URIs that can be used to access the current
-Supplement as its sole item.<a href="#section-4.1-3.2.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            </ol>
-</li>
-          <li id="section-4.1-3.3">
-            <p id="section-4.1-3.3.1">Otherwise, if <code>augmentationLog</code> does not contain an array, stop and
-throw an error.<a href="#section-4.1-3.3.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-4.1-3.4">
-            <p id="section-4.1-3.4.1">Otherwise, the processor adds a URI that can be used to access the
-current Supplement to the array of the <code>augmentationLog</code> quality.<a href="#section-4.1-3.4.1" class="pilcrow">¶</a></p>
-</li>
-        </ol>
-<span id="name-an-augmented-sdf-model-with"></span><div id="augmentation-log">
-<figure id="figure-8">
-          <div class="lang-sdf sourcecode" id="section-4.1-4.1">
-<pre>{
-  "info": {
-    "title": "Augmented SDF model with augmentation log.",
-    "augmentationLog": [
-      "https://example.org/sdf-mapping-file-1",
-      "https://example.org/sdf-mapping-file-2"
-    ],
-    "originalSdfModel": "https://example.org/original-sdf-model"
-  }
-}
-</pre>
-</div>
-<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
-<a href="#name-an-augmented-sdf-model-with" class="selfRef">An augmented SDF model with an augmentation log and information regarding the original SDF model.</a>
-          </figcaption></figure>
-</div>
-</section>
-</div>
-</section>
-</div>
-<div id="iana">
-<section id="section-5">
-      <h2 id="name-iana-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
-      </h2>
-<div id="media-type">
-<section id="section-5.1">
-        <h3 id="name-media-type">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
-        </h3>
-<p id="section-5.1-1">IANA is requested to add the following Media-Type to the "Media Types" registry.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<span id="name-a-media-type-for-sdf-supple"></span><div id="new-media-types">
-<table class="left" id="table-1">
-          <caption>
-<a href="#table-1" class="selfRef">Table 1</a>:
-<a href="#name-a-media-type-for-sdf-supple" class="selfRef">A media type for SDF Supplements</a>
-          </caption>
-<thead>
-            <tr>
-              <th class="text-left" rowspan="1" colspan="1">Name</th>
-              <th class="text-left" rowspan="1" colspan="1">Template</th>
-              <th class="text-left" rowspan="1" colspan="1">Reference</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">sdf-mapping+json</td>
-              <td class="text-left" rowspan="1" colspan="1">application/sdf-supplement+json</td>
-              <td class="text-left" rowspan="1" colspan="1">RFC XXXX, <a href="#media-type" class="auto internal xref">Section 5.1</a>
-</td>
-            </tr>
-          </tbody>
-        </table>
-</div>
-<p id="section-5.1-3"><span class="cref" id="to-be-removed">RFC Editor: please replace RFC XXXX with this RFC number and remove this note.</span><a href="#section-5.1-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlCompact dlParallel" id="section-5.1-4">
-          <dt id="section-5.1-4.1">Type name:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.2">
-            <p id="section-5.1-4.2.1">application<a href="#section-5.1-4.2.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.3">Subtype name:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.4">
-            <p id="section-5.1-4.4.1">sdf-mapping+json<a href="#section-5.1-4.4.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.5">Required parameters:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.6">
-            <p id="section-5.1-4.6.1">none<a href="#section-5.1-4.6.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.7">Optional parameters:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.8">
-            <p id="section-5.1-4.8.1">none<a href="#section-5.1-4.8.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.9">Encoding considerations:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.10">
-            <p id="section-5.1-4.10.1">binary (JSON is UTF-8-encoded text)<a href="#section-5.1-4.10.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.11">Security considerations:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.12">
-            <p id="section-5.1-4.12.1"><a href="#seccons" class="auto internal xref">Section 6</a> of RFC XXXX<a href="#section-5.1-4.12.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.13">Interoperability considerations:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.14">
-            <p id="section-5.1-4.14.1">none<a href="#section-5.1-4.14.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.15">Published specification:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.16">
-            <p id="section-5.1-4.16.1"><a href="#media-type" class="auto internal xref">Section 5.1</a> of RFC XXXX<a href="#section-5.1-4.16.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.17">Applications that use this media type:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.18">
-            <p id="section-5.1-4.18.1">Tools for data and interaction modeling that describes Things, i.e.,
- physical objects that are available for interaction over a network<a href="#section-5.1-4.18.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.19">Fragment identifier considerations:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.20">
-            <p id="section-5.1-4.20.1">A JSON Pointer fragment identifier may be used, as defined in
-<span><a href="https://rfc-editor.org/rfc/rfc6901#section-6" class="relref">Section 6</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-5.1-4.20.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.21">Person &amp; email address to contact for further information:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.22">
-            <p id="section-5.1-4.22.1">ASDF WG mailing list (asdf@ietf.org),
-or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.1-4.22.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.23">Intended usage:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.24">
-            <p id="section-5.1-4.24.1">COMMON<a href="#section-5.1-4.24.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.25">Restrictions on usage:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.26">
-            <p id="section-5.1-4.26.1">none<a href="#section-5.1-4.26.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.27">Author/Change controller:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.28">
-            <p id="section-5.1-4.28.1">IETF<a href="#section-5.1-4.28.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-<dt id="section-5.1-4.29">Provisional registration:</dt>
-          <dd style="margin-left: 1.5em" id="section-5.1-4.30">
-            <p id="section-5.1-4.30.1">no<a href="#section-5.1-4.30.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-</dl>
-</section>
-</div>
-<div id="registries">
-<section id="section-5.2">
-        <h3 id="name-registries">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-registries" class="section-name selfRef">Registries</a>
-        </h3>
-<p id="section-5.2-1">(TBD: After any future additions, check if we need any.)<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
-<div id="seccons">
-<section id="section-6">
-      <h2 id="name-security-considerations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
-      </h2>
-<p id="section-6-1">Some wider issues are discussed in <span>[<a href="#RFC8576" class="cite xref">RFC8576</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">(Specifics: TBD.)<a href="#section-6-2" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="sec-combined-references">
-<section id="section-7">
-      <h2 id="name-references">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
-      </h2>
-<div id="sec-normative-references">
-<section id="section-7.1">
-        <h3 id="name-normative-references">
-<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
-        </h3>
-<dl class="references">
-<dt id="BCP14">[BCP14]</dt>
-        <dd>
-<div class="refInstance">Best Current Practice 14, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp14">https://www.rfc-editor.org/info/bcp14</a>&gt;</span>.<br><span>At the time of writing, this BCP comprises the following:</span>
-</div>
-<div class="refInstance" id="RFC2119">
-            <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </div>
-<div class="refInstance" id="RFC8174">
-            <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </div>
-</dd>
-<dd class="break"></dd>
-<dt id="RFC6901">[RFC6901]</dt>
-        <dd>
-<span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6901">https://www.rfc-editor.org/rfc/rfc6901</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7396">[RFC7396]</dt>
-        <dd>
-<span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">J. Snell</span>, <span class="refTitle">"JSON Merge Patch"</span>, <span class="seriesInfo">RFC 7396</span>, <span class="seriesInfo">DOI 10.17487/RFC7396</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7396">https://www.rfc-editor.org/rfc/rfc7396</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8610">[RFC8610]</dt>
-        <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC9880">[RFC9880]</dt>
-      <dd>
-<span class="refAuthor">Koster, M., Ed.</span>, <span class="refAuthor">Bormann, C., Ed.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="seriesInfo">RFC 9880</span>, <span class="seriesInfo">DOI 10.17487/RFC9880</span>, <time datetime="2026-01" class="refDate">January 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9880">https://www.rfc-editor.org/rfc/rfc9880</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-</dl>
-</section>
-</div>
-<div id="sec-informative-references">
-<section id="section-7.2">
-        <h3 id="name-informative-references">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
-        </h3>
-<dl class="references">
-<dt id="RFC8576">[RFC8576]</dt>
-        <dd>
-<span class="refAuthor">Garcia-Morchon, O.</span>, <span class="refAuthor">Kumar, S.</span>, and <span class="refAuthor">M. Sethi</span>, <span class="refTitle">"Internet of Things (IoT) Security: State of the Art and Challenges"</span>, <span class="seriesInfo">RFC 8576</span>, <span class="seriesInfo">DOI 10.17487/RFC8576</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8576">https://www.rfc-editor.org/rfc/rfc8576</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="W3C.wot-thing-description11">[W3C.wot-thing-description11]</dt>
-      <dd>
-<span class="refTitle">"Web of Things (WoT) Thing Description 1.1"</span>, <span class="seriesInfo">W3C REC wot-thing-description11</span>, <span class="seriesInfo">W3C wot-thing-description11</span>, <span>&lt;<a href="https://www.w3.org/TR/wot-thing-description11/">https://www.w3.org/TR/wot-thing-description11/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-</dl>
-</section>
 </div>
 </section>
 </div>
 <div id="list-of-figures">
-<section id="appendix-A">
+<section id="appendix-B">
       <h2 id="name-list-of-figures">
 <a href="#name-list-of-figures" class="section-name selfRef">List of Figures</a>
       </h2>
-<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-1">
-        <dt id="appendix-A-1.1">
-<a href="#code-example1" class="auto internal xref">Figure 1</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1"><a href="#code-example1" class="internal xref">A simple example of an SDF Supplement</a><a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-1">
+        <dt id="appendix-B-1.1">
+<a href="#code-augmented-sdf-model" class="auto internal xref">Figure 1</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.2">
+          <p id="appendix-B-1.2.1"><a href="#code-augmented-sdf-model" class="internal xref">An SDF model that has been augmented with WoT-specific vocabulary.</a><a href="#appendix-B-1.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.3">
-<a href="#code-wot-input" class="auto internal xref">Figure 2</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.4">
-          <p id="appendix-A-1.4.1"><a href="#code-wot-input" class="internal xref">Input: WoT Thing Model</a><a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.3">
+<a href="#augmentation-log" class="auto internal xref">Figure 2</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.4">
+          <p id="appendix-B-1.4.1"><a href="#augmentation-log" class="internal xref">An augmented SDF model with an augmentation log and information regarding the original SDF model.</a><a href="#appendix-B-1.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.5">
-<a href="#code-wot-output1" class="auto internal xref">Figure 3</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.6">
-          <p id="appendix-A-1.6.1"><a href="#code-wot-output1" class="internal xref">Output 1: SDF Model</a><a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.5">
+<a href="#code-example1" class="auto internal xref">Figure 3</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.6">
+          <p id="appendix-B-1.6.1"><a href="#code-example1" class="internal xref">A simple example of an SDF Supplement</a><a href="#appendix-B-1.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.7">
-<a href="#code-wot-output2" class="auto internal xref">Figure 4</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.8">
-          <p id="appendix-A-1.8.1"><a href="#code-wot-output2" class="internal xref">Output 2: SDF Supplement</a><a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.7">
+<a href="#code-wot-input" class="auto internal xref">Figure 4</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.8">
+          <p id="appendix-B-1.8.1"><a href="#code-wot-input" class="internal xref">Input: WoT Thing Model</a><a href="#appendix-B-1.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.9">
-<a href="#code-wot-output3" class="auto internal xref">Figure 5</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.10">
-          <p id="appendix-A-1.10.1"><a href="#code-wot-output3" class="internal xref">Output 3: SDF Supplement for Protocol Bindings</a><a href="#appendix-A-1.10.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.9">
+<a href="#code-wot-output1" class="auto internal xref">Figure 5</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.10">
+          <p id="appendix-B-1.10.1"><a href="#code-wot-output1" class="internal xref">Output 1: SDF Model</a><a href="#appendix-B-1.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.11">
-<a href="#mapping-cddl" class="auto internal xref">Figure 6</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.12">
-          <p id="appendix-A-1.12.1"><a href="#mapping-cddl" class="internal xref">CDDL definition of SDF Supplements</a><a href="#appendix-A-1.12.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.11">
+<a href="#code-wot-output2" class="auto internal xref">Figure 6</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.12">
+          <p id="appendix-B-1.12.1"><a href="#code-wot-output2" class="internal xref">Output 2: SDF Supplement</a><a href="#appendix-B-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.13">
-<a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.14">
-          <p id="appendix-A-1.14.1"><a href="#code-augmented-sdf-model" class="internal xref">An SDF model that has been augmented with WoT-specific vocabulary.</a><a href="#appendix-A-1.14.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.13">
+<a href="#code-wot-output3" class="auto internal xref">Figure 7</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.14">
+          <p id="appendix-B-1.14.1"><a href="#code-wot-output3" class="internal xref">Output 3: SDF Supplement for Protocol Bindings</a><a href="#appendix-B-1.14.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-B-1.15">
+<a href="#mapping-cddl" class="auto internal xref">Figure 8</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.16">
+          <p id="appendix-B-1.16.1"><a href="#mapping-cddl" class="internal xref">CDDL definition of SDF Supplements</a><a href="#appendix-B-1.16.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
 </section>
 </div>
 <div id="list-of-tables">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-list-of-tables">
 <a href="#name-list-of-tables" class="section-name selfRef">List of Tables</a>
       </h2>
-<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-1">
-        <dt id="appendix-B-1.1">
-<a href="#new-media-types" class="auto internal xref">Table 1</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-B-1.2">
-          <p id="appendix-B-1.2.1"><a href="#new-media-types" class="internal xref">A media type for SDF Supplements</a><a href="#appendix-B-1.2.1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-C-1">
+        <dt id="appendix-C-1.1">
+<a href="#infoblockqual" class="auto internal xref">Table 1</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-C-1.2">
+          <p id="appendix-C-1.2.1"><a href="#infoblockqual" class="internal xref">Qualities of the Information Block</a><a href="#appendix-C-1.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-C-1.3">
+<a href="#nssec" class="auto internal xref">Table 2</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-C-1.4">
+          <p id="appendix-C-1.4.1"><a href="#nssec" class="internal xref">Qualities of the Namespaces Block</a><a href="#appendix-C-1.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-C-1.5">
+<a href="#amendssec" class="auto internal xref">Table 3</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-C-1.6">
+          <p id="appendix-C-1.6.1"><a href="#amendssec" class="internal xref">Qualities of the Amendments Block</a><a href="#appendix-C-1.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-C-1.7">
+<a href="#new-media-types" class="auto internal xref">Table 4</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-C-1.8">
+          <p id="appendix-C-1.8.1"><a href="#new-media-types" class="internal xref">A media type for SDF Supplements</a><a href="#appendix-C-1.8.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
 </section>
 </div>
 <div id="acknowledgements">
-<section id="appendix-C">
+<section id="appendix-D">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="appendix-C-1">This draft is based on discussions in the Thing-to-Thing Research
-Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="auto internal xref">Section 2.1</a> was provided by <span class="contact-name">Ari Keränen</span>.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1">This draft is based on discussions in the Thing-to-Thing Research
+Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="auto internal xref">Section 5.1</a> was provided by <span class="contact-name">Ari Keränen</span>.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-D">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
