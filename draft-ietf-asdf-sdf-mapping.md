@@ -162,13 +162,13 @@ If necessary, a new JSON map is created at the indicated position.
 Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "`‑`" syntax introduced in the penultimate paragraph of {{Section 4 of -pointer}}.
 
 The individual elements of an amendment are shown in {{amendment-qualities}}.
-Besides the `value` that is to be applied via the given `patchMethod`, the `fix` quality plays an important role for dynamically determining a (semantic) version history of an SDF model.
+Besides the `delta` that is to be applied via the given `patchMethod`, the `fix` quality plays an important role for dynamically determining a (semantic) version history of an SDF model.
 
 <!-- TODO: Find a better name than "fix" -->
 
 | Quality     | Type      | Default        | Description                                                                                                                               |
 | ----------- | --------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| value       | any type  | –              | Contains the value that is supposed to be applied via the indicated patch method.                                                         |
+| delta       | any type  | –              | Contains the value that is supposed to be applied via the indicated patch method.                                                         |
 | patchMethod | string    | merge-patch    | Indicates which patch method should be used for applying this amendment. Defaults to the JSON Merge Patch algorithm {{-merge-patch}}.     |
 | fix         | boolean   | false          | Indicates whether this amendment serves as a true "patch" for the target (that fixes a bug or a mistake from a previous patch) amendment. |
 {: #amendment-qualities title="Qualities of an Amendment Map"}
@@ -203,7 +203,7 @@ An augmented SDF model is produced from two inputs: An SDF model and a compatibl
 To perform the augmentation, a processor needs to create a copy of the original SDF model.
 It then iterates over all entries within the Supplement's `amend` array elements.
 During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
-This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's value as the `Patch` argument; the target is replaced with the result of the merge-patch.
+This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's `delta` value as the `Patch` argument; the target is replaced with the result of the merge-patch.
 
 Once the iteration has finished, the processor returns the resulting augmented SDF model.
 Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.
@@ -356,13 +356,13 @@ namespace:
 defaultNamespace: onedm
 amend:
   - "#/sdfObject/Digital_Input":
-      value:
+      delta:
         id: 3200
   - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
-      value:
+      delta:
         id: 5500
   - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
-      value:
+      delta:
         id: 5501
 ~~~
 {: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF Supplement"}
@@ -448,12 +448,12 @@ namespace:
 defaultNamespace: wot
 amend:
   - "#/sdfObject/LampThingModel":
-      value:
+      delta:
         titles:
           en: Lamp Thing Model
           de: Thing Model für eine Lampe
   - "#/sdfObject/LampThingModel/sdfProperty/status":
-      value:
+      delta:
         descriptions:
           en: Current status of the lamp
           de: Aktueller Status der Lampe
@@ -470,7 +470,7 @@ namespace:
 defaultNamespace: wot
 amend:
   - "#/sdfObject/LampThingModel/sdfProperty/status":
-      value:
+      delta:
         forms:
         - href: coap://example.org/status
 ~~~
