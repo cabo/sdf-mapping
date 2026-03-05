@@ -124,7 +124,7 @@ The data model of SDF Supplements makes use of some of the structural features o
 
 ## Information Block
 
-A Supplements's information block may contain exactly the same qualities as an SDF model.
+A Supplements's information block may contain exactly the same qualities as the info block of an SDF model.
 
 | Quality     | Type             | Description                                                 |
 | ----------- | ---------------- | ----------------------------------------------------------- |
@@ -307,7 +307,7 @@ info:
 
 ## Determining Semantic Versions {#semantic-versioning}
 
-Besides serving as a way to derive more specialized SDF models (e.g., with ecosystem-specific information), Supplements can also serve as a basis for determining the version history of a model, e.g., by beinng an input format accepted by servers that host SDF models.
+Besides serving as a way to derive more specialized SDF models (e.g., with ecosystem-specific information), Supplements can also serve as a basis for determining the version history of a model, e.g., by being an input format accepted by servers that host SDF models.
 
 By looking at the kind of change each Amendment applies to the target model, we can determine whether a new version constitutes a major update, a minor update, or a patch in accordance with the semantic versioning approach. <!-- TODO: add semver reference -->
 While applying each Amendment to the target model, we can differentiate the following cases:
