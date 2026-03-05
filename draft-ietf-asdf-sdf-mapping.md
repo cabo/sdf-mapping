@@ -93,10 +93,20 @@ entity:
 
 The definitions of {{-sdf}} apply.
 
-<!-- XXX -->
+Supplement:
+: An SDF document that provides augmentation information for one or more SDF models.
+  This information is contained in an array of JSON objects, in which each key-value
+  pair (or _amendment_) details the patch target and the patch value, respectively.
 
-The term "byte" is used in its now-customary sense as a synonym for
-"octet".
+Ammendment:
+: A patch contained within a Supplement that is supposed to be applied to the
+  target SDF model via the JSON merge-patch algorithm {{-merge-patch}}.
+
+Augmentation:
+: The process of applying a Supplements amendments to a target SDF model.
+
+Augmented SDF Model:
+: The result of applying a Supplement's amendments to an SDF model.
 
 {::boilerplate bcp14-tagged-bcp14}
 
