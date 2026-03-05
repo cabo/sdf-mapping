@@ -118,13 +118,12 @@ The order of the application of patches is that of the elements within the array
 
 # Data Model of SDF Supplements {#data-model}
 
-<!-- TODO: This text is currently  -->
 
 The data model of SDF Supplements makes use of some of the structural features of SDF models (namely the `info` and namespaces blocks), but complements them with a mandatory third Amendments block.
 
 ## Information Block
 
-A Supplements's information block may contain exactly the same qualities as an SDF model.
+A Supplements's information block may contain exactly the same qualities as the info block of an SDF model.
 
 | Quality     | Type             | Description                                                 |
 | ----------- | ---------------- | ----------------------------------------------------------- |
@@ -153,14 +152,28 @@ The `namespace` and `defaultNamespaces` qualities are also taken over unchanged 
 The mandatory third component, the Amendments block, contains the set of patches that are supposed to be applied to the target model,
 Under the `amend` quality, the block consists of an array of JSON maps, whose keys indicate the target for the JSON Merge Patch algorithm {{-merge-patch}}.
 
-| Quality | Type          | Description                                                                                    |
-| ------- | ------------- | ---------------------------------------------------------------------------------------------- |
-| amend   | array of maps | Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target. |
+| Quality | Type                    | Description                                                                                    |
+| ------- | ----------------------- | ---------------------------------------------------------------------------------------------- |
+| amend   | array of amendment maps | Defines the list of amendments as an array of JSON maps, whose keys indicate the patch target. |
 {: #amendssec title="Qualities of the Amendments Block"}
 
 The JSON pointers can point to a JSON map in the SDF model to be augmented by adding or replacing map entries.
 If necessary, a new JSON map is created at the indicated position.
 Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "`‑`" syntax introduced in the penultimate paragraph of {{Section 4 of -pointer}}.
+
+The individual elements of an amendment are shown in {{amendment-qualities}}.
+Besides the `delta` that is to be applied via the given `patchMethod`, the `backwardsCompability` quality provides a way to indicate whether the amendment is backwards-compatible or not, while the `fix` quality allows for indicating whether the amendment should only be considered a patch update in the sense of semantic versioning.
+This patch update may also be non-backwards-compatible if it restores or establishes the functionality that was intended by a previous update.
+
+<!-- TODO: Find a better name than "fix" -->
+
+| Quality             | Type      | Default     | Description                                                                                                                                    |
+| ------------------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| delta               | any type  | –           | Contains the value that is supposed to be applied via the indicated patch method.                                                              |
+| patchMethod         | string    | merge-patch | Indicates which patch method should be used for applying this amendment. Defaults to the JSON Merge Patch algorithm {{-merge-patch}}.          |
+| fix                 | boolean   | false       | Indicates whether this amendment serves as a true "patch" for the target (that fixes a bug or a mistake from a previous patch) amendment.      |
+| backwardsCompatible | boolean   | -           | Indicates whether this amendment is supposed to be backwards-compatible or not. Makes an (optional) promise regarding the amendment's effect.  |
+{: #amendment-qualities title="Qualities of an Amendment Map"}
 
 # Augmentation Mechanism
 
@@ -192,7 +205,7 @@ An augmented SDF model is produced from two inputs: An SDF model and a compatibl
 To perform the augmentation, a processor needs to create a copy of the original SDF model.
 It then iterates over all entries within the Supplement's `amend` array elements.
 During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
-This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's value as the `Patch` argument; the target is replaced with the result of the merge-patch.
+This reference is then used as the `Target` argument of the JSON Merge Patch algorithm {{-merge-patch}} and the entry's `delta` value as the `Patch` argument; the target is replaced with the result of the merge-patch.
 
 Once the iteration has finished, the processor returns the resulting augmented SDF model.
 Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.
@@ -293,6 +306,24 @@ info:
     using the "`‑`" pointer syntax may be a good receptacle for
     receiving information about multiple augmentations.)
 
+## Determining Semantic Versions {#semantic-versioning}
+
+Besides serving as a way to derive more specialized SDF models (e.g., with ecosystem-specific information), Supplements can also serve as a basis for determining the version history of a model, e.g., by being an input format accepted by servers that host SDF models.
+
+By looking at the kind of change each Amendment applies to the target model, we can determine whether a new version constitutes a major update, a minor update, or a patch in accordance with the semantic versioning approach. <!-- TODO: add semver reference -->
+While applying each Amendment to the target model, we can differentiate the following cases:
+
+1. The amendment has the `fix` quality set to `true`. In this case, the amendment constitutes a patch, since a bug in the previous version has been fixed.
+
+2. The amendment adds an additional interaction affordance, `sdfObject`, or `sdfThing` definition to the model. In this case, the change can be considered backwards-compatible addition, constituting a minor update.
+
+3. The amendment changes an existing interaction affordance. In this case, the change is not backwards-compatible and constitues a major update.
+
+When calculating the next version number for a single model, all of the amendments have to be taken into account and the "version bump" will correspond with the change with the largest impact (e.g., if two amendments contain patches and one amendment contains a minor update, the model needs to be increased to the next minor version number as a whole).
+
+In the future, version numbers for individual affordances and Groupings may be introduced that could be updated independently of each other.
+However, this approach faces some challenges when resolving the version number of an individual definitions, since the resolution of the correct model does not take fragment identifiers (and therefore the used JSON Pointers) into account.
+
 # Ecosystem-specific Examples
 
 In the following, we will outline a number of examples that illustrate how
@@ -327,11 +358,14 @@ namespace:
 defaultNamespace: onedm
 amend:
   - "#/sdfObject/Digital_Input":
-      id: 3200
+      delta:
+        id: 3200
   - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State":
-      id: 5500
+      delta:
+        id: 5500
   - "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter":
-      id: 5501
+      delta:
+        id: 5501
 ~~~
 {: #code-example1 check="json" pre="yaml2json" title="A simple example of an SDF Supplement"}
 
@@ -416,13 +450,15 @@ namespace:
 defaultNamespace: wot
 amend:
   - "#/sdfObject/LampThingModel":
-      titles:
-        en: Lamp Thing Model
-        de: Thing Model für eine Lampe
+      delta:
+        titles:
+          en: Lamp Thing Model
+          de: Thing Model für eine Lampe
   - "#/sdfObject/LampThingModel/sdfProperty/status":
-      descriptions:
-        en: Current status of the lamp
-        de: Aktueller Status der Lampe
+      delta:
+        descriptions:
+          en: Current status of the lamp
+          de: Aktueller Status der Lampe
 ~~~
 {: #code-wot-output2 check="json" pre="yaml2json" title="Output 2: SDF Supplement"}
 
@@ -436,8 +472,9 @@ namespace:
 defaultNamespace: wot
 amend:
   - "#/sdfObject/LampThingModel/sdfProperty/status":
-      descriptions:
-      - href: coap://example.org/status
+      delta:
+        forms:
+        - href: coap://example.org/status
 ~~~
 {: #code-wot-output3 check="json" pre="yaml2json" title="Output 3: SDF Supplement for Protocol Bindings"}
 

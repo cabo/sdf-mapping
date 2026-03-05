@@ -9,7 +9,14 @@ sdf-mapping = {
 }
 
 amendments = {
-  + global-sdf-pointer => additionalqualities,
+  + global-sdf-pointer => amendment
+}
+
+amendment = {
+  delta: additionalqualities
+  ? fix: bool .default false ; TODO: Consider renaming/changing this quality
+  ? backwardsCompatible: bool
+  ? patchMethod: text .default "merge-patch"
 }
 
 ; we can't really be much more specific here:
