@@ -144,7 +144,7 @@ Internet-Draft               SDF Supplements                  March 2026
 
 1.1.  Terminology and Conventions
 
-   The definitions of [I-D.ietf-asdf-sdf] apply.
+   The definitions of [RFC9880] apply.
 
    The term "byte" is used in its now-customary sense as a synonym for
    "octet".
@@ -159,8 +159,8 @@ Internet-Draft               SDF Supplements                  March 2026
 
    An SDF Supplement provides augmentation information for one or more
    SDF models.  Its main contents are an array of patches that are
-   applied using SDF name references (Section 4.3 of
-   [I-D.ietf-asdf-sdf]) as the respective target.
+   applied using SDF name references (Section 4.3 of [RFC9880]) as the
+   respective target.
 
 
 
@@ -174,8 +174,8 @@ Internet-Draft               SDF Supplements                  March 2026
    the qualities from the array elements are added to the SDF model at
    the referenced name, as in a merge-patch operation [RFC7396].  Note
    that this is somewhat similar to the way sdfRef (Section 4.4 of
-   [I-D.ietf-asdf-sdf]) works, but in a Supplement the arrows point in
-   the inverse direction (from the augmenter to the augmented).
+   [RFC9880]) works, but in a Supplement the arrows point in the inverse
+   direction (from the augmenter to the augmented).
 
    The order of the application of patches is that of the elements
    within the array (which is deterministic in contrast to the order of
@@ -308,7 +308,7 @@ Internet-Draft               SDF Supplements                  March 2026
    introduced in the penultimate paragraph of Section 4 of [RFC6901].
 
    The individual elements of an amendment are shown in Table 4.
-   Besides the value that is to be applied via the given patchMethod,
+   Besides the delta that is to be applied via the given patchMethod,
    the fix quality plays an important role for dynamically determining a
    (semantic) version history of an SDF model.
 
@@ -341,7 +341,7 @@ Internet-Draft               SDF Supplements                  March 2026
    +=============+=========+=============+============================+
    | Quality     | Type    | Default     | Description                |
    +=============+=========+=============+============================+
-   | value       | any     | –           | Contains the value that is |
+   | delta       | any     | –           | Contains the value that is |
    |             | type    |             | supposed to be applied via |
    |             |         |             | the indicated patch        |
    |             |         |             | method.                    |
@@ -377,8 +377,7 @@ Internet-Draft               SDF Supplements                  March 2026
       |  format might look like and whether such a format is needed.
 
    The augmentation mechanism is related to the resolution mechanism
-   defined in Section 4.4 of [I-D.ietf-asdf-sdf], but fundamentally
-   different:
+   defined in Section 4.4 of [RFC9880], but fundamentally different:
 
    Instead of a model file reaching out to other model files and
    integrating aspects into itself via sdfRef (_pull_ approach), the
@@ -386,6 +385,7 @@ Internet-Draft               SDF Supplements                  March 2026
    SDF model.  The original SDF model does not need to know which
    Supplements it will be used with and can be used with several such
    Supplements independently of each other.
+
 
 
 
@@ -404,8 +404,8 @@ Internet-Draft               SDF Supplements                  March 2026
    processor first obtains a reference to the target referred to by the
    JSON pointer in the respective key.  This reference is then used as
    the Target argument of the JSON Merge Patch algorithm [RFC7396] and
-   the entry's value as the Patch argument; the target is replaced with
-   the result of the merge-patch.
+   the entry's delta value as the Patch argument; the target is replaced
+   with the result of the merge-patch.
 
    Once the iteration has finished, the processor returns the resulting
    augmented SDF model.  Should the resolution of a JSON pointer or an
@@ -627,11 +627,11 @@ Internet-Draft               SDF Supplements                  March 2026
    // the referenced specification(s), but has un-namespaced quality
    // names.  These two kinds of namespaces are unrelated in SDF, and a
    // more robust example may need to make use of Quality Name Prefixes
-   // as defined in Section 2.3.3-3 of [I-D.ietf-asdf-sdf] (independent
-   // of a potential feature to add namespace references to definitions
-   // that are not intended to go into the default namespace — these are
-   // SDF definition namespaces and not quality namespaces, which are
-   // one meta-level higher).
+   // as defined in Section 2.3.3-3 of [RFC9880] (independent of a
+   // potential feature to add namespace references to definitions that
+   // are not intended to go into the default namespace — these are SDF
+   // definition namespaces and not quality namespaces, which are one
+   // meta-level higher).
 
    *  Start of a Supplement for certain OneDM playground models:
 
@@ -685,21 +685,21 @@ Internet-Draft               SDF Supplements                  March 2026
      "amend": [
        {
          "#/sdfObject/Digital_Input": {
-           "value": {
+           "delta": {
              "id": 3200
            }
          }
        },
        {
          "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State": {
-           "value": {
+           "delta": {
              "id": 5500
            }
          }
        },
        {
          "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
-           "value": {
+           "delta": {
              "id": 5501
            }
          }
@@ -853,7 +853,7 @@ Internet-Draft               SDF Supplements                  March 2026
      "amend": [
        {
          "#/sdfObject/LampThingModel": {
-           "value": {
+           "delta": {
              "titles": {
                "en": "Lamp Thing Model",
                "de": "Thing Model für eine Lampe"
@@ -863,7 +863,7 @@ Internet-Draft               SDF Supplements                  March 2026
        },
        {
          "#/sdfObject/LampThingModel/sdfProperty/status": {
-           "value": {
+           "delta": {
              "descriptions": {
                "en": "Current status of the lamp",
                "de": "Aktueller Status der Lampe"
@@ -909,7 +909,7 @@ Internet-Draft               SDF Supplements                  March 2026
      "amend": [
        {
          "#/sdfObject/LampThingModel/sdfProperty/status": {
-           "value": {
+           "delta": {
              "forms": [
                {
                  "href": "coap://example.org/status"
@@ -999,9 +999,9 @@ Internet-Draft               SDF Supplements                  March 2026
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-   [I-D.ietf-asdf-sdf]
-              Koster, M., Bormann, C., and A. Keränen, "Semantic
-              Definition Format (SDF) for Data and Interactions of
+
+
+
 
 
 
@@ -1009,11 +1009,6 @@ Bormann & Romann        Expires 6 September 2026               [Page 18]
 
 Internet-Draft               SDF Supplements                  March 2026
 
-
-              Things", Work in Progress, Internet-Draft, draft-ietf-
-              asdf-sdf-25, 13 October 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-asdf-
-              sdf-25>.
 
    [RFC6901]  Bryan, P., Ed., Zyp, K., and M. Nottingham, Ed.,
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
@@ -1029,6 +1024,11 @@ Internet-Draft               SDF Supplements                  March 2026
               Express Concise Binary Object Representation (CBOR) and
               JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
               June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
+
+   [RFC9880]  Koster, M., Ed., Bormann, C., Ed., and A. Keränen,
+              "Semantic Definition Format (SDF) for Data and
+              Interactions of Things", RFC 9880, DOI 10.17487/RFC9880,
+              January 2026, <https://www.rfc-editor.org/rfc/rfc9880>.
 
 8.2.  Informative References
 

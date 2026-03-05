@@ -1294,7 +1294,7 @@ does not actually contain a <em>map</em> for describing the augmentation anymore
         <h3 id="name-terminology-and-conventions">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology-and-conventions" class="section-name selfRef">Terminology and Conventions</a>
         </h3>
-<p id="section-1.1-1">The definitions of <span>[<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> apply.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-1">The definitions of <span>[<a href="#RFC9880" class="cite xref">RFC9880</a>]</span> apply.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-1.1-2">The term "byte" is used in its now-customary sense as a synonym for
 "octet".<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
@@ -1312,11 +1312,11 @@ appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">�
       </h2>
 <p id="section-2-1">An SDF Supplement provides augmentation information for one or more
 SDF models.
-Its main contents are an array of <code>patches</code> that are applied using SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) as the respective target.<a href="#section-2-1" class="pilcrow">¶</a></p>
+Its main contents are an array of <code>patches</code> that are applied using SDF name references (<span><a href="https://rfc-editor.org/rfc/rfc9880#section-4.3" class="relref">Section 4.3</a> of [<a href="#RFC9880" class="cite xref">RFC9880</a>]</span>) as the respective target.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">When processing the Supplement together with one or more SDF
 models, the qualities from the array elements are added to the SDF model at the
 referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.
-Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
+Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://rfc-editor.org/rfc/rfc9880#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9880" class="cite xref">RFC9880</a>]</span>) works, but in a
 Supplement the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">The order of the application of patches is that of the elements within the array (which is deterministic in contrast to the order of entries of an object).<a href="#section-2-3" class="pilcrow">¶</a></p>
@@ -1461,7 +1461,7 @@ Under the <code>amend</code> quality, the block consists of an array of JSON map
 If necessary, a new JSON map is created at the indicated position.
 Alternatively, the JSON pointer can point to an array (also possibly created if not existing before) and append an element by using the "<code>‑</code>" syntax introduced in the penultimate paragraph of <span><a href="https://rfc-editor.org/rfc/rfc6901#section-4" class="relref">Section 4</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.3-4">The individual elements of an amendment are shown in <a href="#amendment-qualities" class="auto internal xref">Table 4</a>.
-Besides the <code>value</code> that is to be applied via the given <code>patchMethod</code>, the <code>fix</code> quality plays an important role for dynamically determining a (semantic) version history of an SDF model.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+Besides the <code>delta</code> that is to be applied via the given <code>patchMethod</code>, the <code>fix</code> quality plays an important role for dynamically determining a (semantic) version history of an SDF model.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 <span id="name-qualities-of-an-amendment-m"></span><div id="amendment-qualities">
 <table class="center" id="table-4">
           <caption>
@@ -1478,7 +1478,7 @@ Besides the <code>value</code> that is to be applied via the given <code>patchMe
           </thead>
           <tbody>
             <tr>
-              <td class="text-left" rowspan="1" colspan="1">value</td>
+              <td class="text-left" rowspan="1" colspan="1">delta</td>
               <td class="text-left" rowspan="1" colspan="1">any type</td>
               <td class="text-left" rowspan="1" colspan="1">–</td>
               <td class="text-left" rowspan="1" colspan="1">Contains the value that is supposed to be applied via the indicated patch method.</td>
@@ -1518,7 +1518,7 @@ information.<a href="#section-4-1" class="pilcrow">¶</a></p>
         <p id="section-4-2.1">Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.<a href="#section-4-2.1" class="pilcrow">¶</a></p>
 </aside>
 <p id="section-4-3">The augmentation mechanism is related to the resolution mechanism
-defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
+defined in <span><a href="https://rfc-editor.org/rfc/rfc9880#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9880" class="cite xref">RFC9880</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <p id="section-4-4">Instead of a model file reaching out to other model files and
 integrating aspects into itself via <code>sdfRef</code> (<em>pull</em> approach), the
 Supplement <em>pushes</em> information into a new copy of a specific given
@@ -1530,7 +1530,7 @@ independently of each other.<a href="#section-4-4" class="pilcrow">¶</a></p>
 To perform the augmentation, a processor needs to create a copy of the original SDF model.
 It then iterates over all entries within the Supplement's <code>amend</code> array elements.
 During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer in the respective key.
-This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
+This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's <code>delta</code> value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Once the iteration has finished, the processor returns the resulting augmented SDF model.
 Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
 <p id="section-4-7">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 1</a>.
@@ -1703,7 +1703,7 @@ Note that this example uses namespaces to identify elements of the
 referenced specification(s), but has un-namespaced quality names.
 These two kinds of namespaces are unrelated in SDF, and a more
 robust example may need to make use of Quality Name Prefixes
-as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> (independent of a potential
+as defined in <span><a href="https://rfc-editor.org/rfc/rfc9880#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#RFC9880" class="cite xref">RFC9880</a>]</span> (independent of a potential
 feature to add namespace references to definitions that are not
 intended to go into the default namespace — these are SDF
 definition namespaces and not quality namespaces, which are one
@@ -1727,21 +1727,21 @@ meta-level higher).</span><a href="#section-5.1-1" class="pilcrow">¶</a></p>
   "amend": [
     {
       "#/sdfObject/Digital_Input": {
-        "value": {
+        "delta": {
           "id": 3200
         }
       }
     },
     {
       "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_State": {
-        "value": {
+        "delta": {
           "id": 5500
         }
       }
     },
     {
       "#/sdfObject/Digital_Input/sdfProperty/Digital_Input_Counter": {
-        "value": {
+        "delta": {
           "id": 5501
         }
       }
@@ -1869,7 +1869,7 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-5
   "amend": [
     {
       "#/sdfObject/LampThingModel": {
-        "value": {
+        "delta": {
           "titles": {
             "en": "Lamp Thing Model",
             "de": "Thing Model für eine Lampe"
@@ -1879,7 +1879,7 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-5
     },
     {
       "#/sdfObject/LampThingModel/sdfProperty/status": {
-        "value": {
+        "delta": {
           "descriptions": {
             "en": "Current status of the lamp",
             "de": "Aktueller Status der Lampe"
@@ -1914,7 +1914,7 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-5
   "amend": [
     {
       "#/sdfObject/LampThingModel/sdfProperty/status": {
-        "value": {
+        "delta": {
           "forms": [
             {
               "href": "coap://example.org/status"
@@ -2092,10 +2092,6 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-6.1-4.22
             <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </div>
 </dd>
 <dd class="break"></dd>
-<dt id="I-D.ietf-asdf-sdf">[I-D.ietf-asdf-sdf]</dt>
-        <dd>
-<span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-25</span>, <time datetime="2025-10-13" class="refDate">13 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-25</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC6901">[RFC6901]</dt>
         <dd>
 <span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6901">https://www.rfc-editor.org/rfc/rfc6901</a>&gt;</span>. </dd>
@@ -2105,8 +2101,12 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-6.1-4.22
 <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">J. Snell</span>, <span class="refTitle">"JSON Merge Patch"</span>, <span class="seriesInfo">RFC 7396</span>, <span class="seriesInfo">DOI 10.17487/RFC7396</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7396">https://www.rfc-editor.org/rfc/rfc7396</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8610">[RFC8610]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9880">[RFC9880]</dt>
+      <dd>
+<span class="refAuthor">Koster, M., Ed.</span>, <span class="refAuthor">Bormann, C., Ed.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="seriesInfo">RFC 9880</span>, <span class="seriesInfo">DOI 10.17487/RFC9880</span>, <time datetime="2026-01" class="refDate">January 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9880">https://www.rfc-editor.org/rfc/rfc9880</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
